@@ -1,0 +1,33 @@
+<h1>Listing kit_uniforms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kit</th>
+      <th>Uniform</th>
+      <th>Quantity</th>
+      <th>Notes</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @kit_uniforms.each do |kit_uniform| %>
+      <tr>
+        <td><%= kit_uniform.kit_id %></td>
+        <td><%= kit_uniform.uniform_id %></td>
+        <td><%= kit_uniform.quantity %></td>
+        <td><%= kit_uniform.notes %></td>
+        <td><%= link_to 'Show', kit_uniform %></td>
+        <td><%= link_to 'Edit', edit_kit_uniform_path(kit_uniform) %></td>
+        <td><%= link_to 'Destroy', kit_uniform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Kit uniform', new_kit_uniform_path %>

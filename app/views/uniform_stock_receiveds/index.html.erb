@@ -1,0 +1,37 @@
+<h1>Listing uniform_stock_receiveds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stock</th>
+      <th>Quantity</th>
+      <th>Size</th>
+      <th>Received on</th>
+      <th>Received by</th>
+      <th>Contract</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @uniform_stock_receiveds.each do |uniform_stock_received| %>
+      <tr>
+        <td><%= uniform_stock_received.stock_id %></td>
+        <td><%= uniform_stock_received.quantity %></td>
+        <td><%= uniform_stock_received.size %></td>
+        <td><%= uniform_stock_received.received_on %></td>
+        <td><%= uniform_stock_received.received_by %></td>
+        <td><%= uniform_stock_received.contract_id %></td>
+        <td><%= link_to 'Show', uniform_stock_received %></td>
+        <td><%= link_to 'Edit', edit_uniform_stock_received_path(uniform_stock_received) %></td>
+        <td><%= link_to 'Destroy', uniform_stock_received, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Uniform stock received', new_uniform_stock_received_path %>

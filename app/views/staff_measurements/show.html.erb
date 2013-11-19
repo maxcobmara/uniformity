@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Staff:</strong>
+  <%= @staff_measurement.staff_id %>
+</p>
+
+<p>
+  <strong>Uniform:</strong>
+  <%= @staff_measurement.uniform_id %>
+</p>
+
+<p>
+  <strong>Measurement type:</strong>
+  <%= @staff_measurement.measurement_type %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @staff_measurement.value %>
+</p>
+
+<p>
+  <strong>Unit type:</strong>
+  <%= @staff_measurement.unit_type_id %>
+</p>
+
+<%= link_to 'Edit', edit_staff_measurement_path(@staff_measurement) %> |
+<%= link_to 'Back', staff_measurements_path %>

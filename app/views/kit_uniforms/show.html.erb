@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Kit:</strong>
+  <%= @kit_uniform.kit_id %>
+</p>
+
+<p>
+  <strong>Uniform:</strong>
+  <%= @kit_uniform.uniform_id %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @kit_uniform.quantity %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @kit_uniform.notes %>
+</p>
+
+<%= link_to 'Edit', edit_kit_uniform_path(@kit_uniform) %> |
+<%= link_to 'Back', kit_uniforms_path %>

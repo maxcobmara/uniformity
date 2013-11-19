@@ -1,0 +1,2 @@
+module UniformStockIssuesHelper
+end

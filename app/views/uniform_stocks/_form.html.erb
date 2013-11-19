@@ -1,0 +1,41 @@
+<%= form_for(@uniform_stock) do |f| %>
+  <% if @uniform_stock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@uniform_stock.errors.count, "error") %> prohibited this uniform_stock from being saved:</h2>
+
+      <ul>
+      <% @uniform_stock.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :uniform_id %><br>
+    <%= f.number_field :uniform_id %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br>
+    <%= f.text_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :max_quantity %><br>
+    <%= f.number_field :max_quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :min_quantity %><br>
+    <%= f.number_field :min_quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_type_id %><br>
+    <%= f.number_field :unit_type_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

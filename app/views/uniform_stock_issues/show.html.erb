@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @uniform_stock_issue.stock_id %>
+</p>
+
+<p>
+  <strong>Issued to:</strong>
+  <%= @uniform_stock_issue.issued_to %>
+</p>
+
+<p>
+  <strong>Issued by:</strong>
+  <%= @uniform_stock_issue.issued_by %>
+</p>
+
+<p>
+  <strong>Issued on:</strong>
+  <%= @uniform_stock_issue.issued_on %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @uniform_stock_issue.quantity %>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= @uniform_stock_issue.document_id %>
+</p>
+
+<%= link_to 'Edit', edit_uniform_stock_issue_path(@uniform_stock_issue) %> |
+<%= link_to 'Back', uniform_stock_issues_path %>

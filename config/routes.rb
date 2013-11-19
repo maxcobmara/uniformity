@@ -1,4 +1,20 @@
 Uniformity::Application.routes.draw do
+  resources :kit_staffs
+
+  resources :staff_measurements
+
+  resources :uniform_stock_issues
+
+  resources :uniform_stock_receiveds
+
+  resources :uniform_stocks
+
+  resources :kit_uniforms
+
+  resources :kits
+
+  resources :uniform_items
+
   devise_for :users
   resources :users
   root  'static_pages#home'

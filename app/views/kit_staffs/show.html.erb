@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Kit:</strong>
+  <%= @kit_staff.kit_id %>
+</p>
+
+<p>
+  <strong>Staff:</strong>
+  <%= @kit_staff.staff_id %>
+</p>
+
+<p>
+  <strong>Staff group:</strong>
+  <%= @kit_staff.staff_group_id %>
+</p>
+
+<%= link_to 'Edit', edit_kit_staff_path(@kit_staff) %> |
+<%= link_to 'Back', kit_staffs_path %>

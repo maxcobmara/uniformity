@@ -1,0 +1,31 @@
+<h1>Listing kit_staffs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kit</th>
+      <th>Staff</th>
+      <th>Staff group</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @kit_staffs.each do |kit_staff| %>
+      <tr>
+        <td><%= kit_staff.kit_id %></td>
+        <td><%= kit_staff.staff_id %></td>
+        <td><%= kit_staff.staff_group_id %></td>
+        <td><%= link_to 'Show', kit_staff %></td>
+        <td><%= link_to 'Edit', edit_kit_staff_path(kit_staff) %></td>
+        <td><%= link_to 'Destroy', kit_staff, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Kit staff', new_kit_staff_path %>

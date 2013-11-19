@@ -1,0 +1,33 @@
+<%= form_for(@kit_uniform) do |f| %>
+  <% if @kit_uniform.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@kit_uniform.errors.count, "error") %> prohibited this kit_uniform from being saved:</h2>
+
+      <ul>
+      <% @kit_uniform.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :kit_id %><br>
+    <%= f.number_field :kit_id %>
+  </div>
+  <div class="field">
+    <%= f.label :uniform_id %><br>
+    <%= f.number_field :uniform_id %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_field :notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+<h1>Listing staff_measurements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Staff</th>
+      <th>Uniform</th>
+      <th>Measurement type</th>
+      <th>Value</th>
+      <th>Unit type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @staff_measurements.each do |staff_measurement| %>
+      <tr>
+        <td><%= staff_measurement.staff_id %></td>
+        <td><%= staff_measurement.uniform_id %></td>
+        <td><%= staff_measurement.measurement_type %></td>
+        <td><%= staff_measurement.value %></td>
+        <td><%= staff_measurement.unit_type_id %></td>
+        <td><%= link_to 'Show', staff_measurement %></td>
+        <td><%= link_to 'Edit', edit_staff_measurement_path(staff_measurement) %></td>
+        <td><%= link_to 'Destroy', staff_measurement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Staff measurement', new_staff_measurement_path %>
