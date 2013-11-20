@@ -1,0 +1,24 @@
+- provide(:title, 'Kit Staff Detail')
+- model_class = KitStaff
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human
+%p#notice= notice
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:kit_id) + ":"
+  %dd=  @kit_staff.kit_id
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:staff_id) + ":"
+  %dd=  @kit_staff.staff_id
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:staff_group_id) + ":"
+  %dd=  @kit_staff.staff_group_id
+
+.form-actions
+  = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), kit_staffs_path, :class => 'btn'
+  = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |
+    edit_kit_staff_path(@kit_staff), :class => 'btn'
+  = link_to content_tag(:i, "", :class => "fa fa-trash-o icon-white") + " " + t('.destroy', :default => t("helpers.links.destroy")), |
+    kit_staff_path(@kit_staff),                                                                                                    |
+    :method => 'delete',                                                                                                           |
+    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },                   |
+    :class => 'btn btn-danger'                                                                                                     |

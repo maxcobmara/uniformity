@@ -1,0 +1,32 @@
+- provide(:title, 'Uniform Item')
+- model_class = UniformItem
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Uniform Item")), new_uniform_item_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Code
+      %th Name
+      %th Notes
+      %th 
+
+  %tbody
+    - @uniform_items.each do |uniform_item|
+      %tr
+        %td= uniform_item.code
+        %td= uniform_item.name
+        %td= uniform_item.notes
+        = render :partial => 'action_menu', :locals => { :uniform_item => uniform_item }
+      
+      

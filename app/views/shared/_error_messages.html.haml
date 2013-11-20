@@ -1,8 +1,9 @@
-- if @user.errors.any?
+- if object.errors.any?
+ .div{:style => "width:60%; padding-left: 180px;"}
   #error_explanation
-    .alert.alert-danger
-      The form contains #{pluralize(@user.errors.count, "error")}.
-    %ul
-      - @user.errors.full_messages.each do |msg|
-        %li
-          * #{msg}
+   .alert.alert-error
+    The form contains #{pluralize(object.errors.count, "error")}.
+   %ul
+    - object.errors.full_messages.each do |msg|
+     %li
+      * #{msg}

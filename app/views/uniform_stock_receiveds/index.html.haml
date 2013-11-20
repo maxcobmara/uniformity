@@ -1,0 +1,38 @@
+- provide(:title, 'Uniform Stock Received')
+- model_class = UniformStockReceived
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Uniform Stock Received")), new_uniform_stock_received_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Stock
+      %th Quantity
+      %th Size
+      %th Received on
+      %th Received by
+      %th Contract
+      %th 
+
+  %tbody
+    - @uniform_stock_receiveds.each do |uniform_stock_received|
+      %tr
+        %td= uniform_stock_received.stock_id
+        %td= uniform_stock_received.quantity
+        %td= uniform_stock_received.size
+        %td= uniform_stock_received.received_on
+        %td= uniform_stock_received.received_by
+        %td= uniform_stock_received.contract_id
+        = render :partial => 'action_menu', :locals => { :uniform_stock_received => uniform_stock_received }
+      
+      

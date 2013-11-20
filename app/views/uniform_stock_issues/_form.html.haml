@@ -1,0 +1,33 @@
+.container{:style => "padding-left: 60px;"}
+  = form_for @uniform_stock_issue, :html => { :class => 'form-horizontal' }  do |f|
+    = render 'shared/error_messages', object: f.object
+          
+    .control-group
+      = f.label :stock_id, :class => 'control-label'
+      .controls= f.number_field :stock_id, :class => 'text_field input-xxlarge'
+    
+    .control-group
+      = f.label :issued_to, :class => 'control-label'
+      .controls= f.number_field :issued_to, :class => 'text_field input-xxlarge'
+
+    .control-group
+      = f.label :issued_by, :class => 'control-label'
+      .controls= f.number_field :issued_by, :class => 'text_field input-xxlarge'
+
+    .control-group
+      = f.label :issued_on, :class => 'control-label'
+      .controls= f.date_select :issued_on, :class => 'text_field input-xxlarge'
+
+    .control-group
+      = f.label :quantity, :class => 'control-label'
+      .controls= f.number_field :quantity, :class => 'text_field input-xxlarge'
+
+    .control-group
+      = f.label :document_id, :class => 'control-label'
+      .controls= f.number_field :document_id, :class => 'text_field input-xxlarge'
+
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+        uniform_stock_issues_path, :class => 'btn'     
+

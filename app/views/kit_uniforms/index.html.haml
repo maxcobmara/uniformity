@@ -1,0 +1,34 @@
+- provide(:title, 'Kit Uniform')
+- model_class = KitUniform
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Kit Uniform")), new_kit_uniform_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Kit
+      %th Uniform
+      %th Quantity
+      %th Notes
+      %th 
+
+  %tbody
+    - @kit_uniforms.each do |kit_uniform|
+      %tr
+        %td= kit_uniform.kit_id
+        %td= kit_uniform.uniform_id
+        %td= kit_uniform.quantity
+        %td= kit_uniform.notes
+        = render :partial => 'action_menu', :locals => { :kit_uniform => kit_uniform }
+      
+      

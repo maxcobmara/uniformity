@@ -1,0 +1,38 @@
+- provide(:title, 'Uniform Stock')
+- model_class = UniformStock
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Uniform Stock")), new_uniform_stock_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Uniform
+      %th Size
+      %th Category
+      %th Max quantity
+      %th Min quantity
+      %th Unit type
+      %th 
+
+  %tbody
+    - @uniform_stocks.each do |uniform_stock|
+      %tr
+        %td= uniform_stock.uniform_id
+        %td= uniform_stock.size
+        %td= uniform_stock.category
+        %td= uniform_stock.max_quantity
+        %td= uniform_stock.min_quantity
+        %td= uniform_stock.unit_type_id
+        = render :partial => 'action_menu', :locals => { :uniform_stock => uniform_stock }
+      
+      

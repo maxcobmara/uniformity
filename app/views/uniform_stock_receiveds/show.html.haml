@@ -1,0 +1,33 @@
+- provide(:title, 'Uniform Stock  Received Detail')
+- model_class = UniformStockReceived
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human
+%p#notice= notice
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:stock_id) + ":"
+  %dd=  @uniform_stock_received.stock_id
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:quantity) + ":"
+  %dd=  @uniform_stock_received.quantity
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:size) + ":"
+  %dd=  @uniform_stock_received.size
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:received_on) + ":"
+  %dd=@uniform_stock_received.received_on
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:received_by) + ":"
+  %dd=@uniform_stock_received.received_by
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:contract_id ) + ":"
+  %dd=@uniform_stock_received.contract_id
+
+.form-actions
+  = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), uniform_stock_receiveds_path, :class => 'btn'
+  = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |
+    edit_uniform_stock_received_path(@uniform_stock_received), :class => 'btn'
+  = link_to content_tag(:i, "", :class => "fa fa-trash-o icon-white") + " " + t('.destroy', :default => t("helpers.links.destroy")), |
+    uniform_stock_received_path(@uniform_stock_received),                                                                                                    |
+    :method => 'delete',                                                                                                           |
+    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },                   |
+    :class => 'btn btn-danger'                                                                                                     |

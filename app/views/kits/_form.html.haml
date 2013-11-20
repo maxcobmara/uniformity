@@ -1,0 +1,29 @@
+.container{:style => "padding-left: 60px;"}
+  = form_for @kit, :html => { :class => 'form-horizontal' }  do |f|
+    = render 'shared/error_messages', object: f.object
+          
+    .control-group
+      = f.label :code, :class => 'control-label'
+      .controls= f.text_field :code, :class => 'text_field input-xxlarge'
+    
+    .control-group
+      = f.label :combo_code, :class => 'control-label'
+      .controls= f.text_field :combo_code, :class => 'text_field input-xxlarge'
+
+    .control-group
+      = f.label :name, :class => 'control-label'
+      .controls= f.text_field :name, :class => 'text_field input-xxlarge'
+
+    .control-group
+      = f.label :ancestry, :class => 'control-label'
+      .controls= f.text_field :ancestry, :class => 'text_field input-xxlarge'
+
+    .control-group
+      = f.label :ancestry_depth, :class => 'control-label'
+      .controls= f.number_field :ancestry_depth, :class => 'text_field input-xxlarge'
+
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+        kits_path, :class => 'btn'     
+
