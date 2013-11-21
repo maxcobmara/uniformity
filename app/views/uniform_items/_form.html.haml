@@ -1,0 +1,21 @@
+.container{:style => "padding-left: 60px;"}
+  = form_for @uniform_item, :html => { :class => 'form-horizontal' }  do |f|
+    = render 'shared/error_messages', object: f.object
+          
+    .control-group
+      = f.label :code, :class => 'control-label'
+      .controls= f.text_field :code, :class => 'text_field input-xxlarge'
+    
+    .control-group
+      = f.label :name, :class => 'control-label'
+      .controls= f.text_field :name, :class => 'text_field input-xxlarge'
+
+    .control-group
+      = f.label :notes, :class => 'control-label'
+      .controls= f.text_area :notes, :class => 'text_field input-xxlarge'
+
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+        uniform_items_path, :class => 'btn'     
+

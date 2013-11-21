@@ -7,9 +7,9 @@
         %h2.icon Uniform
         %a.mp-back{:href => "#"} Back
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Uniform Items", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Kit Sets", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Skala", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Uniform Items", uniform_items_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Kit Sets", kit_uniforms_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Skala", kits_path
           
     %li.icon.icon-left
       = link_to content_tag(:i, "", :class => "icon-numb") + "Stock", '#'
@@ -17,9 +17,9 @@
         %h2.icon Stock
         %a.mp-back{:href => "#"} Back
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Stock List", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Receive", '#'
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Issue", '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Stock List", uniform_stocks_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Receive", uniform_stock_receiveds_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Issue", uniform_stock_issues_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Request", '#'
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Order", '#'
           %li= link_to content_tag(:i, "", :class => "icon-numb") + "Outstanding", '#'
@@ -33,9 +33,9 @@
           %ul
             %li= link_to content_tag(:i, "", :class => "icon-numb") + "Units", '#'
             %li= link_to content_tag(:i, "", :class => "icon-numb") + "Staff", '#'
-            %li= link_to content_tag(:i, "", :class => "icon-numb") + "Staff Sizes", '#'
+            %li= link_to content_tag(:i, "", :class => "icon-numb") + "Staff Sizes", staff_measurements_path
             %li= link_to content_tag(:i, "", :class => "icon-numb") + "Match Stock", '#'
-            %li= link_to content_tag(:i, "", :class => "icon-numb") + "Provision", '#'
+            %li= link_to content_tag(:i, "", :class => "icon-numb") + "Provision", kit_staffs_path
             %li= link_to content_tag(:i, "", :class => "icon-numb") + "Measurement Types", '#'
           
         

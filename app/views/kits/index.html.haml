@@ -1,0 +1,36 @@
+- provide(:title, 'Kit')
+- model_class = Kit
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Kit")), new_kit_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Code
+      %th Combo code
+      %th Name
+      %th Ancestry
+      %th Ancestry depth
+      %th 
+
+  %tbody
+    - @kits.each do |kit|
+      %tr
+        %td= kit.code
+        %td= kit.combo_code
+        %td= kit.name
+        %td= kit.ancestry
+        %td= kit.ancestry_depth
+        = render :partial => 'action_menu', :locals => { :kit => kit }
+      
+      

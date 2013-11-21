@@ -1,0 +1,29 @@
+.container{:style => "padding-left: 60px;"}
+  = form_for @staff_measurement, :html => { :class => 'form-horizontal' }  do |f|
+    = render 'shared/error_messages', object: f.object
+          
+    .control-group
+      = f.label :staff_id, :class => 'control-label'
+      .controls= f.number_field :staff_id, :class => 'text_field input-xxlarge'
+    
+    .control-group
+      = f.label :uniform_id, :class => 'control-label'
+      .controls= f.number_field :uniform_id, :class => 'text_field input-xxlarge'
+
+    .control-group
+      = f.label :measurement_type, :class => 'control-label'
+      .controls= f.text_field :measurement_type, :class => 'text_field input-xxlarge'
+
+    .control-group
+      = f.label :value, :class => 'control-label'
+      .controls= f.text_field :value, :class => 'text_field input-xxlarge'
+
+    .control-group
+      = f.label :unit_type_id, :class => 'control-label'
+      .controls= f.number_field :unit_type_id, :class => 'text_field input-xxlarge'
+
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+        staff_measurements_path, :class => 'btn'     
+

@@ -1,0 +1,27 @@
+- provide(:title, 'Kit Uniform Detail')
+- model_class = KitUniform
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human
+%p#notice= notice
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:kit_id) + ":"
+  %dd=  @kit_uniform.kit_id
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:uniform_id) + ":"
+  %dd=  @kit_uniform.uniform_id
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:quantity) + ":"
+  %dd=  @kit_uniform.quantity
+%dl.dl-horizontal
+  %dt= model_class.human_attribute_name(:notes) + ":"
+  %dd=  @kit_uniform.notes
+
+.form-actions
+  = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), kit_uniforms_path, :class => 'btn'
+  = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |
+    edit_kit_uniform_path(@kit_uniform), :class => 'btn'
+  = link_to content_tag(:i, "", :class => "fa fa-trash-o icon-white") + " " + t('.destroy', :default => t("helpers.links.destroy")), |
+    kit_uniform_path(@kit_uniform),                                                                                                    |
+    :method => 'delete',                                                                                                           |
+    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },                   |
+    :class => 'btn btn-danger'                                                                                                     |
