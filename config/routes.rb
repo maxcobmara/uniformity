@@ -14,6 +14,14 @@ Uniformity::Application.routes.draw do
   resources :kits
 
   resources :uniform_items
+  
+  resources :staffs
+  
+  resources :ranks
+  
+  resources :units
+  
+  resources :unit_types
 
   devise_for :users
   resources :users

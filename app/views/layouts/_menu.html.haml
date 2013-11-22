@@ -31,11 +31,11 @@
           %h2.icon People
           %a.mp-back{:href => "#"} Back
           %ul
-            %li= link_to content_tag(:i, "", :class => "icon-numb") + "Units", '#'
-            %li= link_to content_tag(:i, "", :class => "icon-numb") + "Staff", '#'
+            %li= link_to content_tag(:i, "", :class => "icon-numb") + "Units", units_path
+            %li= link_to content_tag(:i, "", :class => "icon-numb") + "Staff", staffs_path
             %li= link_to content_tag(:i, "", :class => "icon-numb") + "Staff Sizes", staff_measurements_path
             %li= link_to content_tag(:i, "", :class => "icon-numb") + "Match Stock", '#'
             %li= link_to content_tag(:i, "", :class => "icon-numb") + "Provision", kit_staffs_path
-            %li= link_to content_tag(:i, "", :class => "icon-numb") + "Measurement Types", '#'
+            %li= link_to content_tag(:i, "", :class => "icon-numb") + "Measurement Types", unit_types_path
           
         

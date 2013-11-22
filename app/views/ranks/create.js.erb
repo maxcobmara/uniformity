@@ -1,0 +1,7 @@
+$('#rank_form').remove();
+$('#rank_list tr:last').after('<%= j render("list") %>');
+$('#rank_list tr:last').effect("highlight", {}, 2000);
+
+
+
+

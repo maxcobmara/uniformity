@@ -1,0 +1,7 @@
+= form_for @rank, remote: true do |f|
+  %div#rank_errors{:style => "display:none;"}
+    = render 'shared/error_messages', object: f.object
+  
+  %td= f.text_field :shortname
+  %td= f.text_field :name
+  %td= f.submit "Create", :class => 'btn btn-primary'
