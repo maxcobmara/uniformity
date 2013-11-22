@@ -1,0 +1,31 @@
+- provide(:title, 'Unit')
+- model_class = Unit
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: "New Unit")), new_unit_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Short Name
+      %th Name
+      %th Parent id
+      %th 
+  %tbody
+    - @units.each do |unit|
+      %tr
+        %td= unit.shortname
+        %td= unit.name
+        %td= unit.parent_id
+        = render :partial => 'action_menu', :locals => { :unit => unit }
+      
+      

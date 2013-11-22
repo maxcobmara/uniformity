@@ -1,0 +1,15 @@
+
+%h1 Editing rank
+
+
+= form_for @rank do |f|
+  %div#rank_errors{:style => "display:none;"}
+    = render 'shared/error_messages', object: f.object
+  
+  %td= f.text_field :shortname
+  %td= f.text_field :name
+  %td= f.submit
+= link_to 'Show', @rank
+|
+\#{link_to 'Back', ranks_path}
+
