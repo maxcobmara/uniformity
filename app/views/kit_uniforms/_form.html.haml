@@ -4,15 +4,19 @@
           
     .control-group
       = f.label :kit_id, :class => 'control-label'
-      .controls= f.number_field :kit_id, :class => 'text_field input-xxlarge'
+      .controls= f.collection_select :kit_id, Kit.find(:all, :order => 'id ASC'), :id, :kit_details, :include_blank => 'Select Kit', :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :uniform_id, :class => 'control-label'
-      .controls= f.number_field :uniform_id, :class => 'text_field input-xxlarge'
+      .controls= f.collection_select :uniform_id, UniformItem.find(:all, :order => 'code, name ASC'), :id, :uniform_details, :include_blank => 'Select Uniform', :html_options => {:class => 'selectpicker'}
 
     .control-group
-      = f.label :quantity, :class => 'control-label'
-      .controls= f.number_field :quantity, :class => 'text_field input-xxlarge'
+      = f.label :junior_rate, :class => 'control-label'
+      .controls= f.text_field :quantity, :class => 'text_field input-xxlarge'
+
+    .control-group
+      = f.label :senior_rate, :class => 'control-label'
+      .controls= f.text_field :senior_rate, :class => 'text_field input-xxlarge'
 
     .control-group
       = f.label :notes, :class => 'control-label'
