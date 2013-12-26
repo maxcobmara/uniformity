@@ -14,7 +14,7 @@
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), kits_path, :class => 'btn'
   = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |
     edit_kit_path(@kit), :class => 'btn'
-  = link_to content_tag(:i, " New Node", :class => "fa fa-leaf"), new_kit_path(:parent_id => @kit), :class => 'btn btn-warning', :style => "color:#333;"
+  = link_to content_tag(:i, " New Node", :class => "fa fa-leaf"), new_kit_path(:parent_id => @kit), :class => 'btn btn-info'
   = link_to content_tag(:i, "", :class => "fa fa-trash-o icon-white") + " " + t('.destroy', :default => t("helpers.links.destroy")), |
     kit_path(@kit),                                                                                                    |
     :method => 'delete',                                                                                                           |

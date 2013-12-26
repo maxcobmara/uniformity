@@ -13,10 +13,24 @@
     .control-group
       = f.label :name, :class => 'control-label'
       .controls= f.text_field :name, :class => 'text_field input-xxlarge'
+      
+      
+    %br
+    %H4 Uniform Items
+    %hr{:style => "padding:0; margin:0;"}
+    
+    .form-group
+      .col-lg-offset-2.col-lg-10
+        = f.fields_for :kit_uniforms do |builder|
+          = render 'kit_uniform_fields', f: builder
+        = link_to_add_fields (t 'vehicle_assignments.add_details'), f, :kit_uniforms
 
 
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
-        kits_path, :class => 'btn'     
+        kits_path, :class => 'btn'  
+        
+        
+       
 

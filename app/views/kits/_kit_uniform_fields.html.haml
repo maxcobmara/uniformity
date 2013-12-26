@@ -1,0 +1,6 @@
+%fieldset
+  .form-inline{role: "form"}
+    = f.collection_select :uniform_id, UniformItem.order(:code, :name), :id, :uniform_details, :include_blank => 'Select Uniform', :html_options => {:class => 'selectpicker'}
+    = f.number_field :quantity, :class => 'text_field input-small', placeholder: "Junior Rate"
+    = f.number_field :senior_rate, :class => 'text_field input-small', placeholder: "Senior Rate"
+    = f.text_field :notes, :class => 'text_field input-xxlarge', placeholder: "Notes"

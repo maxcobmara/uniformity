@@ -3,9 +3,11 @@ class Kit < ActiveRecord::Base
   before_save     :set_combo_code
   
   has_ancestry    :cache_depth => true
-  has_many        :uniforms, through: :kit_uniforms
   
-  validates :code, :name, presence: true
+  has_many        :kit_uniforms
+  accepts_nested_attributes_for :kit_uniforms, allow_destroy: true, reject_if: proc { |kit_uniforms| kit_uniforms[:uniform_id].blank? }
+  
+  validates       :code, :name, presence: true
   
   def set_combo_code
     if ancestry_depth == 0

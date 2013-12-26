@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require bootstrap-transition
 //= require turbolinks
+//= require global
 //= require_tree .
