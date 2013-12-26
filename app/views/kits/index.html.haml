@@ -7,30 +7,36 @@
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Kit")), new_kit_path
+      %li= link_to content_tag(:li, fa_icon("plus-circle", text: "New Master Kit")), new_kit_path
     %ul.nav.pull-right
       %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
       %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
       
-      
-%table.table.table-condensed.table-hover
-  %thead
-    %tr
-      %th Code
-      %th Combo code
-      %th Name
-      %th Ancestry
-      %th Ancestry depth
-      %th 
+.span8offset4.tree
+  = nested_groups(Kit.arrange(:order => :combo_code))
 
-  %tbody
-    - @kits.each do |kit|
-      %tr
-        %td= kit.code
-        %td= kit.combo_code
-        %td= kit.name
-        %td= kit.ancestry
-        %td= kit.ancestry_depth
-        = render :partial => 'action_menu', :locals => { :kit => kit }
+
       
+//%table.table.table-condensed.table-hover
+//  %thead
+//    %tr
+//      %th Code
+//      %th Combo code
+//      %th Name
+//      %th Ancestry
+//      %th Ancestry depth
+//      %th 
+//
+//  %tbody
+//    - @kits.each do |kit|
+//      %tr
+//        %td= kit.code
+//        %td= kit.combo_code
+//        %td= kit.name
+//        %td= kit.ancestry
+//        %td= kit.ancestry_depth
+//        = render :partial => 'action_menu', :locals => { :kit => kit }
       
+.row
+
+

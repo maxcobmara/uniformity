@@ -4,7 +4,7 @@ class KitsController < ApplicationController
   # GET /kits
   # GET /kits.json
   def index
-    @kits = Kit.all
+    @kits = Kit.order(combo_code: :asc).all
   end
 
   # GET /kits/1
@@ -14,7 +14,8 @@ class KitsController < ApplicationController
 
   # GET /kits/new
   def new
-    @kit = Kit.new
+    #@kit = Kit.new
+    @kit = Kit.new(:parent_id => params[:parent_id])
   end
 
   # GET /kits/1/edit
@@ -69,6 +70,6 @@ class KitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kit_params
-      params.require(:kit).permit(:code, :combo_code, :name, :ancestry, :ancestry_depth)
+      params.require(:kit).permit(:code, :combo_code, :name, :ancestry, :ancestry_depth, :parent_id)
     end
 end

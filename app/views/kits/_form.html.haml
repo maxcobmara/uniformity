@@ -1,26 +1,19 @@
 .container{:style => "padding-left: 60px;"}
   = form_for @kit, :html => { :class => 'form-horizontal' }  do |f|
+    = f.hidden_field :parent_id
     = render 'shared/error_messages', object: f.object
-          
-    .control-group
-      = f.label :code, :class => 'control-label'
-      .controls= f.text_field :code, :class => 'text_field input-xxlarge'
     
     .control-group
-      = f.label :combo_code, :class => 'control-label'
-      .controls= f.text_field :combo_code, :class => 'text_field input-xxlarge'
-
+      = f.label :code, :class => 'control-label'
+      .controls
+        .input-prepend
+          %span.add-on{:style => "height:30px"}= @kit.parent.combo_code unless @kit.parent.nil?
+          = f.text_field :code,  :size => '50', :class => "span2", :id => "prependedInput", :placeholder => "Kit"
+    
     .control-group
       = f.label :name, :class => 'control-label'
       .controls= f.text_field :name, :class => 'text_field input-xxlarge'
 
-    .control-group
-      = f.label :ancestry, :class => 'control-label'
-      .controls= f.text_field :ancestry, :class => 'text_field input-xxlarge'
-
-    .control-group
-      = f.label :ancestry_depth, :class => 'control-label'
-      .controls= f.number_field :ancestry_depth, :class => 'text_field input-xxlarge'
 
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'
