@@ -20,8 +20,11 @@
             .block.content
               = render 'layouts/header'
               - flash.each do |key, value|
-                %div{:class => "alert alert-#{key}"}= value
-              = yield
+                %div{:class => "alert alert-#{key}"}
+                  = value
+                  %button.close{"data-dismiss" => "alert", :type => "button"} &times;
+              .container{:style => "width:90%; margin:auto; min-height:400px;"}  
+                = yield
               = render 'layouts/footer'
               
               

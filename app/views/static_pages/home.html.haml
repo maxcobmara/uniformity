@@ -1,16 +1,23 @@
+.row{:style => "height:140px;"}
+  
+  .well#login_box{:style => "float:left; margin:10px 0 0 0px; align:bottom; display:none;"}
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => 'form-inline', :role => 'form') do |f|
+      = f.text_field :email, :placeholder => (t 'home.email'), :class => "input-xlarge"
+      = f.password_field :password, :placeholder => (t 'home.password'), :class => "input-xlarge"
+      = f.submit (t 'home.signin'), :class => "btn btn-primary", :type => "submit", :style => "margin-top: -10px;"
+        
+  .span2.piclogo{:style => "float:right; height:140px;"} 
+    //=fa_icon "camera-retro", text: "Take a photo"
+    = image_tag("RMNLOGO_s.jpg", :height => '120px', :width => '95px') # =>
+    
+.row    
+  .center.hero-unit
+    .overlay
+      %h1 Welcome to Uniformity
+      %h2 Uniform Management
+      
 .row
- .span5.loginspace{:style => "height:120px;"}
-  .content.clearfix
-   .block
- .span3.piclogo{:style => "float:right; height:120px; background:#DDD;"} 
-  logo
-.center.hero-unit
- %h1 Welcome to Uniformity
- %h2
-  This is the home page for the
-  %a{:href => "https://github.com/maxcobmara/uniformity"} Uniformity App sample application.
-  = link_to "Sign up now!", new_user_registration_path, class: "btn btn-primary"
-= link_to image_tag("powered_by_rails.png", alt: "Rails"), 'http://rubyonrails.org/'
+  = link_to image_tag("powered_by_rails.png", alt: "Rails"), 'http://rubyonrails.org/'
 
 
 

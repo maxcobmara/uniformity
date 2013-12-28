@@ -1,3 +1,21 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.topnav {height:40px; padding-top:5px; 
+  /* width:95%; position: fixed; /* fixes navbav to top */
+  a {color:#606060; font-size:1.3em; padding-right:5px;}
+  a:hover{color:#606060; background-color:white; font-size:1.3em;}
+}
+
+.hero-unit {
+background-image:url('cover_art.jpg');
+background-repeat:no-repeat;
+background-position:left bottom; 
+background-color:black;
+  
+  .overlay {background: rgba(0,0,0,0.5); padding:20px;
+  h1 {color:#FFF !important; text-align:left;}
+  h2 {color:#FFF !important; text-align:left; font-weight:normal; letter-spacing:3px;}
+  }
+}
