@@ -1,16 +1,16 @@
 - provide(:title, 'Uniform item Detail')
 - model_class = UniformItem
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human
+  %h1= t 'uniform_items.title', :default => model_class.model_name.human
 %p#notice= notice
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:code) + ":"
+  %dt= t 'uniform_items.code', :default => model_class.human_attribute_name(:code) + ":"
   %dd=  @uniform_item.code
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:name) + ":"
+  %dt= t 'uniform_items.name', :default => model_class.human_attribute_name(:name) + ":"
   %dd=  @uniform_item.name
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:notes) + ":"
+  %dt= t 'uniform_items.notes', :default => model_class.human_attribute_name(:notes) + ":"
   %dd=  @uniform_item.notes
 
 .form-actions

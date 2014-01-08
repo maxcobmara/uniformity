@@ -28,7 +28,7 @@ class UniformItemsController < ApplicationController
 
     respond_to do |format|
       if @uniform_item.save
-        format.html { redirect_to @uniform_item, notice: 'Uniform item was successfully created.' }
+        format.html { redirect_to @uniform_item, notice: (t 'uniform_items.title')+(t 'actions.created')  }
         format.json { render action: 'show', status: :created, location: @uniform_item }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class UniformItemsController < ApplicationController
   def update
     respond_to do |format|
       if @uniform_item.update(uniform_item_params)
-        format.html { redirect_to @uniform_item, notice: 'Uniform item was successfully updated.' }
+        format.html { redirect_to @uniform_item, notice: (t 'uniform_items.title')+(t 'actions.updated')  }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
