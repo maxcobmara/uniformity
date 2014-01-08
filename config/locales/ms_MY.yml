@@ -1,18 +1,99 @@
+#ms_MY:
+  #sidebar:
+    #home: Rumah
+    
+    
+    
+  #helpers:
+    #links:
+      #new: Cipta
+      #back: Terdahulu
+  
+  
+  #date:
+    #formats:
+      #default: "%d %B %Y"
+      #short: "%d %b"
+      #long: "%d %B, %Y"
+      #events: "%A, %e %b"
 ms_MY:
-  sidebar:
-    home: Rumah
-    
-    
-    
+  actions:
+    new: Baru
+    search: Cari
+    print: Cetak
+    show: Pamer
+    edit: Sunting
+    delete: Padam
+    create: Cipta
+    created: " telah berjaya disimpan."
+    updated: " telah berjaya dikemaskini."
+  errors:
+  date:
+    formats:
+    default: "%d %B %Y"
+    short: "%d %b"
+    long: "%d %B, %Y"
+    events: "%A, %e %b"
+    # Use the strftime parameters for formats.
+    # When no format has been given, it uses default.
+    # You can provide other formats here if you like!
+    day_names: [Ahad, Isnin, Selasa, Rabu, Khamis, Jumaat, Sabtu]
+    abbr_day_names: [Ahd, Isn, Sel, Rabu, Kha, Jum, Sab]
+      # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, Mei, Jun, Jul, Ogo, Sep, Okt, Nov, Dis]
+      # Used in date_select and datime_select.
+    order: 
+    - day
+    - month
+    - year
+  menu:
+    main: Menu
+    #dropdown: Data Asas
+    #fuel: Bahan PMP
+    #people: Pentadbiran
+    #depot: Depot
+  home:
+    welcome: Selamat Datang ke Uniformity
+    uniformity: Sistem Pengurusan Uniform
+    email: Emel
+    password: Kata Laluan
+    signin: Log masuk
+  footer:
+    about: Tentang Kami
+    contact: Hubungi Kami
+    news: Berita
+  about:
+    title: Tentang Kami  
+    about_uniformity: Tentang Uniformity
+  contact:
+    contact: Hubungi Kami
+    contact_page: Maklumat Perhubungan 
+  help:
+    title: Bantuan
+    uniformity_help: Bantuan Uniformity
+  uniform:
+    title: Uniform
+  uniform_items:
+    title: Item Uniform	  
+    code: Kod    
+    name: Nama
+    notes: Nota
+    new: Item Uniform Baru
+    edit: Sunting Item Uniform
+  #kit_uniforms:
+    #title: Set Kit
+  kits: 
+    title: Skala	  		  	  	
   helpers:
     links:
       new: Cipta
       back: Terdahulu
-  
-  
-  date:
-    formats:
-      default: "%d %B %Y"
-      short: "%d %b"
-      long: "%d %B, %Y"
-      events: "%A, %e %b"
+      cancel: Batal
+      submit: Hantar
+      destroy: Hapus
+      edit: Sunting
+    label:
+      uniform_item:
+        code : Kod
+        name: Nama
+        notes: Nota				        

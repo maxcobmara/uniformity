@@ -1,15 +1,14 @@
 .mp-level
-  %h2.icon.icon-world Uniformity
+  %h2.icon.icon-world Menu
   %ul
     %li.icon.icon-left
-      = link_to "Uniform", '#'
+      = link_to (t 'uniform.title'), '#'
       .mp-level
-        %h2.icon Uniform
-        %a.mp-back{:href => "#"} Back
+        %h2.icon= t 'uniform.title'
+        %a.mp-back{:href => "#"}= t 'helpers.links.back'
         %ul
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Uniform Items", uniform_items_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Kit Sets", kit_uniforms_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + "Skala", kits_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_items.title'), uniform_items_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'kits.title'), kits_path
           
     %li.icon.icon-left
       = link_to content_tag(:i, "", :class => "icon-numb") + "Stock", '#'

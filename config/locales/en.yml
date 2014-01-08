@@ -19,5 +19,87 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+#en:
+  #hello: "Hello world"
 en:
-  hello: "Hello world"
+  actions:
+    new: New
+    search: Search
+    print: Print
+    show: Show
+    edit: Edit
+    delete: Delete
+    create: Create
+    created: " was successfully created."
+    updated: " was successfully updated."
+  errors:
+  date:
+    formats:
+       default: "%d-%b-%Y"
+       short: "%d %b"
+       long: "%d %B %Y"
+       events: "%A, %e %b"
+       # Use the strftime parameters for formats.
+       # When no format has been given, it uses default.
+       # You can provide other formats here if you like!
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    # Used in date_select and datime_select.
+    order: 
+       - day
+       - month
+       - year
+  menu:
+    main: Menu
+    #dropdown: Drop Downs  
+    #fuel: Fuel
+    #people: People
+    #depot: Depots
+  home: 
+    welcome: Welcome to Uniformity
+    uniformity: Uniform Management System  
+    email: Email
+    password: Password
+    signin: Sign in
+  footer:
+    about: About
+    contact: Contact
+    news: News 
+  about:
+    title: About Us
+    about_uniformity: About this Uniformity App
+  contact:
+    contact: Contact
+    contact_page: Contact Page
+  help:
+    title: Help
+    uniformity_help: Txport Help
+  uniform:
+    title: Uniform
+  uniform_items:
+    title: Uniform Items
+    code: Code
+    name: Nama
+    notes: Nota
+    new: New Uniform Item
+    edit: Edit Uniform Item
+  #kit_uniforms:
+    #title: Kit Set
+  kits:
+    title: Scale	 
+  helpers:
+    links:
+      new: New
+      back: Back
+      cancel: Cancel
+      submit: Submit
+      destroy: Destroy
+      edit: Edit
+    label:
+      uniform_item:
+        code : Code
+        name: Name
+        notes: Notes

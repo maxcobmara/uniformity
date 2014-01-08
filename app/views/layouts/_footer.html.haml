@@ -5,7 +5,7 @@
     by Michael Hartl
   %nav
     %ul
-      %li= link_to "About", about_path
-      %li= link_to "Contact", contact_path
+      %li= link_to (t 'footer.about'), about_path
+      %li= link_to (t 'footer.contact'), contact_path
       %li
-        %a{:href => "http://news.railstutorial.org/"} News
+        %a{:href => "http://news.railstutorial.org/"}=(t 'footer.news')
