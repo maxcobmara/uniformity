@@ -3,20 +3,44 @@
 .page-header
   %h1= t '.title', :default => model_class.model_name.human
 %p#notice= notice
-%dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:code) + ":"
-  %dd=  @kit.combo_code
-%dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:name) + ":"
-  %dd=  @kit.name
-
-.form-actions
-  = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), kits_path, :class => 'btn'
-  = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |
-    edit_kit_path(@kit), :class => 'btn'
-  = link_to content_tag(:i, " New Node", :class => "fa fa-leaf"), new_kit_path(:parent_id => @kit), :class => 'btn btn-info'
-  = link_to content_tag(:i, "", :class => "fa fa-trash-o icon-white") + " " + t('.destroy', :default => t("helpers.links.destroy")), |
-    kit_path(@kit),                                                                                                    |
-    :method => 'delete',                                                                                                           |
-    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },                   |
-    :class => 'btn btn-danger'                                                                                                     |
+.row
+  .span8.offset1
+    %h4
+      = @kit.combo_code
+      &nbsp; - &nbsp; 
+      = @kit.name    
+%br
+.row
+  .span8.offset1
+    %H4 Uniform Items
+    %hr{:style => "padding:0; margin:0;"}
+    - if @kit.kit_uniforms == []
+      No Items
+    - else
+      %table
+        %tr
+          %td Uniform Item Name
+          %td Junior Rate
+          %td Senior Rate
+          %td Notes
+        - for kit_uniform in @kit.kit_uniforms
+          %tr
+            %td= kit_uniform.uniform_item.name
+            %td= kit_uniform.quantity
+            %td= kit_uniform.senior_rate
+            %td= kit_uniform.notes
+        //logic for inherited items, kit_uniform of parent
+        %tr
+          %td{:colspan => "3"} Inherited Items
+      
+.row
+  .form-actions{:style => "padding-left:50px;"}
+    = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), kits_path, :class => 'btn'
+    = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |
+      edit_kit_path(@kit), :class => 'btn'
+    = link_to content_tag(:i, " New Node", :class => "fa fa-leaf"), new_kit_path(:parent_id => @kit), :class => 'btn btn-info'
+    = link_to content_tag(:i, "", :class => "fa fa-trash-o icon-white") + " " + t('.destroy', :default => t("helpers.links.destroy")), |
+      kit_path(@kit),                                                                                                    |
+      :method => 'delete',                                                                                                           |
+      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },                   |
+      :class => 'btn btn-danger'                                                                                                     |
