@@ -26,13 +26,19 @@
         - for kit_uniform in @kit.kit_uniforms
           %tr
             %td= kit_uniform.uniform_item.name
-            %td= kit_uniform.quantity
-            %td= kit_uniform.senior_rate
+            %td{:align => "center"}= kit_uniform.quantity
+            %td{:align => "center"}= kit_uniform.senior_rate
             %td= kit_uniform.notes
         //logic for inherited items, kit_uniform of parent
-        %tr
-          %td{:colspan => "3"} Inherited Items
-      
+        - if !@kit.is_root?
+          %tr
+            %td{:colspan => "4", :style => "font-weight:bold;"} Inherited Items
+          - for kit_uniform_parent in @kit.parent.kit_uniforms
+            %tr
+              %td= kit_uniform_parent.uniform_item.name
+              %td{:align => "center"}= kit_uniform_parent.quantity
+              %td{:align => "center"}= kit_uniform_parent.senior_rate 
+              %td= kit_uniform_parent.notes     
 .row
   .form-actions{:style => "padding-left:50px;"}
     = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), kits_path, :class => 'btn'
