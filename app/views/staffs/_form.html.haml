@@ -8,11 +8,37 @@
     
     .control-group
       = f.label :rank_id, :class => 'control-label'
-      .controls= f.number_field :rank_id, :class => 'text_field'
+      .controls= f.collection_select :rank_id, Rank.all, :id, :name, :include_blank => (t 'helpers.prompt.select_rank'), :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :name, :class => 'control-label'
       .controls= f.text_field :name, :class => 'text_field'
+
+    %br
+ 
+    %ul.nav.nav-tabs
+      %li.active= link_to t('staff_measurements.title'),        '#tab1', data: {toggle: 'tab'}
+      %li= link_to t('kit_staffs.title'),  '#tab2', data: {toggle: 'tab'}
+      %li= link_to '',   '#tab3', data: {toggle: 'tab'}
+      %li= link_to '','#tab4', data: {toggle: 'tab'} 
+ 
+    #myTabContent.tab-content
+      #tab1.tab-pane.active
+        .form-group
+          .col-lg-offset-2.col-lg-10
+            = f.fields_for :staff_measurements do |builder|
+              = render 'staff_measurement_fields', f: builder
+            = link_to_add_fields (t 'staff_measurements.add_details'), f, :staff_measurements 
+		
+			
+      #tab2.tab-pane
+        .form-group
+          .col-lg-offset-2.col-lg-10
+            = f.fields_for :kit_staffs do |builder|
+              = render 'kit_staff_fields', f: builder
+            = link_to_add_fields (t 'kit_staffs.add_details'), f, :kit_staffs 
+
+    %br
  
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'

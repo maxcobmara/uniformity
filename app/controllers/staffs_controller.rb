@@ -28,7 +28,7 @@ class StaffsController < ApplicationController
 
     respond_to do |format|
       if @staff.save
-        format.html { redirect_to @staff, notice: 'Staff was successfully created.' }
+        format.html { redirect_to @staff, notice: (t 'staffs.title')+(t 'actions.created') }
         format.json { render action: 'show', status: :created, location: @staff }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class StaffsController < ApplicationController
   def update
     respond_to do |format|
       if @staff.update(staff_params)
-        format.html { redirect_to @staff, notice: 'Staff was successfully updated.' }
+        format.html { redirect_to @staff, notice: (t 'staffs.title')+(t 'actions.updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -69,6 +69,6 @@ class StaffsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
-      params.require(:staff).permit(:id_no, :rank_id, :name)
+      params.require(:staff).permit(:id_no, :rank_id, :name, staff_measurements_attributes: [:id, :uniform_id, :measurement_type, :value, :unit_type_id], kit_staffs_attributes: [:id, :kit_id, :staff_group_id])
     end
 end
