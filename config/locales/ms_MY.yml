@@ -50,8 +50,11 @@ ms_MY:
     main: Menu
     #dropdown: Data Asas
     #fuel: Bahan PMP
-    #people: Pentadbiran
+    people: Pentadbiran
     #depot: Depot
+    staff_sizes: Ukuran Staf
+    match_stock: Padanan Stok
+    provision: Peruntukan
   home:
     welcome: Selamat Datang ke Uniformity
     uniformity: Sistem Pengurusan Uniform
@@ -83,7 +86,22 @@ ms_MY:
   #kit_uniforms:
     #title: Set Kit
   kits: 
-    title: Skala	  		  	  	
+    title: Skala
+  uniform_stocks:
+    title: Stok
+    stock_list: Senarai Stok	
+    receive: Penerimaan
+    issue: Pengeluaran
+    request: Permohonan
+    order: Tempahan
+    outstanding: Tertunggak (Outstanding)
+    suppliers: Pembekal		  
+  units:
+    title: Unit	
+  staffs:
+    title: Staf
+  unit_types:
+    title: Unit Pengukuran	  	  		  	  	
   helpers:
     links:
       new: Cipta

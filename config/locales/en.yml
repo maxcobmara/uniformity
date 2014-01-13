@@ -56,8 +56,11 @@ en:
     main: Menu
     #dropdown: Drop Downs  
     #fuel: Fuel
-    #people: People
+    people: People
     #depot: Depots
+    staff_sizes: Staff Sizes
+    match_stock: Match Stock
+    provision: Provision
   home: 
     welcome: Welcome to Uniformity
     uniformity: Uniform Management System  
@@ -89,7 +92,22 @@ en:
   #kit_uniforms:
     #title: Kit Set
   kits:
-    title: Scale	 
+    title: Scale	
+  uniform_stocks:
+    title: Stock 
+    stock_list: Stock List
+    receive: Receive
+    issue: Issue
+    request: Request
+    order: Order
+    outstanding: Outstanding
+    suppliers: Suppliers
+  units:
+    title: Units
+  staffs:
+    title: Staffs
+  unit_types:
+    title: Measurement Types
   helpers:
     links:
       new: New
