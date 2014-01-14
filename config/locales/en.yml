@@ -24,6 +24,7 @@
 en:
   actions:
     new: New
+    new_master_kit: New Master Kit
     search: Search
     print: Print
     show: Show
@@ -32,6 +33,8 @@ en:
     create: Create
     created: " was successfully created."
     updated: " was successfully updated."
+    removed: " was successfully removed."
+    removed_forbidden: "Removal of kit was forbidden, due to existing uniform item/kit list of selected kit."
   errors:
   date:
     formats:
@@ -89,10 +92,11 @@ en:
     notes: Nota
     new: New Uniform Item
     edit: Edit Uniform Item
+    uniform_item_name: Uniform Item Name
   #kit_uniforms:
     #title: Kit Set
   kits:
-    title: Scale	
+    title: Kits	
   uniform_stocks:
     title: Stock 
     stock_list: Stock List
@@ -106,8 +110,24 @@ en:
     title: Units
   staffs:
     title: Staffs
+    new: New Staff
+    edit: Edit Staff
+    id_no: Id No
+    rank_id: Rank
+    name: Nama
+    staff_group_id: Staff Group Id
   unit_types:
     title: Measurement Types
+  staff_measurements:
+    title: Staff Measurement
+    add_details: Add Details
+    measurement: Measurement
+    value: Value
+    unit_type: Unit Type
+  kit_staffs:
+    title: Kit List
+    add_details: Add Kit
+    kit: Kit
   helpers:
     links:
       new: New
@@ -118,6 +138,16 @@ en:
       edit: Edit
     label:
       uniform_item:
-        code : Code
+        code: Code
         name: Name
         notes: Notes
+      staff:
+        id_no: Id No
+        rank_id: Rank
+        name: Name
+    prompt:
+      select_rank: Select Rank
+      select_uniform: Select Uniform Item
+      select_unit_type: Select Unit Type
+      select_kit: Select Kit
+      

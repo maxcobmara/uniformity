@@ -19,6 +19,7 @@
 ms_MY:
   actions:
     new: Baru
+    new_master_kit: Kit Baru (Utama)
     search: Cari
     print: Cetak
     show: Pamer
@@ -27,6 +28,8 @@ ms_MY:
     create: Cipta
     created: " telah berjaya disimpan."
     updated: " telah berjaya dikemaskini."
+    removed: " telah berjaya dihapuskan."
+    removed_forbidden: "Rekod tidak boleh dihapuskan kerana samada kit mengandungi item uniform ATAU kit terdapat di dalam senarai kit anggota."
   errors:
   date:
     formats:
@@ -83,10 +86,11 @@ ms_MY:
     notes: Nota
     new: Item Uniform Baru
     edit: Sunting Item Uniform
+    uniform_item_name: Nama Item Uniform
   #kit_uniforms:
     #title: Set Kit
   kits: 
-    title: Skala
+    title: Kit
   uniform_stocks:
     title: Stok
     stock_list: Senarai Stok	
@@ -99,9 +103,25 @@ ms_MY:
   units:
     title: Unit	
   staffs:
-    title: Staf
+    title: Anggota
+    new: Anggota Baru
+    edit: Sunting Anggota
+    id_no: No Anggota
+    rank_id: Pangkat
+    name: Nama
+    staff_group_id: Kumpulan Staf
   unit_types:
-    title: Unit Pengukuran	  	  		  	  	
+    title: Unit Pengukuran
+  staff_measurements:
+    title: Ukuran Staf	
+    add_details: Tambah Ukuran
+    measurement: Ukuran
+    value: Nilai
+    unit_type: Unit Ukuran
+  kit_staffs:
+    title: Senarai Kit
+    add_details: Tambah Kit
+    kit: Kit  	  	
   helpers:
     links:
       new: Cipta
@@ -114,4 +134,13 @@ ms_MY:
       uniform_item:
         code : Kod
         name: Nama
-        notes: Nota				        
+        notes: Nota
+      staff:
+        id_no: No Anggota
+        rank_id: Pangkat
+        name: Nama
+    prompt:
+      select_rank: Pilih Pangkat
+      select_uniform: Pilih Item Uniform
+      select_unit_type: Pilih Unit Ukuran
+      select_kit: Pilih Kit		        

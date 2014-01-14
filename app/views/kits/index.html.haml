@@ -1,16 +1,16 @@
 - provide(:title, 'Kit')
 - model_class = Kit
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'kits.title', :default => model_class.model_name.human.pluralize
   
   
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("plus-circle", text: "New Master Kit")), new_kit_path
+      %li= link_to content_tag(:li, fa_icon("plus-circle", text: (t 'actions.new_master_kit'))), new_kit_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
 .span8offset4.tree
   = nested_groups(Kit.arrange(:order => :combo_code))

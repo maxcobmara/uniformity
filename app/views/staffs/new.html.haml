@@ -1,5 +1,5 @@
 - provide(:title, 'New staff')
 - model_class = Staff
 .page-header
-  %h1= t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
+  %h1= t 'staffs.new', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
 = render :partial => 'form'

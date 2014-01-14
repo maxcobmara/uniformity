@@ -1,0 +1,4 @@
+%fieldset
+  .form-inline{role: "form"}
+    = f.collection_select :kit_id, Kit.order(:combo_code, :name), :id, :kit_details, :include_blank => (t 'helpers.prompt.select_kit'), :html_options => {:class => 'selectpicker'}
+    = f.number_field :staff_group_id, :class => 'text_field input-small', placeholder: "Staff Group Id"

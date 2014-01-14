@@ -3,7 +3,7 @@
   %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
    .span.caret
   %ul.dropdown-menu.pull-right.action_menu
-   %li= link_to content_tag(:li, fa_icon("eye", text: "Show")), staff
-   %li= link_to content_tag(:li, fa_icon("pencil", text: "Edit")), edit_staff_path(staff)
-   %li.danger= link_to content_tag(:li, fa_icon("trash-o", text: "Delete")), staff_path(staff), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
+   %li= link_to content_tag(:li, fa_icon("eye", text: (t 'actions.show'))), staff
+   %li= link_to content_tag(:li, fa_icon("pencil", text: (t 'actions.edit'))), edit_staff_path(staff)
+   %li.danger= link_to content_tag(:li, fa_icon("trash-o", text: (t 'actions.delete'))), staff_path(staff), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
       

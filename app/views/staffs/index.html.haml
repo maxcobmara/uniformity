@@ -1,25 +1,25 @@
 - provide(:title, 'Staff')
 - model_class = Staff
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'staffs.title', :default => model_class.model_name.human.pluralize
   
   
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: "New Staff")), new_staff_path
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_staff_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
       
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th Id no
-      %th Rank
-      %th Name
-      %th 
+      %th= t 'staffs.id_no'
+      %th= t 'staffs.rank_id'
+      %th= t 'staffs.name'
+      %th
   %tbody
     - @staffs.each do |staff|
       %tr

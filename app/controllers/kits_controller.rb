@@ -29,7 +29,7 @@ class KitsController < ApplicationController
 
     respond_to do |format|
       if @kit.save
-        format.html { redirect_to @kit, notice: 'Kit was successfully created.' }
+        format.html { redirect_to @kit, notice: (t 'kits.title')+(t 'actions.created')  }
         format.json { render action: 'show', status: :created, location: @kit }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class KitsController < ApplicationController
   def update
     respond_to do |format|
       if @kit.update(kit_params)
-        format.html { redirect_to @kit, notice: 'Kit was successfully updated.' }
+        format.html { redirect_to @kit, notice: (t 'kits.title')+(t 'actions.updated')  }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -57,6 +57,11 @@ class KitsController < ApplicationController
   def destroy
     @kit.destroy
     respond_to do |format|
+      if @kit.destroy
+        flash[:notice] = (t 'kits.title')+(t 'actions.removed') 
+      else
+        flash[:error] = (t 'actions.removed_forbidden')
+      end  
       format.html { redirect_to kits_url }
       format.json { head :no_content }
     end
