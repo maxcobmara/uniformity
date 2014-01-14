@@ -3,32 +3,31 @@
 .page-header
   %h1= t 'staffs.title', :default => model_class.model_name.human
 %p#notice= notice
-%dl.dl-horizontal
-  %dt= t 'staffs.id_no', :default =>model_class.human_attribute_name(:id_no) + ":"
-  %dd=  @staff.id_no
-%dl.dl-horizontal
-  %dt= t 'staffs.rank_id', :default => model_class.human_attribute_name(:rank_id) + ":"
-  %dd=  @staff.rank.name
-%dl.dl-horizontal
-  %dt= t 'staffs.name', :default =>model_class.human_attribute_name(:name) + ":"
-  %dd= @staff.name
-%br
 %ul.nav.nav-tabs
   %li.active= link_to t('staff_measurements.title'),        '#tab1', data: {toggle: 'tab'}
   %li= link_to t('kit_staffs.title'),  '#tab2', data: {toggle: 'tab'}
   %li= link_to '',   '#tab3', data: {toggle: 'tab'}
   %li= link_to '','#tab4', data: {toggle: 'tab'} 
   
-#myTabContent.tab-content
+#myTabContent.tab-content{:style => "padding-left:50px;"}
+  .row
+    .span8
+      %h4
+        = @staff.id_no
+        &nbsp; - &nbsp; 
+        = @staff.rank.try(:name)
+        &nbsp; - &nbsp; 
+        = @staff.name
+
   #tab1.tab-pane.active
     .div{:style => "padding: 15px 50px 10px 50px; "}
     - if @staff.staff_measurements == []
       No Items
     - else
-      %table
+      %table{:width => "75%"}
         %thead
           %tr
-            %th= t 'uniform_items.uniform_item_name'
+            %th{:align => "left"}= t 'uniform_items.uniform_item_name'
             %th= t 'staff_measurements.measurement'
             %th= t 'staff_measurements.value'
             %th= t 'staff_measurements.unit_type'
@@ -45,16 +44,16 @@
     - if @staff.kit_staffs == []
       No Items
     - else
-      %table
+      %table{:width => "75%"}
         %thead
           %tr
-            %th= t 'kit_staffs.kit'
-            %th= t 'staffs.staff_group_id'
+            %th{:align => "left"}= t 'kit_staffs.kit'
         %tbody 
           - for staff_kit in @staff.kit_staffs
             %tr
               %td= staff_kit.kit.kit_details
-              %td{:align => "center"}= staff_kit.staff_group_id
+      %p TODO show list of all uniform items for each kit
+
   
  
 .form-actions

@@ -7,25 +7,35 @@
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_staff_path
+      %li= link_to content_tag(:li, fa_icon("user", text: (t 'actions.new'))), new_staff_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+
+      
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f| 
+      .field
+        = f.label :id_no_cont, "Code Contains"
+        = f.text_field :id_no_cont, class: "input-medium search-query"
+        = f.label :name_cont, "Name Contains"
+        = f.text_field :name_cont, class: "input-large search-query"
+        = f.submit "Search", class: "btn btn-warning"
       
       
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th= t 'staffs.id_no'
-      %th= t 'staffs.rank_id'
-      %th= t 'staffs.name'
+      %th= sort_link @search, :id_no,   t('staffs.id_no')
+      %th= sort_link @search, :rank_id, t('staffs.rank_id')
+      %th= sort_link @search, :name, t('staffs.name')
       %th
   %tbody
     - @staffs.each do |staff|
       %tr
-        %td= staff.id_no
+        %td= link_to staff.id_no, staff
         %td= staff.rank_id
         %td= staff.name
         = render :partial => 'action_menu', :locals => { :staff => staff }
-      
       

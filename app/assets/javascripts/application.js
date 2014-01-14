@@ -21,6 +21,8 @@
 
 
 $(document).ready(function(){
-  
+  $('.toga').click(function() {
+    $('.searchit').toggle(); 
+  });
 })
 
