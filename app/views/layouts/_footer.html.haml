@@ -1,11 +1,8 @@
 %footer.footer
   %small
     &copy; 2003-#{Time.now.year} Teknik Padu Sdn Bhd
-    %a{:href => "http://railstutorial.org/"} Rails Tutorial
-    by Michael Hartl
   %nav
     %ul
       %li= link_to (t 'footer.about'), about_path
       %li= link_to (t 'footer.contact'), contact_path
-      %li
-        %a{:href => "http://news.railstutorial.org/"}=(t 'footer.news')
+      %li= (t 'footer.news')
