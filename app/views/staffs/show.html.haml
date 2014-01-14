@@ -49,12 +49,10 @@
         %thead
           %tr
             %th= t 'kit_staffs.kit'
-            %th= t 'staffs.staff_group_id'
         %tbody 
           - for staff_kit in @staff.kit_staffs
             %tr
               %td= staff_kit.kit.kit_details
-              %td{:align => "center"}= staff_kit.staff_group_id
   
  
 .form-actions
