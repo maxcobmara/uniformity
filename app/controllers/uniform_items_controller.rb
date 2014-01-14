@@ -4,7 +4,8 @@ class UniformItemsController < ApplicationController
   # GET /uniform_items
   # GET /uniform_items.json
   def index
-    @uniform_items = UniformItem.all
+    @search = UniformItem.search(params[:q])
+    @uniform_items = @search.result
   end
 
   # GET /uniform_items/1

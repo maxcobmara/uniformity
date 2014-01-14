@@ -14,6 +14,13 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-transition
-//= require turbolinks
 //= require global
 //= require_tree .
+
+
+
+
+$(document).ready(function(){
+  
+})
+
