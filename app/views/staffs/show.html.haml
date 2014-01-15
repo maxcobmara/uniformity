@@ -48,12 +48,14 @@
       %table
         %thead
           %tr
-            %th= t 'kit_staffs.kit'
+            %th
         %tbody 
-          - for staff_kit in @staff.kit_staffs
+          - for kit_staff in @staff.kit_staffs
             %tr
-              %td= staff_kit.kit.kit_details
-  
+              %td{:style =>"font-weight:bold"}= kit_staff.kit.kit_details
+            - for kit_uniform in kit_staff.kit.kit_uniforms
+              %tr
+                %td= kit_uniform.uniform_item.uniform_details
  
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), staffs_path, :class => 'btn'

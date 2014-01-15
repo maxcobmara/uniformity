@@ -125,7 +125,7 @@ en:
     value: Value
     unit_type: Unit Type
   kit_staffs:
-    title: Kit List
+    title: Provision
     add_details: Add Kit
     kit: Kit
   helpers:
