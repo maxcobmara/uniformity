@@ -11,6 +11,13 @@ class Kit < ActiveRecord::Base
   has_many        :kit_staffs #kit cannot be removed if kit_staffs exist
    
   validates       :code, :name, presence: true
+  validate        :kit_uniforms_must_exist_if_master_kit
+  
+  def kit_uniforms_must_exist_if_master_kit
+    if ancestry_depth == 0 && kit_uniforms.blank?
+      errors.add(:base, 'Master kit must have at least one uniform item')
+    end
+  end
   
   def set_combo_code
     if ancestry_depth == 0

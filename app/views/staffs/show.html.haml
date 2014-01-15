@@ -47,25 +47,24 @@
       %table{:width => "75%"}
         %thead
           %tr
-<<<<<<< HEAD
             %th
-=======
             %th{:align => "left"}= t 'kit_staffs.kit'
->>>>>>> 4cff6d3ab67bc932353d1b3605156b98bfc0c1b4
         %tbody 
           - for kit_staff in @staff.kit_staffs
-            %tr
-<<<<<<< HEAD
-              %td{:style =>"font-weight:bold"}= kit_staff.kit.kit_details
             - for kit_uniform in kit_staff.kit.kit_uniforms
               %tr
                 %td= kit_uniform.uniform_item.uniform_details
-=======
-              %td= staff_kit.kit.kit_details
-      %p TODO show list of all uniform items for each kit
+                %td= kit_staff.kit.kit_details
+              - if !kit_uniform.kit.is_root?	
+                - @bb = kit_uniform.kit.ancestor_ids
+                - @aa = Kit.find(:all, :conditions=>['id IN (?)', @bb])
+                - for ancestor_kit in @aa
+                  - for uniform in ancestor_kit.kit_uniforms
+                    %tr  
+                      %td= uniform.uniform_item.uniform_details
+                      %td
 
   
->>>>>>> 4cff6d3ab67bc932353d1b3605156b98bfc0c1b4
  
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), staffs_path, :class => 'btn'
