@@ -1,7 +1,6 @@
 class Kit < ActiveRecord::Base
   
   before_save     :set_combo_code
-  
   before_destroy  :check_kit_uniforms, :check_kit_staffs
   
   has_ancestry    :cache_depth => true

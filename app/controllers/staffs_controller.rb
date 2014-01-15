@@ -4,7 +4,8 @@ class StaffsController < ApplicationController
   # GET /staffs
   # GET /staffs.json
   def index
-    @staffs = Staff.all
+    @search = Staff.search(params[:q])
+    @staffs = @search.result
   end
 
   # GET /staffs/1

@@ -9,23 +9,33 @@
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_uniform_item_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
-      
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f| 
+      .field
+        = f.label :code_cont, "Code Contains"
+        = f.text_field :code_cont, class: "input-medium search-query"
+        = f.label :name_cont, "Name Contains"
+        = f.text_field :name_cont, class: "input-large search-query"
+        = f.submit "Search", class: "btn btn-warning"
+        
+   
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th= t 'uniform_items.code'
-      %th= t 'uniform_items.name'
-      %th= t 'uniform_items.notes'
+      %th= sort_link @search, :code,  t('uniform_items.code')
+      %th= sort_link @search, :name,  t('uniform_items.name')
+      %th= t('uniform_items.notes')
       %th 
 
   %tbody
     - @uniform_items.each do |uniform_item|
       %tr
-        %td= uniform_item.code
-        %td= uniform_item.name
+        %td{:width => "20%"}= uniform_item.code
+        %td{:width => "40%"}= uniform_item.name
         %td= uniform_item.notes
         = render :partial => 'action_menu', :locals => { :uniform_item => uniform_item }
       

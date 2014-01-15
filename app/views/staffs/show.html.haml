@@ -3,32 +3,31 @@
 .page-header
   %h1= t 'staffs.title', :default => model_class.model_name.human
 %p#notice= notice
-%dl.dl-horizontal
-  %dt= t 'staffs.id_no', :default =>model_class.human_attribute_name(:id_no) + ":"
-  %dd=  @staff.id_no
-%dl.dl-horizontal
-  %dt= t 'staffs.rank_id', :default => model_class.human_attribute_name(:rank_id) + ":"
-  %dd=  @staff.rank.name
-%dl.dl-horizontal
-  %dt= t 'staffs.name', :default =>model_class.human_attribute_name(:name) + ":"
-  %dd= @staff.name
-%br
 %ul.nav.nav-tabs
   %li.active= link_to t('staff_measurements.title'),        '#tab1', data: {toggle: 'tab'}
   %li= link_to t('kit_staffs.title'),  '#tab2', data: {toggle: 'tab'}
   %li= link_to '',   '#tab3', data: {toggle: 'tab'}
   %li= link_to '','#tab4', data: {toggle: 'tab'} 
   
-#myTabContent.tab-content
+#myTabContent.tab-content{:style => "padding-left:50px;"}
+  .row
+    .span8
+      %h4
+        = @staff.id_no
+        &nbsp; - &nbsp; 
+        = @staff.rank.try(:name)
+        &nbsp; - &nbsp; 
+        = @staff.name
+
   #tab1.tab-pane.active
     .div{:style => "padding: 15px 50px 10px 50px; "}
     - if @staff.staff_measurements == []
       No Items
     - else
-      %table
+      %table{:width => "75%"}
         %thead
           %tr
-            %th= t 'uniform_items.uniform_item_name'
+            %th{:align => "left"}= t 'uniform_items.uniform_item_name'
             %th= t 'staff_measurements.measurement'
             %th= t 'staff_measurements.value'
             %th= t 'staff_measurements.unit_type'
@@ -45,17 +44,28 @@
     - if @staff.kit_staffs == []
       No Items
     - else
-      %table
+      %table{:width => "75%"}
         %thead
           %tr
+<<<<<<< HEAD
             %th
+=======
+            %th{:align => "left"}= t 'kit_staffs.kit'
+>>>>>>> 4cff6d3ab67bc932353d1b3605156b98bfc0c1b4
         %tbody 
           - for kit_staff in @staff.kit_staffs
             %tr
+<<<<<<< HEAD
               %td{:style =>"font-weight:bold"}= kit_staff.kit.kit_details
             - for kit_uniform in kit_staff.kit.kit_uniforms
               %tr
                 %td= kit_uniform.uniform_item.uniform_details
+=======
+              %td= staff_kit.kit.kit_details
+      %p TODO show list of all uniform items for each kit
+
+  
+>>>>>>> 4cff6d3ab67bc932353d1b3605156b98bfc0c1b4
  
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), staffs_path, :class => 'btn'
