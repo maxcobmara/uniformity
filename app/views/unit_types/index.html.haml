@@ -1,0 +1,30 @@
+- provide(:title, 'Unit_Type')
+- model_class = UnitType
+.page-header
+  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Unit Type")), new_unit_type_path
+    %ul.nav.pull-right
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Short name
+      %th Description
+      %th 
+
+  %tbody
+    - @unit_types.each do |unit_type|
+      %tr
+        %td= unit_type.short_name
+        %td= unit_type.description
+        = render :partial => 'action_menu', :locals => { :unit_type => unit_type }
+      
+      

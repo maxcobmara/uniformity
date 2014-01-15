@@ -1,5 +1,8 @@
-- provide(:title, 'Edit Staff_Measurement')
-- model_class = StaffMeasurement
+- provide(:title, 'Edit Unit Type')
+- model_class = UnitType
 .page-header
   %h1= t '.title', :default => [:'helpers.titles.new', 'Edit %{model}'], :model => model_class.model_name.human
 = render :partial => 'form'
+
+
+
