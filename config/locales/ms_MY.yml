@@ -119,7 +119,7 @@ ms_MY:
     value: Nilai
     unit_type: Unit Ukuran
   kit_staffs:
-    title: Senarai Kit
+    title: Peruntukan
     add_details: Tambah Kit
     kit: Kit  	  	
   helpers:

@@ -31,13 +31,14 @@
             %td{:align => "center"}= kit_uniform.senior_rate
             %td= kit_uniform.notes
             %td
-        - for kit_uniform in @kit.parent.kit_uniforms
-          %tr
-            %td= kit_uniform.uniform_item.name
-            %td{:align => "center"}= kit_uniform.quantity
-            %td{:align => "center"}= kit_uniform.senior_rate
-            %td= kit_uniform.notes
-            %td{:align => "center"} *
+        - if !@kit.is_root?	
+          - for kit_uniform in @kit.parent.kit_uniforms
+            %tr
+              %td= kit_uniform.uniform_item.name
+              %td{:align => "center"}= kit_uniform.quantity
+              %td{:align => "center"}= kit_uniform.senior_rate
+              %td= kit_uniform.notes
+              %td{:align => "center"} *
 
 .row
   .form-actions{:style => "padding-left:50px;"}
