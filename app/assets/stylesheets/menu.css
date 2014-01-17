@@ -26,7 +26,7 @@
 	height: 100%; 
 }
 
-.content {min-height: 600px;}
+.content {min-height: 600px;} 
 
 .mp-menu {
 	position: absolute; /* we can't use fixed here :( */
