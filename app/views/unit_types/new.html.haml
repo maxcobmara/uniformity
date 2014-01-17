@@ -1,7 +1,7 @@
 - provide(:title, 'Unit Type')
 - model_class = UnitType
 .page-header
-  %h1= t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
+  %h1= t 'unit_types.new', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
 = render :partial => 'form'
 
 

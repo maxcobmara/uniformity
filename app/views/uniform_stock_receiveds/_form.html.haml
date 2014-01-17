@@ -4,30 +4,30 @@
           
     .control-group
       = f.label :stock_id, :class => 'control-label'
-      .controls= f.number_field :stock_id, :class => 'text_field input-xxlarge'
-    
+      .controls= f.collection_select :stock_id, UniformStock.all, :id, :uniform_stock_details, :include_blank => (t 'helpers.prompt.select_stock'), :html_options => {:class => 'selectpicker'}
+	  
     .control-group
       = f.label :quantity, :class => 'control-label'
-      .controls= f.number_field :quantity, :class => 'text_field input-xxlarge'
+      .controls= f.text_field :quantity, :class => 'text_field input-small'
 
     .control-group
       = f.label :size, :class => 'control-label'
-      .controls= f.text_field :size, :class => 'text_field input-xxlarge'
+      .controls= f.text_field :size, :class => 'text_field input-small'
 
     .control-group
       = f.label :received_on, :class => 'control-label'
-      .controls= f.date_select :received_on, :class => 'text_field input-xxlarge'
+      .controls= f.text_field :received_on, :class => 'text_field', :type => :text, 'data-behaviour' => 'datepicker_before'
 
     .control-group
       = f.label :received_by, :class => 'control-label'
-      .controls= f.number_field :received_by, :class => 'text_field input-xxlarge'
+      .controls= f.collection_select :received_by, Staff.all, :id, :name, :include_blank => (t 'helpers.prompt.select_staff'), :html_options => {:class => 'selectpicker'}
 
     .control-group
       = f.label :contract_id, :class => 'control-label'
-      .controls= f.number_field :contract_id, :class => 'text_field input-xxlarge'
+      .controls= f.collection_select :contract_id, Contract.all, :id, :contract_no, :include_blank => t('helpers.prompt.select_contract'), :html_options => {:class => 'selectpicker'}
 
     .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit  t('.submit', :default => t("helpers.links.submit")), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         uniform_stock_receiveds_path, :class => 'btn'     
 
