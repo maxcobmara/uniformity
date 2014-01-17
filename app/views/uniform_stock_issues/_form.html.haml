@@ -4,30 +4,27 @@
           
     .control-group
       = f.label :stock_id, :class => 'control-label'
-      .controls= f.number_field :stock_id, :class => 'text_field input-xxlarge'
-    
+      .controls= f.collection_select :stock_id, UniformStock.all, :id, :uniform_stock_details, :include_blank => (t 'helpers.prompt.select_stock'), :html_options => {:class => 'selectpicker'}
     .control-group
       = f.label :issued_to, :class => 'control-label'
-      .controls= f.number_field :issued_to, :class => 'text_field input-xxlarge'
+      .controls= f.collection_select :issued_to, Staff.all, :id, :name, :include_blank => (t 'helpers.prompt.select_staff'), :html_options => {:class => 'selectpicker'}
 
     .control-group
       = f.label :issued_by, :class => 'control-label'
-      .controls= f.number_field :issued_by, :class => 'text_field input-xxlarge'
-
+      .controls= f.collection_select :issued_by, Staff.all, :id, :name, :include_blank => (t 'helpers.prompt.select_staff'), :html_options => {:class => 'selectpicker'}
     .control-group
       = f.label :issued_on, :class => 'control-label'
-      .controls= f.date_select :issued_on, :class => 'text_field input-xxlarge'
-
+      .controls= f.text_field :issued_on, :class => 'text_field', :type => :text, 'data-behaviour' => 'datepicker_before'
     .control-group
       = f.label :quantity, :class => 'control-label'
-      .controls= f.number_field :quantity, :class => 'text_field input-xxlarge'
+      .controls= f.text_field :quantity, :class => 'text_field input-small'
 
     .control-group
       = f.label :document_id, :class => 'control-label'
       .controls= f.number_field :document_id, :class => 'text_field input-xxlarge'
 
     .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit  t('.submit', :default => t("helpers.links.submit")), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         uniform_stock_issues_path, :class => 'btn'     
 

@@ -98,7 +98,11 @@ en:
   kits:
     title: Kits	
   uniform_stocks:
-    title: Stock 
+    title: Stock
+    stock_id: Uniform Stock
+    uniform_id: Uniform Stock
+    new: New Uniform Stock
+    edit: Edit Uniform Stock
     stock_list: Stock List
     receive: Receive
     issue: Issue
@@ -106,6 +110,32 @@ en:
     order: Order
     outstanding: Outstanding
     suppliers: Suppliers
+    size: Size
+    category: Category
+    max_quantity: Max Quantity
+    min_quantity: Min Quantity
+    unit_type_id: Unit Type
+  uniform_stock_receiveds:
+    title: Uniform Stock Receiveds
+    new: New Uniform Stock Received
+    edit: Edit Uniform Stock Received
+    stock_id: Uniform Stock
+    quantity: Quantity
+    size: Size
+    received_on: Received On
+    received_by: Received By
+    contract_id: Contract
+  uniform_stock_issues:
+    title: Uniform Stock Issues
+    new: New Uniform Stock Issue
+    edit: Edit Uniform Stock Issue
+    stock_id: Uniform Stock
+    quantity: Quantity
+    size: Size
+    issued_to: Issued To
+    issued_by: Issued by
+    issued_on: Issued On
+    document_id: Document
   units:
     title: Units
   staffs:
@@ -118,6 +148,10 @@ en:
     staff_group_id: Staff Group Id
   unit_types:
     title: Measurement Types
+    new: New Unit Type
+    edit: Edit Unit Type
+    short_name: Short Name
+    description: Description
   staff_measurements:
     title: Staff Measurement
     add_details: Add Details
@@ -145,9 +179,38 @@ en:
         id_no: Id No
         rank_id: Rank
         name: Name
+      unit_type:
+        short_name: Short Name
+        description: Description
+      uniform_stock_received:
+        stock_id: Uniform Stock
+        quantity: Quantity
+        size: Size
+        received_on: Received On
+        received_by: Received By
+        contract_id: Contract
+      uniform_stock_issue:
+        stock_id: Uniform Stock
+        quantity: Quantity
+        size: Size
+        issued_to: Issued To
+        issued_by: Issued By
+        issued_on: Issued On
+        document_id: Document
+      uniform_stock:
+        uniform_id: Uniform Stok
+        size: Size
+        category: Category
+        max_quantity: Max Quantity
+        min_quantity: Min Quantity
+        unit_type_id: Unit Type
     prompt:
       select_rank: Select Rank
       select_uniform: Select Uniform Item
       select_unit_type: Select Unit Type
       select_kit: Select Kit
+      select_stock: Select Stock
+      select_staff: Select Staff
+      select_contract: Select Contract
+      select_unit_type: Select Measurement Type
       

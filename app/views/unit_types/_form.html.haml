@@ -4,14 +4,14 @@
           
     .control-group
       = f.label :short_name, :class => 'control-label'
-      .controls= f.number_field :short_name, :class => 'text_field input-xxlarge'
+      .controls= f.text_field :short_name, :class => 'text_field input-xxlarge'
 
     .control-group
       = f.label :description, :class => 'control-label'
-      .controls= f.number_field :description, :class => 'text_field input-xxlarge'
+      .controls= f.text_field :description, :class => 'text_field input-xxlarge'
 
     .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit (t 'helpers.links.submit'), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         unit_types_path, :class => 'btn'     
 

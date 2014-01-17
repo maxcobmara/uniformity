@@ -1,26 +1,26 @@
 - provide(:title, 'Uniform Stock  Received Detail')
 - model_class = UniformStockReceived
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human
+  %h1= t 'uniform_stock_receiveds.title', :default => model_class.model_name.human
 %p#notice= notice
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:stock_id) + ":"
-  %dd=  @uniform_stock_received.stock_id
+  %dt= t 'uniform_stock_receiveds.stock_id', :default =>model_class.human_attribute_name(:stock_id) + ":"
+  %dd=  @uniform_stock_received.uniform_stock.uniform_item.uniform_details
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:quantity) + ":"
+  %dt=  t 'uniform_stock_receiveds.quantity', :default =>model_class.human_attribute_name(:quantity) + ":"
   %dd=  @uniform_stock_received.quantity
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:size) + ":"
+  %dt=  t 'uniform_stock_receiveds.size', :default =>model_class.human_attribute_name(:size) + ":"
   %dd=  @uniform_stock_received.size
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:received_on) + ":"
+  %dt=  t 'uniform_stock_receiveds.received_on', :default =>model_class.human_attribute_name(:received_on) + ":"
   %dd=@uniform_stock_received.received_on
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:received_by) + ":"
-  %dd=@uniform_stock_received.received_by
+  %dt=  t 'uniform_stock_receiveds.received_by', :default =>model_class.human_attribute_name(:received_by) + ":"
+  %dd=@uniform_stock_received.receiver.name
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:contract_id ) + ":"
-  %dd=@uniform_stock_received.contract_id
+  %dt=  t 'uniform_stock_receiveds.contract_id', :default =>model_class.human_attribute_name(:contract_id ) + ":"
+  %dd=@uniform_stock_received.contract.name
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), uniform_stock_receiveds_path, :class => 'btn'

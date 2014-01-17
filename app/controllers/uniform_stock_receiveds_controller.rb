@@ -28,7 +28,7 @@ class UniformStockReceivedsController < ApplicationController
 
     respond_to do |format|
       if @uniform_stock_received.save
-        format.html { redirect_to @uniform_stock_received, notice: 'Uniform stock received was successfully created.' }
+        format.html { redirect_to @uniform_stock_received, notice: (t 'uniform_stock_receiveds.title')+(t 'actions.created') }
         format.json { render action: 'show', status: :created, location: @uniform_stock_received }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class UniformStockReceivedsController < ApplicationController
   def update
     respond_to do |format|
       if @uniform_stock_received.update(uniform_stock_received_params)
-        format.html { redirect_to @uniform_stock_received, notice: 'Uniform stock received was successfully updated.' }
+        format.html { redirect_to @uniform_stock_received, notice: (t 'uniform_stock_receiveds.title')+(t 'actions.updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

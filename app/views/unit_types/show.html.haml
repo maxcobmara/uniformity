@@ -1,13 +1,13 @@
 - provide(:title, 'Unit Type Detail')
 - model_class = UnitType
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human
+  %h1= t 'unit_types.title', :default => model_class.model_name.human
 %p#notice= notice
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:Short_name) + ":"
+  %dt= t 'unit_types.short_name', :default => model_class.human_attribute_name(:Short_name) + ":"
   %dd=  @unit_type.short_name
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:Description) + ":"
+  %dt= t 'unit_types.description', :default => model_class.human_attribute_name(:Description) + ":"
   %dd=  @unit_type.description
 
 .form-actions
