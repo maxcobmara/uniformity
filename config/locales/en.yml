@@ -138,6 +138,12 @@ en:
     document_id: Document
   units:
     title: Units
+    title2: Unit
+    short_name: Short Name
+    name: Name
+    parent_id: Parent Unit
+    new: New Unit
+    edit: Edit Unit
   staffs:
     title: Staffs
     new: New Staff
@@ -204,6 +210,10 @@ en:
         max_quantity: Max Quantity
         min_quantity: Min Quantity
         unit_type_id: Unit Type
+      unit:
+        short_name: Short Name
+        name: Name
+        parent_id: Parent Unit
     prompt:
       select_rank: Select Rank
       select_uniform: Select Uniform Item
@@ -213,4 +223,5 @@ en:
       select_staff: Select Staff
       select_contract: Select Contract
       select_unit_type: Select Measurement Type
+      select_unit: Select Unit
       

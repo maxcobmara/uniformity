@@ -131,7 +131,13 @@ ms_MY:
     issued_on: Tarikh Dikeluarkan
     document_id: Dokumen 
   units:
-    title: Unit	
+    title: Unit
+    title2: Unit
+    short_name: Nama Ringkas
+    name: Nama
+    parent_id: Unit Induk
+    new: Unit Baru
+    edit: Sunting Unit	
   staffs:
     title: Anggota
     new: Anggota Baru
@@ -198,6 +204,10 @@ ms_MY:
         max_quantity: Kuantiti Maksima
         min_quantity: Kuantiti Minima
         unit_type_id: Unit Pengukuran
+      unit:
+        short_name: Nama Ringkas
+        name: Nama
+        parent_id: Unit Induk
     prompt:
       select_rank: Pilih Pangkat
       select_uniform: Pilih Item Uniform
@@ -206,4 +216,5 @@ ms_MY:
       select_stock: Pilih Stok
       select_staff: Pilih Anggota
       select_contract: Pilih Kontrak
-      select_unit_type: Pilih Unit Ukuran    
+      select_unit_type: Pilih Unit Ukuran
+      select_unit: Pilih Unit    
