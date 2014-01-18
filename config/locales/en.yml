@@ -148,7 +148,7 @@ en:
     title: Staffs
     new: New Staff
     edit: Edit Staff
-    id_no: Id No
+    id_no: Armed Force No
     rank_id: Rank
     name: Nama
     staff_group_id: Staff Group Id
@@ -182,7 +182,7 @@ en:
         name: Name
         notes: Notes
       staff:
-        id_no: Id No
+        id_no: Armed Force No
         rank_id: Rank
         name: Name
       unit_type:

@@ -142,7 +142,7 @@ ms_MY:
     title: Anggota
     new: Anggota Baru
     edit: Sunting Anggota
-    id_no: No Anggota
+    id_no: No Tentera
     rank_id: Pangkat
     name: Nama
     staff_group_id: Kumpulan Staf
@@ -159,7 +159,7 @@ ms_MY:
     value: Nilai
     unit_type: Unit Ukuran
   kit_staffs:
-    title: Peruntukan
+    title: Hak
     add_details: Tambah Kit
     kit: Kit   	
   helpers:
@@ -176,7 +176,7 @@ ms_MY:
         name: Nama
         notes: Nota
       staff:
-        id_no: No Anggota
+        id_no: No Tentera
         rank_id: Pangkat
         name: Nama
       unit_type:
