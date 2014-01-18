@@ -120,9 +120,9 @@ ms_MY:
     received_by: Diterima Oleh
     contract_id: Kontrak
   uniform_stock_issues:
-    title: Penerimaan Stok Uniform
-    new: Penerimaan Stok Uniform Baru
-    edit: Sunting Stok Penerimaan Uniform
+    title: Pengeluaran Stok Uniform
+    new: Pengeluaran Stok Uniform Baru
+    edit: Sunting Pengeluaran Stok Uniform
     stock_id: Stok Uniform
     quantity: Kuantiti
     size: Saiz
