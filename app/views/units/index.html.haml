@@ -1,31 +1,33 @@
 - provide(:title, 'Unit')
 - model_class = Unit
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'units.title', :default => model_class.model_name.human.pluralize
   
   
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("truck", text: "New Unit")), new_unit_path
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_unit_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
       
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th Short Name
-      %th Name
-      %th Parent id
-      %th 
+      %th= t 'units.short_name'
+      %th= t 'units.name'
   %tbody
-    - @units.each do |unit|
-      %tr
-        %td= unit.shortname
-        %td= unit.name
-        %td= unit.parent_id
-        = render :partial => 'action_menu', :locals => { :unit => unit }
-      
+    - @units.group_by(&:parent).each do |parent, units|
+      - if parent
+        %tr
+          %td{:colspan => "2"}
+            = link_to parent.shortname, parent
+            = link_to parent.name, parent
+      - for unit in units
+        - unless unit.parent_id.blank? || unit.parent_id == 0
+          %tr
+            %td{style: "padding-left:20px;"}= link_to unit.shortname, unit
+            %td= unit.name
       

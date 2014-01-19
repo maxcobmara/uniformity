@@ -120,9 +120,9 @@ ms_MY:
     received_by: Diterima Oleh
     contract_id: Kontrak
   uniform_stock_issues:
-    title: Penerimaan Stok Uniform
-    new: Penerimaan Stok Uniform Baru
-    edit: Sunting Stok Penerimaan Uniform
+    title: Pengeluaran Stok Uniform
+    new: Pengeluaran Stok Uniform Baru
+    edit: Sunting Pengeluaran Stok Uniform
     stock_id: Stok Uniform
     quantity: Kuantiti
     size: Saiz
@@ -131,12 +131,18 @@ ms_MY:
     issued_on: Tarikh Dikeluarkan
     document_id: Dokumen 
   units:
-    title: Unit	
+    title: Unit
+    title2: Unit
+    short_name: Nama Ringkas
+    name: Nama
+    parent_id: Unit Induk
+    new: Unit Baru
+    edit: Sunting Unit	
   staffs:
     title: Anggota
     new: Anggota Baru
     edit: Sunting Anggota
-    id_no: No Anggota
+    id_no: No Tentera
     rank_id: Pangkat
     name: Nama
     staff_group_id: Kumpulan Staf
@@ -153,7 +159,7 @@ ms_MY:
     value: Nilai
     unit_type: Unit Ukuran
   kit_staffs:
-    title: Peruntukan
+    title: Hak
     add_details: Tambah Kit
     kit: Kit   	
   helpers:
@@ -170,7 +176,7 @@ ms_MY:
         name: Nama
         notes: Nota
       staff:
-        id_no: No Anggota
+        id_no: No Tentera
         rank_id: Pangkat
         name: Nama
       unit_type:
@@ -198,6 +204,10 @@ ms_MY:
         max_quantity: Kuantiti Maksima
         min_quantity: Kuantiti Minima
         unit_type_id: Unit Pengukuran
+      unit:
+        short_name: Nama Ringkas
+        name: Nama
+        parent_id: Unit Induk
     prompt:
       select_rank: Pilih Pangkat
       select_uniform: Pilih Item Uniform
@@ -206,4 +216,5 @@ ms_MY:
       select_stock: Pilih Stok
       select_staff: Pilih Anggota
       select_contract: Pilih Kontrak
-      select_unit_type: Pilih Unit Ukuran    
+      select_unit_type: Pilih Unit Ukuran
+      select_unit: Pilih Unit    

@@ -12,10 +12,10 @@
     
     .control-group
       = f.label :parent_id, :class => 'control-label'
-      .controls= f.number_field :parent_id, :class => 'text_field'
+      .controls.controls= f.collection_select :parent_id, Unit.order(shortname: :asc).all, :id, :shortname, :include_blank => t('helpers.prompt.select_unit'), :html_options => {:class => 'selectpicker'}
  
     .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit t("helpers.links.submit"), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         units_path, :class => 'btn'     
 

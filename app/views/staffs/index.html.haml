@@ -35,7 +35,7 @@
     - @staffs.each do |staff|
       %tr
         %td= link_to staff.id_no, staff
-        %td= staff.rank_id
+        %td= staff.rank.name
         %td= staff.name
         = render :partial => 'action_menu', :locals => { :staff => staff }
       
