@@ -1,17 +1,17 @@
 - provide(:title, 'Unit Details')
 - model_class = Unit
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human
+  %h1= t 'units.title2', :default => model_class.model_name.human
 %p#notice= notice
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:shortname) + ":"
+  %dt= t 'units.short_name', :default => model_class.human_attribute_name(:shortname) + ":"
   %dd= @unit.shortname
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:name) + ":"
+  %dt= t 'units.name', :default =>  model_class.human_attribute_name(:name) + ":"
   %dd= @unit.name
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:parent_id) + ":"
-  %dd= @unit.parent_id
+  %dt=  t 'units.parent_id', :default => model_class.human_attribute_name(:parent_id) + ":"
+  %dd= @unit.parent.name
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), units_path, :class => 'btn'
