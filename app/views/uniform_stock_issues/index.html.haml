@@ -28,9 +28,9 @@
     - @uniform_stock_issues.each do |uniform_stock_issue|
       %tr
         %td= uniform_stock_issue.uniform_stock.uniform_item.uniform_details
-        %td= uniform_stock_issue.receiver.name
-        %td= uniform_stock_issue.issuer.name
-        %td= uniform_stock_issue.issued_on
+        %td= check_kin {uniform_stock_issue.receiver.name}
+        %td= check_kin {uniform_stock_issue.issuer.name}
+        %td= l(uniform_stock_issue.issued_on)
         %td= uniform_stock_issue.quantity
         %td= uniform_stock_issue.document_id
         = render :partial => 'action_menu', :locals => { :uniform_stock_issue => uniform_stock_issue }

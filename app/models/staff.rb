@@ -7,4 +7,8 @@ class Staff < ActiveRecord::Base
   has_many :uniform_stock_receiveds
   has_many :stock_issuer ,:class_name => 'uniform_stock_issues', :foreign_key => 'issued_by'
   has_many :stock_receiver ,:class_name => 'uniform_stock_issues', :foreign_key => 'issued_to'
+
+  def staff_details
+    "#{id_no} " + "#{name}"
+  end
 end

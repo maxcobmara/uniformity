@@ -15,7 +15,7 @@
       %h4
         = @staff.id_no
         &nbsp; - &nbsp; 
-        = @staff.rank.try(:name)
+        = check_kin {@staff.rank.name}
         &nbsp; - &nbsp; 
         = @staff.name
 
@@ -37,7 +37,7 @@
               %td= staff_measurement.uniform_item.uniform_details
               %td{:align => "center"}= staff_measurement.measurement_type
               %td{:align => "center"}= staff_measurement.value
-              %td{:align => "center"}= staff_measurement.unit_type.short_name if !staff_measurement.unit_type_id.blank?
+              %td{:align => "center"}= check_kin {staff_measurement.unit_type.short_name} 
     	  
   #tab2.tab-pane
     .div{:style => "padding: 15px 50px 10px 50px; "}
@@ -51,18 +51,23 @@
             %th{:align => "left"}= t 'kit_staffs.kit'
         %tbody 
           - for kit_staff in @staff.kit_staffs
-            - for kit_uniform in kit_staff.kit.kit_uniforms
+            - count=0 
+            - for item in kit_staff.kit.kit_uniforms
               %tr
-                %td= kit_uniform.uniform_item.uniform_details
-                %td= kit_staff.kit.kit_details
-              - if !kit_uniform.kit.is_root?	
-                - @bb = kit_uniform.kit.ancestor_ids
-                - @aa = Kit.find(:all, :conditions=>['id IN (?)', @bb])
-                - for ancestor_kit in @aa
-                  - for uniform in ancestor_kit.kit_uniforms
-                    %tr  
-                      %td= uniform.uniform_item.uniform_details
-                      %td
+                %td=item.uniform_item.uniform_details
+                %td
+                  - if count == 0
+                    =kit_staff.kit.kit_details
+                    - count+=1
+            - for ancestor in kit_staff.kit.ancestor_ids
+              - if !@staff.kit_staffs.pluck(:kit_id).include?(ancestor)
+                - for kit_item in Kit.find(ancestor).kit_uniforms
+                  %tr
+                    %td=kit_item.uniform_item.uniform_details
+                    %td=Kit.find(ancestor).kit_details
+
+            - @staff.kit_staffs.pluck(:kit_id).include?(kit_staff.kit_id)
+            - kit_staff.kit.ancestor_ids.count
 
   
  

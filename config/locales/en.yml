@@ -22,6 +22,26 @@
 #en:
   #hello: "Hello world"
 en:
+  activerecord:
+    models:
+      uniform_stock: Uniform Stock
+      uniform_stock_received: Uniform Stock Received
+    attributes:
+      uniform_stock:
+        stock_id: Uniform Stock
+      uniform_stock_received:
+        stock_id: Uniform Stock
+    errors:
+      template:
+        body: "There were problems with the following fields:"
+        header:
+          one: "1 errors prohibited this %{model} from being saved"
+          other: "%{count} prohibited this %{model} from being saved"
+      messages:
+          blank: "Can't Be Blank"
+          not_a_number: is not number
+          too_short: "is too short (minimum is {{count}} characters)"
+          taken: has already been taken
   actions:
     new: New
     new_master_kit: New Master Kit
@@ -168,6 +188,10 @@ en:
     title: Provision
     add_details: Add Kit
     kit: Kit
+    kit_id: Kit
+    staff_id: Staff
+    staff_group_id: Staff Group
+    new: New Provision
   helpers:
     links:
       new: New

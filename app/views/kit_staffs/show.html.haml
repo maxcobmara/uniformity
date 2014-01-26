@@ -1,16 +1,16 @@
 - provide(:title, 'Kit Staff Detail')
 - model_class = KitStaff
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human
+  %h1= t 'kit_staffs.title', :default => model_class.model_name.human
 %p#notice= notice
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:kit_id) + ":"
-  %dd=  @kit_staff.kit_id
+  %dt= t 'staffs.kit_id', :default => model_class.human_attribute_name(:kit_id) + ":"
+  %dd= check_kin {@kit_staff.kit.kit_details}
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:staff_id) + ":"
-  %dd=  @kit_staff.staff_id
+  %dt= t 'staffs.staff_id', :default => model_class.human_attribute_name(:staff_id) + ":"
+  %dd=  check_kin {@kit_staff.staff.staff_details}
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:staff_group_id) + ":"
+  %dt= t 'staffs.staff_group_id', :default => model_class.human_attribute_name(:staff_group_id) + ":"
   %dd=  @kit_staff.staff_group_id
 
 .form-actions
