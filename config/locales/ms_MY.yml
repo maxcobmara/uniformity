@@ -240,4 +240,6 @@ ms_MY:
       select_staff: Pilih Anggota
       select_contract: Pilih Kontrak
       select_unit_type: Pilih Unit Ukuran
-      select_unit: Pilih Unit    
+      select_unit: Pilih Unit
+      sequence: Urutan
+      sequence_text: "Format Urutan : 01 untuk 1, 11 untuk 11"  
