@@ -32,7 +32,7 @@
         %td= uniform_stock.category
         %td= uniform_stock.max_quantity
         %td= uniform_stock.min_quantity
-        %td= uniform_stock.unit_type.short_name
+        %td= check_kin {uniform_stock.unit_type.short_name}
         = render :partial => 'action_menu', :locals => { :uniform_stock => uniform_stock }
       
       

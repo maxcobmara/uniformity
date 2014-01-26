@@ -30,9 +30,9 @@
         %td= uniform_stock_received.uniform_stock.uniform_item.uniform_details
         %td= uniform_stock_received.quantity
         %td= uniform_stock_received.size
-        %td= uniform_stock_received.received_on
-        %td= uniform_stock_received.receiver.name
-        %td= uniform_stock_received.contract.name
+        %td= l(uniform_stock_received.received_on)
+        %td= check_kin {uniform_stock_received.receiver.name}
+        %td= check_kin {uniform_stock_received.contract.name}
         = render :partial => 'action_menu', :locals => { :uniform_stock_received => uniform_stock_received }
       
       
