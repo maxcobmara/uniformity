@@ -17,6 +17,26 @@
       #long: "%d %B, %Y"
       #events: "%A, %e %b"
 ms_MY:
+  activerecord:
+    models:
+      uniform_stock: Stok Uniform
+      uniform_stock_received: Penerimaan Stok Uniform
+    attributes:
+      uniform_stock:
+        stock_id: Stok Uniform
+      uniform_stock_received:
+        stock_id: Stok Uniform
+    errors:
+      template:
+        body: "Berikut adalah beberapa masalah:"
+        header:
+          one: "%{model} ini mempunyai 1 kesalahan dari disimpan"
+          other: "%{model} ini mempunyai %{count} kesalahan dari yang disimpan"
+      messages:
+          blank: tidak boleh dikosongkan
+          not_a_number: adalah bukan nombor
+          too_short: "sangat pendek (minima ialah {{count}} huruf)"
+          taken: sudah digunakan
   actions:
     new: Baru
     new_master_kit: Kit Baru (Utama)
@@ -57,7 +77,7 @@ ms_MY:
     #depot: Depot
     staff_sizes: Ukuran Staf
     match_stock: Padanan Stok
-    provision: Peruntukan
+    provision: Hak
   home:
     welcome: Selamat Datang ke Uniformity
     uniformity: Sistem Pengurusan Uniform
@@ -161,7 +181,10 @@ ms_MY:
   kit_staffs:
     title: Hak
     add_details: Tambah Kit
-    kit: Kit   	
+    kit: Kit
+    kit_id: Kit
+    staff_id: Anggota
+    staff_group_id: Kumpulan Anggota  	
   helpers:
     links:
       new: Cipta
@@ -217,4 +240,6 @@ ms_MY:
       select_staff: Pilih Anggota
       select_contract: Pilih Kontrak
       select_unit_type: Pilih Unit Ukuran
-      select_unit: Pilih Unit    
+      select_unit: Pilih Unit
+      sequence: Urutan
+      sequence_text: "Format Urutan : 01 untuk 1, 11 untuk 11"  

@@ -13,7 +13,7 @@
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
 .span8offset4.tree
-  = nested_groups(Kit.arrange(:order => :combo_code))
+  = nested_groups2(Kit.arrange(:order => :combo_code))
 
 
       

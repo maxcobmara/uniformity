@@ -6,4 +6,5 @@ class UniformStockReceived < ActiveRecord::Base
                                   :message => "maximum is 5 characters"
   validates_length_of :size,      :maximum => 15,
                                   :message => "maximum is 15 characters"
+  validates       :stock_id, presence: true
 end
