@@ -22,6 +22,26 @@
 #en:
   #hello: "Hello world"
 en:
+  activerecord:
+    models:
+      uniform_stock: Uniform Stock
+      uniform_stock_received: Uniform Stock Received
+    attributes:
+      uniform_stock:
+        stock_id: Uniform Stock
+      uniform_stock_received:
+        stock_id: Uniform Stock
+    errors:
+      template:
+        body: "There were problems with the following fields:"
+        header:
+          one: "1 errors prohibited this %{model} from being saved"
+          other: "%{count} prohibited this %{model} from being saved"
+      messages:
+          blank: "Can't Be Blank"
+          not_a_number: is not number
+          too_short: "is too short (minimum is {{count}} characters)"
+          taken: has already been taken
   actions:
     new: New
     new_master_kit: New Master Kit
@@ -98,7 +118,11 @@ en:
   kits:
     title: Kits	
   uniform_stocks:
-    title: Stock 
+    title: Stock
+    stock_id: Uniform Stock
+    uniform_id: Uniform Stock
+    new: New Uniform Stock
+    edit: Edit Uniform Stock
     stock_list: Stock List
     receive: Receive
     issue: Issue
@@ -106,18 +130,54 @@ en:
     order: Order
     outstanding: Outstanding
     suppliers: Suppliers
+    size: Size
+    category: Category
+    max_quantity: Max Quantity
+    min_quantity: Min Quantity
+    unit_type_id: Unit Type
+  uniform_stock_receiveds:
+    title: Uniform Stock Receiveds
+    new: New Uniform Stock Received
+    edit: Edit Uniform Stock Received
+    stock_id: Uniform Stock
+    quantity: Quantity
+    size: Size
+    received_on: Received On
+    received_by: Received By
+    contract_id: Contract
+  uniform_stock_issues:
+    title: Uniform Stock Issues
+    new: New Uniform Stock Issue
+    edit: Edit Uniform Stock Issue
+    stock_id: Uniform Stock
+    quantity: Quantity
+    size: Size
+    issued_to: Issued To
+    issued_by: Issued by
+    issued_on: Issued On
+    document_id: Document
   units:
     title: Units
+    title2: Unit
+    short_name: Short Name
+    name: Name
+    parent_id: Parent Unit
+    new: New Unit
+    edit: Edit Unit
   staffs:
     title: Staffs
     new: New Staff
     edit: Edit Staff
-    id_no: Id No
+    id_no: Armed Force No
     rank_id: Rank
     name: Nama
     staff_group_id: Staff Group Id
   unit_types:
     title: Measurement Types
+    new: New Unit Type
+    edit: Edit Unit Type
+    short_name: Short Name
+    description: Description
   staff_measurements:
     title: Staff Measurement
     add_details: Add Details
@@ -128,6 +188,10 @@ en:
     title: Provision
     add_details: Add Kit
     kit: Kit
+    kit_id: Kit
+    staff_id: Staff
+    staff_group_id: Staff Group
+    new: New Provision
   helpers:
     links:
       new: New
@@ -142,12 +206,48 @@ en:
         name: Name
         notes: Notes
       staff:
-        id_no: Id No
+        id_no: Armed Force No
         rank_id: Rank
         name: Name
+      unit_type:
+        short_name: Short Name
+        description: Description
+      uniform_stock_received:
+        stock_id: Uniform Stock
+        quantity: Quantity
+        size: Size
+        received_on: Received On
+        received_by: Received By
+        contract_id: Contract
+      uniform_stock_issue:
+        stock_id: Uniform Stock
+        quantity: Quantity
+        size: Size
+        issued_to: Issued To
+        issued_by: Issued By
+        issued_on: Issued On
+        document_id: Document
+      uniform_stock:
+        uniform_id: Uniform Stok
+        size: Size
+        category: Category
+        max_quantity: Max Quantity
+        min_quantity: Min Quantity
+        unit_type_id: Unit Type
+      unit:
+        short_name: Short Name
+        name: Name
+        parent_id: Parent Unit
     prompt:
       select_rank: Select Rank
       select_uniform: Select Uniform Item
       select_unit_type: Select Unit Type
       select_kit: Select Kit
+      select_stock: Select Stock
+      select_staff: Select Staff
+      select_contract: Select Contract
+      select_unit_type: Select Measurement Type
+      select_unit: Select Unit
+      sequence: Sequence
+      sequence_text: "Sequence format : 01 for 1, 11 for 11"
       

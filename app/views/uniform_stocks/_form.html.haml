@@ -4,30 +4,29 @@
           
     .control-group
       = f.label :uniform_id, :class => 'control-label'
-      .controls= f.number_field :uniform_id, :class => 'text_field input-xxlarge'
+      .controls= f.collection_select :uniform_id, UniformItem.all, :id, :uniform_details, :include_blank => (t 'helpers.prompt.select_uniform'), :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :size, :class => 'control-label'
-      .controls= f.text_field :size, :class => 'text_field input-xxlarge'
-
+      .controls= f.text_field :size, :class => 'text_field input-small'
     .control-group
       = f.label :category, :class => 'control-label'
       .controls= f.text_field :category, :class => 'text_field input-xxlarge'
-
+	  
     .control-group
       = f.label :max_quantity, :class => 'control-label'
-      .controls= f.number_field :max_quantity, :class => 'text_field input-xxlarge'
-
+      .controls= f.text_field :max_quantity, :class => 'text_field input-small'
+	  
     .control-group
       = f.label :min_quantity, :class => 'control-label'
-      .controls= f.number_field :min_quantity, :class => 'text_field input-xxlarge'
+      .controls= f.text_field :min_quantity, :class => 'text_field input-small'
 
     .control-group
       = f.label :unit_type_id, :class => 'control-label'
-      .controls= f.number_field :unit_type_id, :class => 'text_field input-xxlarge'
+      .controls= f.collection_select :unit_type_id, UnitType.all, :id, :short_name, :include_blank => (t 'helpers.prompt.select_unit_type'), :html_options => {:class => 'selectpicker'}
 
     .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit t('.submit', :default => t("helpers.links.submit")), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         uniform_stocks_path, :class => 'btn'     
 

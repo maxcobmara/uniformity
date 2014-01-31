@@ -1,30 +1,30 @@
-- provide(:title, 'Unit_Type')
+- provide(:title, 'Unit Type')
 - model_class = UnitType
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
-  
-  
+  %h1= t 'unit_types.title', :default => model_class.model_name.human.pluralize
+      
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Unit Type")), new_unit_type_path
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_unit_type_path, id: "add_new_type", remote: true
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      //%li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      //%li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
-      
-%table.table.table-condensed.table-hover
+%table.table.table-condensed.table-hover#unit_type_list{:style => "width:60%;"}
   %thead
     %tr
-      %th Short name
-      %th Description
-      %th 
-
+      %th= t 'unit_types.shortname'
+      %th= t 'unit_types.description'
+      %th
   %tbody
+    %tr#unit_type_form(style="display:none;")
+      = render :partial => 'form'
     - @unit_types.each do |unit_type|
-      %tr
+      %tr{:id => "tr_#{unit_type.id}"}
         %td= unit_type.short_name
         %td= unit_type.description
-        = render :partial => 'action_menu', :locals => { :unit_type => unit_type }
-      
-      
+        %td= link_to (fa_icon "trash-o"), unit_type, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
+
+
+

@@ -20,6 +20,12 @@
   = link_to image_tag("powered_by_rails.png", alt: "Rails"), 'http://rubyonrails.org/'
 
 
+:javascript
+  $(document).ready(function() {
+      $('#sign_in_trigger').click(function() {
+          $('#login_box').show().effect('highlight', {}, 3000)
+      });
+  });
 
 
 

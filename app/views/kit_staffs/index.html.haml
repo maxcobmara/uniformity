@@ -1,31 +1,31 @@
 - provide(:title, 'Kit Staff')
 - model_class = KitStaff
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'kit_staffs.title', :default => model_class.model_name.human.pluralize
   
   
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Kit Staff")), new_kit_staff_path
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_kit_staff_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
       
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th Kit
-      %th Staff
-      %th Staff group
+      %th= t 'kit_staffs.kit_id'
+      %th= t 'kit_staffs.staff_id'
+      %th= t 'kit_staffs.staff_group_id'
       %th 
 
   %tbody
     - @kit_staffs.each do |kit_staff|
       %tr
-        %td= kit_staff.kit_id
-        %td= kit_staff.staff_id
+        %td= check_kin {kit_staff.kit.kit_details}
+        %td= check_kin {kit_staff.staff.staff_details}
         %td= kit_staff.staff_group_id
         = render :partial => 'action_menu', :locals => { :kit_staff => kit_staff }
       

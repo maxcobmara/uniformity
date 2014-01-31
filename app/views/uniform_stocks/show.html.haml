@@ -1,26 +1,26 @@
 - provide(:title, 'Uniform_Stock Detail')
 - model_class = UniformStock
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human
+  %h1= t 'uniform_stocks.stock_id', :default => model_class.model_name.human
 %p#notice= notice
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:uniform_id) + ":"
-  %dd=  @uniform_stock.uniform_id
+  %dt=t 'uniform_stocks.uniform_id', :default => model_class.human_attribute_name(:uniform_id) + ":"
+  %dd=  @uniform_stock.uniform_item.uniform_details
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:size) + ":"
+  %dt= t 'uniform_stocks.size', :default =>model_class.human_attribute_name(:size) + ":"
   %dd=  @uniform_stock.size
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:category) + ":"
-  %dd=  @uniform_stock.category
+  %dt= t 'uniform_stocks.category', :default =>model_class.human_attribute_name(:category) + ":"
+  %dd= @uniform_stock.category
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:max_quantity) + ":"
+  %dt= t 'uniform_stocks.max_quantity', :default =>model_class.human_attribute_name(:max_quantity) + ":"
   %dd=@uniform_stock.max_quantity
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:min_quantity) + ":"
+  %dt= t 'uniform_stocks.min_quantity', :default =>model_class.human_attribute_name(:min_quantity) + ":"
   %dd=@uniform_stock.min_quantity
 %dl.dl-horizontal
-  %dt= model_class.human_attribute_name(:unit_type_id ) + ":"
-  %dd=@uniform_stock.unit_type_id 
+  %dt= t 'uniform_stocks.unit_type_id', :default =>model_class.human_attribute_name(:unit_type_id ) + ":"
+  %dd=@uniform_stock.unit_type.short_name
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), uniform_stocks_path, :class => 'btn'

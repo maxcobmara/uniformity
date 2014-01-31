@@ -17,6 +17,26 @@
       #long: "%d %B, %Y"
       #events: "%A, %e %b"
 ms_MY:
+  activerecord:
+    models:
+      uniform_stock: Stok Uniform
+      uniform_stock_received: Penerimaan Stok Uniform
+    attributes:
+      uniform_stock:
+        stock_id: Stok Uniform
+      uniform_stock_received:
+        stock_id: Stok Uniform
+    errors:
+      template:
+        body: "Berikut adalah beberapa masalah:"
+        header:
+          one: "%{model} ini mempunyai 1 kesalahan dari disimpan"
+          other: "%{model} ini mempunyai %{count} kesalahan dari yang disimpan"
+      messages:
+          blank: tidak boleh dikosongkan
+          not_a_number: adalah bukan nombor
+          too_short: "sangat pendek (minima ialah {{count}} huruf)"
+          taken: sudah digunakan
   actions:
     new: Baru
     new_master_kit: Kit Baru (Utama)
@@ -57,7 +77,7 @@ ms_MY:
     #depot: Depot
     staff_sizes: Ukuran Staf
     match_stock: Padanan Stok
-    provision: Peruntukan
+    provision: Hak
   home:
     welcome: Selamat Datang ke Uniformity
     uniformity: Sistem Pengurusan Uniform
@@ -93,25 +113,65 @@ ms_MY:
     title: Kit
   uniform_stocks:
     title: Stok
+    stock_id: Stok Uniform
+    uniform_id: Stok Uniform
+    new: Stok Uniform Baru
+    edit: Sunting Stok Uniform
     stock_list: Senarai Stok	
     receive: Penerimaan
     issue: Pengeluaran
     request: Permohonan
     order: Tempahan
     outstanding: Tertunggak (Outstanding)
-    suppliers: Pembekal		  
+    suppliers: Pembekal
+    size: Saiz
+    category: Kategori
+    max_quantity: Kuantiti Maksima
+    min_quantity: Kuantiti Minima
+    unit_type_id: Unit Pengukuran
+  uniform_stock_receiveds:
+    title: Penerimaan Stok Uniform
+    new: Penerimaan Stok Uniform Baru
+    edit: Sunting Penerimaan Stok Uniform
+    stock_id: Stok Uniform
+    quantity: Kuantiti
+    size: Saiz
+    received_on: Tarikh Terima
+    received_by: Diterima Oleh
+    contract_id: Kontrak
+  uniform_stock_issues:
+    title: Pengeluaran Stok Uniform
+    new: Pengeluaran Stok Uniform Baru
+    edit: Sunting Pengeluaran Stok Uniform
+    stock_id: Stok Uniform
+    quantity: Kuantiti
+    size: Saiz
+    issued_to: Penerima
+    issued_by: Pengeluar
+    issued_on: Tarikh Dikeluarkan
+    document_id: Dokumen 
   units:
-    title: Unit	
+    title: Unit
+    title2: Unit
+    short_name: Nama Ringkas
+    name: Nama
+    parent_id: Unit Induk
+    new: Unit Baru
+    edit: Sunting Unit	
   staffs:
     title: Anggota
     new: Anggota Baru
     edit: Sunting Anggota
-    id_no: No Anggota
+    id_no: No Tentera
     rank_id: Pangkat
     name: Nama
     staff_group_id: Kumpulan Staf
   unit_types:
     title: Unit Pengukuran
+    new: Unit Pengukuran Baru
+    edit: Sunting Unit Pengukuran
+    short_name: Nama Ringkas
+    description: Deskripsi
   staff_measurements:
     title: Ukuran Staf	
     add_details: Tambah Ukuran
@@ -119,9 +179,12 @@ ms_MY:
     value: Nilai
     unit_type: Unit Ukuran
   kit_staffs:
-    title: Peruntukan
+    title: Hak
     add_details: Tambah Kit
-    kit: Kit  	  	
+    kit: Kit
+    kit_id: Kit
+    staff_id: Anggota
+    staff_group_id: Kumpulan Anggota  	
   helpers:
     links:
       new: Cipta
@@ -136,11 +199,47 @@ ms_MY:
         name: Nama
         notes: Nota
       staff:
-        id_no: No Anggota
+        id_no: No Tentera
         rank_id: Pangkat
         name: Nama
+      unit_type:
+        short_name: Nama Ringkas
+        description: Deskripsi
+      uniform_stock_received:
+        stock_id: Stok Uniform
+        quantity: Kuantiti
+        size: Saiz
+        received_on: Tarikh Terima
+        received_by: Diterima Oleh
+        contract_id: Kontrak
+      uniform_stock_issue:
+        stock_id: Stok Uniform
+        quantity: Kuantiti
+        size: Saiz
+        issued_to: Penerima
+        issued_by: Pengeluar
+        issued_on: Tarikh Dikeluarkan
+        document_id: Dokumen
+      uniform_stock:
+        uniform_id: Stok Uniform 
+        size: Saiz
+        category: Kategori
+        max_quantity: Kuantiti Maksima
+        min_quantity: Kuantiti Minima
+        unit_type_id: Unit Pengukuran
+      unit:
+        short_name: Nama Ringkas
+        name: Nama
+        parent_id: Unit Induk
     prompt:
       select_rank: Pilih Pangkat
       select_uniform: Pilih Item Uniform
       select_unit_type: Pilih Unit Ukuran
-      select_kit: Pilih Kit		        
+      select_kit: Pilih Kit	
+      select_stock: Pilih Stok
+      select_staff: Pilih Anggota
+      select_contract: Pilih Kontrak
+      select_unit_type: Pilih Unit Ukuran
+      select_unit: Pilih Unit
+      sequence: Urutan
+      sequence_text: "Format Urutan : 01 untuk 1, 11 untuk 11"  

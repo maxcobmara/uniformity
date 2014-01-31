@@ -5,6 +5,7 @@ class UnitTypesController < ApplicationController
   # GET /unit_types.json
   def index
     @unit_types = UnitType.all
+    @unit_type = UnitType.new
   end
 
   # GET /unit_types/1
@@ -28,7 +29,8 @@ class UnitTypesController < ApplicationController
 
     respond_to do |format|
       if @unit_type.save
-        format.html { redirect_to @unit_type, notice: 'Unit type was successfully created.' }
+        format.html { redirect_to @unit_type, notice: (t 'unit_types.title')+(t 'actions.created') }
+        format.js
         format.json { render action: 'show', status: :created, location: @unit_type }
       else
         format.html { render action: 'new' }
@@ -42,7 +44,7 @@ class UnitTypesController < ApplicationController
   def update
     respond_to do |format|
       if @unit_type.update(unit_type_params)
-        format.html { redirect_to @unit_type, notice: 'Unit type was successfully updated.' }
+        format.html { redirect_to @unit_type, notice: (t 'unit_types.title')+(t 'actions.updated')  }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

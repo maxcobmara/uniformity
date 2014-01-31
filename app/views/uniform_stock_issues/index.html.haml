@@ -1,36 +1,36 @@
 - provide(:title, 'Uniform Stock issue')
 - model_class = UniformStockIssue
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'uniform_stock_issues.title', :default => model_class.model_name.human.pluralize
   
   
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Uniform Stock Issue")), new_uniform_stock_issue_path
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_uniform_stock_issue_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
       
 %table.table.table-condensed.table-hover
   %thead
     %tr
-      %th Stock
-      %th Issued to
-      %th Issued by
-      %th Issued on
-      %th Quantity
-      %th Document
+      %th= t 'uniform_stock_issues.stock_id'
+      %th= t 'uniform_stock_issues.issued_to'
+      %th= t 'uniform_stock_issues.issued_by'
+      %th= t 'uniform_stock_issues.issued_on'
+      %th= t 'uniform_stock_issues.quantity'
+      %th= t 'uniform_stock_issues.document_id'
       %th 
 
   %tbody
     - @uniform_stock_issues.each do |uniform_stock_issue|
       %tr
-        %td= uniform_stock_issue.stock_id
-        %td= uniform_stock_issue.issued_to
-        %td= uniform_stock_issue.issued_by
-        %td= uniform_stock_issue.issued_on
+        %td= uniform_stock_issue.uniform_stock.uniform_item.uniform_details
+        %td= check_kin {uniform_stock_issue.receiver.name}
+        %td= check_kin {uniform_stock_issue.issuer.name}
+        %td= l(uniform_stock_issue.issued_on)
         %td= uniform_stock_issue.quantity
         %td= uniform_stock_issue.document_id
         = render :partial => 'action_menu', :locals => { :uniform_stock_issue => uniform_stock_issue }

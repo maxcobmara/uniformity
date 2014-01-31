@@ -22,6 +22,8 @@ gem "modernizr-rails", "~> 2.6.2.3"
 gem "font-awesome-rails", "~> 4.0.3.0"
 gem "bootstrap-datepicker-rails", "~> 1.1.1.9"
 gem "bootstrap-select-rails", "~> 1.3.0.1"
+gem "bootstrap-datetimepicker-rails", "~> 0.0.11"
+
 
 gem 'datashift'
 
