@@ -5,6 +5,8 @@ class KitStaffsController < ApplicationController
   # GET /kit_staffs.json
   def index
     @kit_staffs = KitStaff.all
+    @search = KitStaff.search(params[:q])
+    @kit_staffs = @search.result
   end
 
   # GET /kit_staffs/1

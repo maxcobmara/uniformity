@@ -25,10 +25,10 @@
   %thead
     %tr
       %th= t 'uniform_stocks.stock_id'
-      %th= t 'uniform_stocks.size'
-      %th= t 'uniform_stocks.category'
-      %th= t 'uniform_stocks.max_quantity'
-      %th= t 'uniform_stocks.min_quantity'
+      %th= sort_link @search, :size, t('uniform_stocks.size')
+      %th= sort_link @search, :category, t('uniform_stocks.category')
+      %th= sort_link @search, :max_quantity, t('uniform_stocks.max_quantity')
+      %th= sort_link @search, :min_quantity, t('uniform_stocks.min_quantity')
       %th= t 'uniform_stocks.unit_type_id'
       %th 
 
