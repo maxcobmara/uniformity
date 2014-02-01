@@ -9,8 +9,18 @@
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_uniform_stock_issue_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.label :issued_by_cont, "Issued by Contains"
+        = f.text_field :issued_by_cont, class: "input-medium search-query"
+        = f.label :document_id_cont, "Document Contains"
+        = f.text_field :document_id_cont, class: "input-medium search-query"
+        = f.submit "Search", class: "btn btn-warning"
       
       
 %table.table.table-condensed.table-hover
@@ -19,9 +29,9 @@
       %th= t 'uniform_stock_issues.stock_id'
       %th= t 'uniform_stock_issues.issued_to'
       %th= t 'uniform_stock_issues.issued_by'
-      %th= t 'uniform_stock_issues.issued_on'
-      %th= t 'uniform_stock_issues.quantity'
-      %th= t 'uniform_stock_issues.document_id'
+      %th= sort_link @search, :issued_on, t('uniform_stock_issues.issued_on')
+      %th= sort_link @search, :quantity, t('uniform_stock_issues.quantity')
+      %th= sort_link @search, :document_id, t('uniform_stock_issues.document_id')
       %th 
 
   %tbody
