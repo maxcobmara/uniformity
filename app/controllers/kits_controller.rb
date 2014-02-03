@@ -77,6 +77,6 @@ class KitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kit_params
-      params.require(:kit).permit(:code, :combo_code, :name, :ancestry, :ancestry_depth, :parent_id, kit_uniforms_attributes: [:id, :uniform_id, :quantity, :senior_rate, :notes])
+      params.require(:kit).permit(:code, :combo_code, :name, :ancestry, :ancestry_depth, :parent_id, kit_uniforms_attributes: [:id, :uniform_id, :quantity, :senior_rate, :notes, :pk, :pkk, :graduan, :peg_l, :peg_p, :kadet_l, :kadet_p, :peg, :quantity2])
     end
 end
