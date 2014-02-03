@@ -9,17 +9,25 @@
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_uniform_stock_received_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.label :contract_id_cont, "Cantract Contains"
+        = f.text_field :contract_id_cont, class: "input-medium search-query"
+        = f.submit "Search", class: "btn btn-warning"
       
       
 %table.table.table-condensed.table-hover
   %thead
     %tr
       %th= t 'uniform_stock_receiveds.stock_id'
-      %th= t 'uniform_stock_receiveds.quantity' 
-      %th= t 'uniform_stock_receiveds.size'
-      %th= t 'uniform_stock_receiveds.received_on'
+      %th= sort_link @search, :quantity, t('uniform_stock_receiveds.quantity') 
+      %th= sort_link @search, :quantity, t('uniform_stock_receiveds.size')
+      %th= sort_link @search, :received_on, t('uniform_stock_receiveds.received_on')
       %th= t 'uniform_stock_receiveds.received_by'
       %th= t 'uniform_stock_receiveds.contract_id'
       %th 

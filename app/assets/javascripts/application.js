@@ -64,5 +64,6 @@ $('#myTab a').click(function (e) {
     $('.searchit').toggle(); 
   });
   
-})
 
+  
+})

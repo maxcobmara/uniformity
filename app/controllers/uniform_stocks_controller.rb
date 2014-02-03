@@ -5,6 +5,8 @@ class UniformStocksController < ApplicationController
   # GET /uniform_stocks.json
   def index
     @uniform_stocks = UniformStock.all
+    @search = UniformStock.search(params[:q])
+    @uniform_stocks = @search.result
   end
 
   # GET /uniform_stocks/1

@@ -5,6 +5,8 @@ class UnitsController < ApplicationController
   # GET /units.json
   def index
     @units = Unit.all
+    @search = Unit.search(params[:q])
+    @units = @search.result
   end
 
   # GET /units/1
