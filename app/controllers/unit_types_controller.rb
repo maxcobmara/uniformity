@@ -60,6 +60,7 @@ class UnitTypesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to unit_types_url }
       format.json { head :no_content }
+      format.js
     end
   end
 

@@ -1,23 +1,25 @@
 - provide(:title, 'Rank')
 - model_class = Rank
 .page-header
-  %h1= t '.title', :default => model_class.model_name.human.pluralize
+  %h1= t 'ranks.title', :default => model_class.model_name.human.pluralize
   
   
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
-      %li= link_to content_tag(:li, fa_icon("asterisk", text: "New Rank")), new_rank_path, id: "add_new_rank", remote: true
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_rank_path, id: "add_new_rank", remote: true
     %ul.nav.pull-right
-  //%li#toga= link_to content_tag(:li, fa_icon("search", text: "Search")), "#"
-  //%li= link_to content_tag(:li, fa_icon("print", text: "Print")), "#"
+  //%li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+  //%li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
       
       
 %table.table.table-condensed.table-hover#rank_list{:style => "width:60%;"}
   %thead
     %tr
-      %th Shortname
-      %th Name
+      %th= t 'ranks.shortname'
+      %th= t 'ranks.name'
+      %th= t 'ranks.category'
+      %th= t 'ranks.rate'
       %th 
   %tbody
     %tr#rank_form(style="display:none;")

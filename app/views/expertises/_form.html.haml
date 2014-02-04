@@ -1,0 +1,8 @@
+= form_for @expertise, remote: true do |f|
+  %div#expertise_errors{:style => "display:none;"}
+    = render 'shared/error_messages', object: f.object
+  
+  %td= f.text_field :short_name
+  %td= f.text_field :name
+  %td= f.select :branch, Expertise::BRANCH, :prompt => (t "helpers.prompt.select_expertise")
+  %td= f.submit (t 'actions.create'), :class => 'btn btn-primary'

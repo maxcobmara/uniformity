@@ -1,12 +1,8 @@
 %tr
   %td= @rank.shortname
   %td= @rank.name
+  %td= @rank.category
+  %td= @rank.rate
   %td
-    .btn-group.dropdown
-      %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
-        .span.caret
-      %ul.dropdown-menu.pull-right.action_menu
-        %li= link_to content_tag(:li, fa_icon("pencil", text: "Edit")), edit_rank_path(@rank), :remote => true
-        %li.danger= link_to content_tag(:li, fa_icon("trash-o", text: "Delete")), @rank, :remote => true, method: :delete, data: { confirm: 'Are you sure?' }  
 
 
