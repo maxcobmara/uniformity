@@ -5,13 +5,13 @@ class KitUniform < ActiveRecord::Base
   #from views/kits/_kit_uniform_fields.html.haml - assign @group - view below HAK fields accordingly.
   def self.group(kit)
     a = kit.root.code
-    if (a == "L-1") || (a == "L-01")||(a == "L-02")|| (a == "L-2")||(a == "L-5")||(a == "L-6")   #quantity, senior_rate (LLP, PSSTLDM & Pasukan Simpanan W Kerahan)
+    if (a == "L-1") || (a == "L-01")||(a == "L-02")|| (a == "L-2")||(a=="L-05")||(a == "L-5")||(a=="L-06")||(a == "L-6")   #quantity, senior_rate (LLP, PSSTLDM & Pasukan Simpanan W Kerahan)
       b = 1
-    elsif (a=="L-3")||(a=="L-4")||(a=="L7")                       #pk, pkk, graduan (Pegawai Kadet Kanan & Ke Bawah)
+    elsif (a=="L-3")||(a=="L-4")||(a=="L7")||(a=="L-03")||(a=="L-04")||(a=="L-07")  #pk, pkk, graduan (Pegawai Kadet Kanan & Ke Bawah)
       b = 2
-    elsif (a=="W-9")                                              #peg_l, peg_p (Pegawai Leftenan Muda & Ke Atas)
+    elsif (a=="W-9")||(a=="W-09")                                 #peg_l, peg_p (Pegawai Leftenan Muda & Ke Atas)
       b=3
-    elsif (a=="W-2")                                              #peg, quantity, srate (LLP & Semua Pegawai)
+    elsif (a=="W-2")||(a=="W-02")                                 #peg, quantity, srate (LLP & Semua Pegawai)
       b=4
     elsif (a=="L-11")                                             #pkbm - peg_l, peg_p, kadet_l, kadet_p (Peg & Kadet PKBM)
       b=5

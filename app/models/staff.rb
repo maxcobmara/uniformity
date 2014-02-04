@@ -12,17 +12,16 @@ class Staff < ActiveRecord::Base
   belongs_to :position, :foreign_key => 'position_id'
   belongs_to :expertise, :foreign_key => 'expertise_id'
 
-  validates_presence_of :rank_id, :gender, :religion
+  validates_presence_of :id_no, :name, :rank_id, :gender, :religion
   validates_presence_of :position_id , :if => :rank_officer?
   validates_presence_of :expertise_id, :if => :rank_staff?
   
   def rank_officer?
-    #rank_id < 22 # rank.shortname
-    rank.rate > 2
+    !rank_id.nil? && rank.rate > 2
   end
   
   def rank_staff?
-    rank.rate < 3
+    !rank_id.nil? && rank.rate < 3
   end
   
   def assign_default_provision
