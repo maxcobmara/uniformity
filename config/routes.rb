@@ -1,4 +1,6 @@
 Uniformity::Application.routes.draw do
+  resources :expertises
+
   resources :kit_staffs
 
   resources :staff_measurements
@@ -22,6 +24,8 @@ Uniformity::Application.routes.draw do
   resources :units
   
   resources :unit_types
+  
+  resources :positions
 
   devise_for :users
   resources :users

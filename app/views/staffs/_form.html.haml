@@ -5,40 +5,68 @@
     .control-group
       = f.label :id_no, :class => 'control-label'
       .controls= f.text_field :id_no, :class => 'text_field'
+
+    .control-group
+      = f.label :name, :class => 'control-label'
+      .controls= f.text_field :name, :class => 'text_field'
     
     .control-group
       = f.label :rank_id, :class => 'control-label'
       .controls= f.collection_select :rank_id, Rank.all, :id, :name, :include_blank => (t 'helpers.prompt.select_rank'), :html_options => {:class => 'selectpicker'}
     
     .control-group
-      = f.label :name, :class => 'control-label'
-      .controls= f.text_field :name, :class => 'text_field'
+      = f.label :expertise_id, :class => 'control-label'
+      .controls= f.collection_select :expertise_id, Expertise.all, :id, :expertise_details, :include_blank => (t 'helpers.prompt.select_expertise'), :html_options => {:class => 'selectpicker'}
 
+    .control-group
+      = f.label :position_id, :class => 'control-label'
+      .controls= f.collection_select :position_id, Position.all, :id, :name, :include_blank => (t 'helpers.prompt.select_position'), :html_options => {:class => 'selectpicker'}
+	  
+    .control-group
+      = f.label :unit_id, :class => 'control-label'
+      .controls= f.collection_select :unit_id, Unit.all.order(:name), :id, :name, :include_blank => (t 'helpers.prompt.select_unit_formasi'), :html_options => {:class => 'selectpicker'}
+	  
+    .control-group
+      = f.label :gender, :class => 'control-label'
+      .controls= f.select :gender, Staff::GENDER,:include_blank => (t 'helpers.prompt.select_gender'), :html_options => {:class => 'selectpicker'}	  
+	  
+    .control-group
+      = f.label :religion, :class => 'control-label'
+      .controls= f.select :religion, Staff::RELIGION,:include_blank => (t 'helpers.prompt.select_religion'), :html_options => {:class => 'selectpicker'}	 
+    
+    %b
+      %br= t 'staffs.notes'
+    = t 'staffs.llp_expertise'
+    %br= t 'staffs.peg_position'
     %br
+    %br 
+
+    - if (!@staff.id.nil?) || (!@staff.id.blank?)	
+      %ul.nav.nav-tabs
+        %li.active= link_to t('staff_measurements.title'),        '#tab1', data: {toggle: 'tab'}
+        %li= link_to t('kit_staffs.title'),  '#tab2', data: {toggle: 'tab'}
+        %li= link_to '',   '#tab3', data: {toggle: 'tab'}
+        %li= link_to '','#tab4', data: {toggle: 'tab'} 
  
-    %ul.nav.nav-tabs
-      %li.active= link_to t('staff_measurements.title'),        '#tab1', data: {toggle: 'tab'}
-      %li= link_to t('kit_staffs.title'),  '#tab2', data: {toggle: 'tab'}
-      %li= link_to '',   '#tab3', data: {toggle: 'tab'}
-      %li= link_to '','#tab4', data: {toggle: 'tab'} 
- 
-    #myTabContent.tab-content
-      #tab1.tab-pane.active
-        .form-group
-          .col-lg-offset-2.col-lg-10
-            = f.fields_for :staff_measurements do |builder|
-              = render 'staff_measurement_fields', f: builder
-            = link_to_add_fields (t 'staff_measurements.add_details'), f, :staff_measurements 
+      - if @staff.kit_staffs == []
+        Please click 'Update Staff' to apply default kit	
+      - else
+        #myTabContent.tab-content
+          #tab1.tab-pane.active
+            .form-group
+              .col-lg-offset-2.col-lg-10
+                = f.fields_for :staff_measurements do |builder|
+                  = render 'staff_measurement_fields', f: builder
+                = link_to_add_fields (t 'staff_measurements.add_details'), f, :staff_measurements 
 		
-			
-      #tab2.tab-pane
-        .form-group
-          .col-lg-offset-2.col-lg-10
-            = f.fields_for :kit_staffs do |builder|
-              = render 'kit_staff_fields', f: builder
-            = link_to_add_fields (t 'kit_staffs.add_details'), f, :kit_staffs 
+          #tab2.tab-pane
+            .form-group
+              .col-lg-offset-2.col-lg-10
+                = f.fields_for :kit_staffs do |builder|
+                  = render 'kit_staff_fields', f: builder
+                = link_to_add_fields (t 'kit_staffs.add_details'), f, :kit_staffs 
 
-    %br
+      %br
  
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'

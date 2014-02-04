@@ -31,6 +31,8 @@
           %a.mp-back{:href => "#"}= t 'helpers.links.back'
           %ul
             %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'units.title'), units_path
+            %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'expertises.title2'), expertises_path
+            %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'positions.title'), positions_path			
             %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'staffs.title'), staffs_path
             %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.match_stock'), '#'
             %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.provision'), kit_staffs_path

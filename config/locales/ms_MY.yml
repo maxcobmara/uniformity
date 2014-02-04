@@ -21,11 +21,17 @@ ms_MY:
     models:
       uniform_stock: Stok Uniform
       uniform_stock_received: Penerimaan Stok Uniform
+      staff: Staff
     attributes:
       uniform_stock:
         stock_id: Stok Uniform
       uniform_stock_received:
         stock_id: Stok Uniform
+      staff:
+        position_id: Jawatan
+        expertise_id: Kepakaran / Cawangan
+        gender: Jantina
+        religion: Agama
     errors:
       template:
         body: "Berikut adalah beberapa masalah:"
@@ -166,6 +172,14 @@ ms_MY:
     rank_id: Pangkat
     name: Nama
     staff_group_id: Kumpulan Staf
+    expertise_id: Kepakaran / Cawangan
+    position_id: Jawatan
+    unit_id: Unit / Markas
+    gender: Jantina
+    religion: Agama
+    llp_expertise: "* LLP - Kepakaran / Cawangan"
+    peg_position: "* Pegawai - Jawatan"
+    notes: Nota
   unit_types:
     title: Unit Pengukuran
     new: Unit Pengukuran Baru
@@ -185,6 +199,15 @@ ms_MY:
     kit_id: Kit
     staff_id: Anggota
     staff_group_id: Kumpulan Anggota  	
+  positions:
+    title: Jawatan
+    name: Nama
+  expertises:
+    title: Kepakaran
+    title2: Kepakaran / Cawangan
+    short_name: Nama Ringkas
+    name: Nama
+    branch: Cawangan
   helpers:
     links:
       new: Cipta
@@ -202,6 +225,11 @@ ms_MY:
         id_no: No Tentera
         rank_id: Pangkat
         name: Nama
+        expertise_id: "* Kepakaran / Cawangan"
+        position_id: "* Jawatan"
+        unit_id: Unit / Markas
+        gender: Jantina
+        religion: Agama
       unit_type:
         short_name: Nama Ringkas
         description: Deskripsi
@@ -242,4 +270,9 @@ ms_MY:
       select_unit_type: Pilih Unit Ukuran
       select_unit: Pilih Unit
       sequence: Urutan
-      sequence_text: "Format Urutan : 01 untuk 1, 11 untuk 11"  
+      sequence_text: "Format Urutan : 01 untuk 1, 11 untuk 11"
+      select_expertise: Pilih Kepakaran
+      select_position: Pilih Jawatan
+      select_unit_formasi: Pilih Unit / Markas
+      select_gender: Pilih Jantina
+      select_religion: Pilih Agama

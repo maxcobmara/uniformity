@@ -1,0 +1,29 @@
+- provide(:title, 'Position')
+- model_class = Position
+.page-header
+  %h1= t 'positions.title', :default => model_class.model_name.human.pluralize
+      
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_position_path, id: "add_position", remote: true
+    %ul.nav.pull-right
+      //%li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
+      //%li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+      
+%table.table.table-condensed.table-hover#unit_type_list{:style => "width:60%;"}
+  %thead
+    %tr
+      %th= t 'positions.name'
+      %th
+  %tbody
+    %tr#position_form(style="display:none;")
+      = render :partial => 'form'
+    - @positions.each do |position|
+      %tr{:id => "tr_#{position.id}"}
+        %td= position.name
+        %td= link_to (fa_icon "trash-o"), position, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
+
+
+
+

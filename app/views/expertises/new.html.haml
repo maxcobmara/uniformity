@@ -1,0 +1,7 @@
+- provide(:title, 'Expertise')
+- model_class = Expertise
+.page-header
+  %h1= t 'expertises.new', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
+= render :partial => 'form'
+
+

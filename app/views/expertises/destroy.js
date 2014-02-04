@@ -1,0 +1,1 @@
+$('#tr_<%= @expertise.id =%>').remove();

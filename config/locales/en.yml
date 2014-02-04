@@ -26,11 +26,17 @@ en:
     models:
       uniform_stock: Uniform Stock
       uniform_stock_received: Uniform Stock Received
+      staff: Staff
     attributes:
       uniform_stock:
         stock_id: Uniform Stock
       uniform_stock_received:
         stock_id: Uniform Stock
+      staff:
+        position_id: Position
+        expertise_id: Expertise / Branch
+        gender: Gender
+        religion: Religion
     errors:
       template:
         body: "There were problems with the following fields:"
@@ -172,6 +178,14 @@ en:
     rank_id: Rank
     name: Nama
     staff_group_id: Staff Group Id
+    expertise_id: Expertise / Branch
+    position_id: Position
+    unit_id: Unit / 'Markas'
+    gender: Gender
+    religion: Religion
+    llp_expertise: "* LLP - Expertise / Branch"
+    peg_position: "* Pegawai - Position"
+    notes: Notes
   unit_types:
     title: Measurement Types
     new: New Unit Type
@@ -192,6 +206,15 @@ en:
     staff_id: Staff
     staff_group_id: Staff Group
     new: New Provision
+  positions:
+    title: Positions
+    name: Name
+  expertises:
+    title: Expertises
+    title2: Expertises / Branches
+    short_name: Short Name
+    name: Name
+    branch: Branch
   helpers:
     links:
       new: New
@@ -209,6 +232,11 @@ en:
         id_no: Armed Force No
         rank_id: Rank
         name: Name
+        expertise_id: "* Expertise / Branch"
+        position_id: "* Position"
+        unit_id: Unit / 'Markas'
+        gender: Gender
+        religion: Religion
       unit_type:
         short_name: Short Name
         description: Description
@@ -250,4 +278,9 @@ en:
       select_unit: Select Unit
       sequence: Sequence
       sequence_text: "Sequence format : 01 for 1, 11 for 11"
+      select_expertise: Select Expertise
+      select_position: Select Position
+      select_unit_formasi: Select Unit / 'Markas'
+      select_gender: Select Gender
+      select_religion: Select Religion
       

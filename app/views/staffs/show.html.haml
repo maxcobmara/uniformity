@@ -6,8 +6,6 @@
 %ul.nav.nav-tabs
   %li.active= link_to t('staff_measurements.title'),        '#tab1', data: {toggle: 'tab'}
   %li= link_to t('kit_staffs.title'),  '#tab2', data: {toggle: 'tab'}
-  %li= link_to '',   '#tab3', data: {toggle: 'tab'}
-  %li= link_to '','#tab4', data: {toggle: 'tab'} 
   
 #myTabContent.tab-content{:style => "padding-left:50px;"}
   .row
@@ -50,24 +48,35 @@
             %th
             %th{:align => "left"}= t 'kit_staffs.kit'
         %tbody 
+          - main_ancestor=[]
           - for kit_staff in @staff.kit_staffs
             - count=0 
             - for item in kit_staff.kit.kit_uniforms
               %tr
                 %td=item.uniform_item.uniform_details
-                %td
+                %td 
                   - if count == 0
                     =kit_staff.kit.kit_details
                     - count+=1
-            - for ancestor in kit_staff.kit.ancestor_ids
-              - if !@staff.kit_staffs.pluck(:kit_id).include?(ancestor)
-                - for kit_item in Kit.find(ancestor).kit_uniforms
-                  %tr
-                    %td=kit_item.uniform_item.uniform_details
-                    %td=Kit.find(ancestor).kit_details
+                %td= item.kit_qty(@staff.gender,@staff.rank.rate,@staff.rank.shortname)
 
+            - for ancestor in kit_staff.kit.ancestor_ids
+              - if main_ancestor.include?(ancestor) == false
+                - main_ancestor << ancestor 
+                - count2=0
+                - if !@staff.kit_staffs.pluck(:kit_id).include?(ancestor)
+                  - for kit_item in Kit.find(ancestor).kit_uniforms
+                    %tr
+                      %td=kit_item.uniform_item.uniform_details
+                      %td 
+                        - if count2 == 0
+                          = Kit.find(ancestor).kit_details
+                          - count2+=1
+                      %td=kit_item.kit_qty(@staff.gender,@staff.rank.rate,@staff.rank.shortname)
             - @staff.kit_staffs.pluck(:kit_id).include?(kit_staff.kit_id)
             - kit_staff.kit.ancestor_ids.count
+            - kit_staff.kit.ancestor_ids
+            - @staff.kit_staffs.map(&:kit_id)
 
   
  

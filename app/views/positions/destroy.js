@@ -1,0 +1,1 @@
+$('#tr_<%= @position.id =%>').remove();

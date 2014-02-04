@@ -1,0 +1,6 @@
+= form_for @position, remote: true do |f|
+  %div#unit_type_errors{:style => "display:none;"}
+    = render 'shared/error_messages', object: f.object
+  
+  %td= f.text_field :name
+  %td= f.submit (t 'actions.create'), :class => 'btn btn-primary'
