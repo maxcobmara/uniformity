@@ -61,6 +61,7 @@ en:
     updated: " was successfully updated."
     removed: " was successfully removed."
     removed_forbidden: "Removal of kit was forbidden, due to existing uniform item/kit list of selected kit."
+    remove_master: " (Master Kit) was successfully removed, due to deletion of last 'uniform item' of Master Kit"
   errors:
   date:
     formats:

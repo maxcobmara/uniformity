@@ -56,6 +56,7 @@ ms_MY:
     updated: " telah berjaya dikemaskini."
     removed: " telah berjaya dihapuskan."
     removed_forbidden: "Rekod tidak boleh dihapuskan kerana samada kit mengandungi item uniform ATAU kit terdapat di dalam senarai kit anggota."
+    remove_master: " (Kit Utama/Induk) telah berjaya dihapuskan, setelah rekod terakhir 'item uniform' dihapuskan"
   errors:
   date:
     formats:
