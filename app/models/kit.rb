@@ -1,7 +1,7 @@
 class Kit < ActiveRecord::Base
   
   before_save     :set_combo_code
-  before_destroy  :check_kit_uniforms, :check_kit_staffs
+  before_destroy  :check_kit_uniforms, :check_kit_staffs 
   
   has_ancestry    :cache_depth => true
   
@@ -12,6 +12,13 @@ class Kit < ActiveRecord::Base
    
   validates       :code, :name, presence: true
   validate        :kit_uniforms_must_exist_if_master_kit
+  after_save      :remove_master_if_last_uniform_item_deleted
+  
+  def remove_master_if_last_uniform_item_deleted
+     if ancestry_depth == 0 && kit_uniforms.blank?
+       self.destroy
+     end
+  end
   
   def kit_uniforms_must_exist_if_master_kit
     if ancestry_depth == 0 && kit_uniforms.blank?

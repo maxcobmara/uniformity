@@ -26,4 +26,6 @@
     - elsif @group == 6	
       = f.number_field :quantity2, :class => 'text_field input-small', placeholder: "Quantity"
     = f.text_field :notes, :class => 'text_field input-xxlarge', placeholder: "Notes"
-	
+    = f.hidden_field :_destroy
+    = link_to_remove_fields (fa_icon "trash-o"), f 
+    /= link_to_remove_fields "remove", f

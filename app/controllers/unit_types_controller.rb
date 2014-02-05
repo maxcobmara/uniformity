@@ -1,3 +1,5 @@
+require 'rake'
+#Uniformity::Application.load_tasks
 class UnitTypesController < ApplicationController
   before_action :set_unit_type, only: [:show, :edit, :update, :destroy]
 
@@ -11,6 +13,8 @@ class UnitTypesController < ApplicationController
   # GET /unit_types/1
   # GET /unit_types/1.json
   def show
+    %x(bundle exec thor datashift:export:excel -m Expertise -r public/Expertise.xls)
+    Rake::Task['datashift:export_all'].invoke #- NOT OK
   end
 
   # GET /unit_types/new
