@@ -1,8 +1,12 @@
 Uniformity::Application.routes.draw do
   resources :expertises
 
-  resources :kit_staffs
-
+  #resources :kit_staffs
+  resources :kit_staffs do
+    collection do
+      get 'request_report'
+    end
+  end
   resources :staff_measurements
 
   resources :uniform_stock_issues

@@ -91,6 +91,12 @@ en:
     staff_sizes: Staff Sizes
     match_stock: Match Stock
     provision: Provision
+  report:
+    request_report: Uniform Stock Request Report
+    total_required: Total Required
+    stock_balance: Stock Balance
+    total_assigned: Total Assigned
+    total_requested: TOTAL REQUESTED
   home: 
     welcome: Welcome to Uniformity
     uniformity: Uniform Management System  
