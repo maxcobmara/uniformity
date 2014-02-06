@@ -36,6 +36,6 @@
       %tr
         %td= link_to staff.id_no, staff
         %td= check_kin {staff.rank.name}
-        %td= staff.name
+        %td= staff.name.capitalize
         = render :partial => 'action_menu', :locals => { :staff => staff }
       

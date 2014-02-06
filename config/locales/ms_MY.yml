@@ -85,6 +85,12 @@ ms_MY:
     staff_sizes: Ukuran Staf
     match_stock: Padanan Stok
     provision: Hak
+  report:
+    request_report: Laporan Permohonan Stok Uniform
+    total_required: Jumlah Diperlukan
+    stock_balance: Baik Stok
+    total_assigned: Jumlah Diperuntukkan
+    total_requested: JUMLAH DIPERLUKAN  
   home:
     welcome: Selamat Datang ke Uniformity
     uniformity: Sistem Pengurusan Uniform

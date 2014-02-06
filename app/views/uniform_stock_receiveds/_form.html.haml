@@ -20,7 +20,7 @@
 
     .control-group
       = f.label :received_by, :class => 'control-label'
-      .controls= f.collection_select :received_by, Staff.all, :id, :name, :include_blank => (t 'helpers.prompt.select_staff'), :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :received_by, Staff.all, :id, :staff_details, :include_blank => (t 'helpers.prompt.select_staff'), :html_options => {:class => 'selectpicker'}
 
     .control-group
       = f.label :contract_id, :class => 'control-label'

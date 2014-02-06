@@ -20,7 +20,7 @@
   %dd=@uniform_stock.min_quantity
 %dl.dl-horizontal
   %dt= t 'uniform_stocks.unit_type_id', :default =>model_class.human_attribute_name(:unit_type_id ) + ":"
-  %dd=@uniform_stock.unit_type.short_name
+  %dd= check_kin {@uniform_stock.unit_type.short_name}
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), uniform_stocks_path, :class => 'btn'

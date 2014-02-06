@@ -1,6 +1,6 @@
 class UniformStock < ActiveRecord::Base
-  has_many :uniform_stock_receiveds, dependent: :destroy
-  has_many :uniform_stock_issues, dependent: :destroy
+  has_many :uniform_stock_receiveds#, dependent: :destroy if no stock received --> destry uniformstock failed
+  has_many :uniform_stock_issues#, dependent: :destroy - same as above
   belongs_to :uniform_item, :foreign_key => 'uniform_id'
   belongs_to :unit_type, :foreign_key => 'unit_type_id'
 

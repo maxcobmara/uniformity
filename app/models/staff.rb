@@ -42,7 +42,7 @@ class Staff < ActiveRecord::Base
   end
   
   def staff_details
-    "#{id_no} " + "#{name}"
+    "#{id_no} " + "#{name}".gsub(/\w+/, &:capitalize)#capitalize
   end
   
   GENDER = [
