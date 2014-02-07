@@ -1,0 +1,31 @@
+%h2= t 'report.request_report' 
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'uniform_stocks.stock_id' 
+      %th= t 'report.total_required'
+      %th= t 'report.total_stock'
+      %th= t 'report.total_assigned'
+      %th= t 'report.stock_balance'
+      %th= t 'report.total_requested'
+
+  %tbody
+    - @uniform_stocks.group_by(&:uniform_id).each do |uni_id, uniform_stock|
+      %tr
+        %td= UniformStock.find_by_uniform_id(uni_id).uniform_item.uniform_details
+        %td= total_required = UniformStock.total_required(uni_id)
+        %td= receive = UniformStock.receive(uni_id)
+        %td= issue = UniformStock.issue(uni_id)
+        %td= stock_balance = receive-issue
+        - requested = total_required-receive-issue
+        %td 
+          - if requested < 0
+            = 0
+          - else
+            = requested 
+
+
+	  
+
+
+

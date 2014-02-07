@@ -63,10 +63,6 @@ class KitStaffsController < ApplicationController
     end
   end
 
-  def request_report
-    @uniform_stocks = UniformStock.all
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_kit_staff

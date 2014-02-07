@@ -1,0 +1,5 @@
+- provide(:title, 'Edit Stock Order')
+- model_class = StockOrder
+.page-header
+  %h1= t 'stock_orders.edit', :default => [:'helpers.titles.new', 'Edit %{model}'], :model => model_class.model_name.human
+= render :partial => 'form'

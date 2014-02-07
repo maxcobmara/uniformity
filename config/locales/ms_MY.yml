@@ -88,9 +88,12 @@ ms_MY:
   report:
     request_report: Laporan Permohonan Stok Uniform
     total_required: Jumlah Diperlukan
-    stock_balance: Baik Stok
+    total_stock: Jumlah Stok
+    stock_balance: BakI Stok
     total_assigned: Jumlah Diperuntukkan
-    total_requested: JUMLAH DIPERLUKAN  
+    total_requested: Jumlah Permohonan
+    outstanding_report: Laporan Stok Uniform Tertunggak (Outstanding)  
+    total_outstanding: Jumlah Yang Masih Tertunggak
   home:
     welcome: Selamat Datang ke Uniformity
     uniformity: Sistem Pengurusan Uniform
@@ -215,6 +218,25 @@ ms_MY:
     short_name: Nama Ringkas
     name: Nama
     branch: Cawangan
+  companies:
+    title: Pembekal
+    name: Nama
+    address: Alamat
+    contact_person: Staf Dihubungi
+    phone: "No. Telefon"
+    fax: "No. Faks"
+    email: Emel
+    new: Pembekal Baru
+    edit: Sunting Pembekal
+  stock_orders:
+    title: Tempahan Stok Uniform
+    stock_id: Stok Uniform
+    quantity: Kuantiti
+    unit_type_id: Jenis Ukuran
+    company_id: Pembekal
+    remark: Nota
+    new: Tempahan Stok Uniform Baru
+    edit: Sunting Tempahan Stok Uniform
   helpers:
     links:
       new: Cipta
@@ -266,6 +288,19 @@ ms_MY:
         short_name: Nama Ringkas
         name: Nama
         parent_id: Unit Induk
+      company:
+        name: Nama
+        address: Alamat
+        contact_person: Staf Dihubungi
+        phone: "No. Telefon"
+        fax: "No. Faks"
+        email: Emel
+      stock_order:
+        stock_id: Stok Uniform
+        quantity: Kuantiti
+        unit_type_id: Jenis Ukuran
+        company_id: Pembekal
+        remark: Nota
     prompt:
       select_rank: Pilih Pangkat
       select_uniform: Pilih Item Uniform
@@ -283,3 +318,4 @@ ms_MY:
       select_unit_formasi: Pilih Unit / Markas
       select_gender: Pilih Jantina
       select_religion: Pilih Agama
+      select_supplier: Pilih Pembekal
