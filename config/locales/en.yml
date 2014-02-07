@@ -94,9 +94,12 @@ en:
   report:
     request_report: Uniform Stock Request Report
     total_required: Total Required
+    total_stock: Total Stock
     stock_balance: Stock Balance
     total_assigned: Total Assigned
-    total_requested: TOTAL REQUESTED
+    total_requested: Total Requested
+    outstanding_report: Uniform Stock Outstanding Report
+    total_outstanding: Total Outstanding 
   home: 
     welcome: Welcome to Uniformity
     uniformity: Uniform Management System  
@@ -222,6 +225,25 @@ en:
     short_name: Short Name
     name: Name
     branch: Branch
+  companies:
+    title: Suppliers
+    name: Name
+    address: Address
+    contact_person: Contact Person
+    phone: Phone
+    fax: Fax
+    email: Email
+    new: New Supplier
+    edit: Edit Supplier
+  stock_orders:
+    title: Uniform Stock Order
+    stock_id: Uniform Stock
+    quantity: Quantity
+    unit_type_id: Unit Type
+    company_id: Supplier
+    remark: Remark
+    new: New Stock Order
+    edit: Edit Stock Order
   helpers:
     links:
       new: New
@@ -273,6 +295,19 @@ en:
         short_name: Short Name
         name: Name
         parent_id: Parent Unit
+      company:
+        name: Name
+        address: Address
+        contact_person: Contact Person
+        phone: Phone
+        fax: Fax
+        email: Email  
+      stock_order:
+        stock_id: Stock Order
+        quantity: Quantity
+        unit_type_id: Unit Type
+        company_id: Supplier
+        remark: Remark
     prompt:
       select_rank: Select Rank
       select_uniform: Select Uniform Item
@@ -290,4 +325,5 @@ en:
       select_unit_formasi: Select Unit / 'Markas'
       select_gender: Select Gender
       select_religion: Select Religion
+      select_supplier: Select Supplier
       

@@ -1,0 +1,45 @@
+- provide(:title, 'Stock Orders')
+- model_class = StockOrder
+.page-header
+  %h1= t 'stock_orders.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_stock_order_path
+    %ul.nav.pull-right
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
+      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    /= search_form_for @search, class: "form-inline" do |f|
+    /  .field
+    /    = f.text_field :name_cont, class: "input-medium search-query", placeholder: "Name Contains" 
+    /    = f.text_field :contact_person_cont, class: "input-medium search-query", placeholder: "Contact Person Contains" 
+    /    = f.text_field :phone_cont, class: "input-medium search-query", placeholder: "Phone Contains" 
+    /    = f.submit "Search", class: "btn btn-warning"
+      
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      /%th= sort_link @search, :name, t('stock_orders.stock_id')
+      %th= t 'stock_orders.stock_id'
+      %th= t 'stock_orders.quantity' 
+      %th= t 'stock_orders.unit_type_id' 
+      %th= t 'stock_orders.company_id' 
+      %th= t 'stock_orders.remark' 
+      %th
+  %tbody
+    - @stock_orders.each do |stock_order|
+      %tr
+        %td= stock_order.uniform_stock.uniform_stock_details
+        %td= stock_order.quantity
+        %td= stock_order.unit_type.description
+        %td= stock_order.supplier.name
+        %td= stock_order.remark
+        = render :partial => 'action_menu', :locals => { :stock_order => stock_order }
+      
+      

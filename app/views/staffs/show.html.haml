@@ -49,6 +49,8 @@
             %th{:align => "left"}= t 'kit_staffs.kit'
         %tbody 
           - main_ancestor=[]
+          = @uniform_stock_ids = UniformStockIssue.where('issued_to=?', @staff.id).map(&:stock_id)
+          = @uniform_item_ids = UniformStock.where('id IN (?)', @uniform_stock_ids).map(&:uniform_id)
           - for kit_staff in @staff.kit_staffs
             - count=0 
             - for item in kit_staff.kit.kit_uniforms
@@ -59,7 +61,12 @@
                     =kit_staff.kit.kit_details
                     - count+=1
                 %td= item.kit_qty(@staff.gender,@staff.rank.rate,@staff.rank.shortname)
-
+                %td
+                  - if @uniform_item_ids.include?(item.uniform_id)
+                    /to do later - item assigned (stock_issueds)
+                  - else
+                    /Nil
+                  
             - for ancestor in kit_staff.kit.ancestor_ids
               - if main_ancestor.include?(ancestor) == false
                 - main_ancestor << ancestor 
@@ -78,7 +85,8 @@
             - kit_staff.kit.ancestor_ids
             - @staff.kit_staffs.map(&:kit_id)
 
-  
+
+/ = UniformItem.find(item.uniform_id).uniform_stock.uniform_stock_issues.sum(:quantity)
  
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), staffs_path, :class => 'btn'

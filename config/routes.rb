@@ -1,19 +1,22 @@
 Uniformity::Application.routes.draw do
+  resources :stock_orders
+
   resources :expertises
 
-  #resources :kit_staffs
-  resources :kit_staffs do
-    collection do
-      get 'request_report'
-    end
-  end
+  resources :kit_staffs
+
   resources :staff_measurements
 
   resources :uniform_stock_issues
 
   resources :uniform_stock_receiveds
 
-  resources :uniform_stocks
+  resources :uniform_stocks do
+    collection do
+      get 'request_report'
+      get 'outstanding_report'
+    end
+  end
 
   resources :kit_uniforms
 
@@ -30,6 +33,8 @@ Uniformity::Application.routes.draw do
   resources :unit_types
   
   resources :positions
+  
+  resources :companies
 
   devise_for :users
   resources :users
