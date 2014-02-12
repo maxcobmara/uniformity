@@ -196,6 +196,9 @@ en:
     llp_expertise: "* LLP - Expertise / Branch"
     peg_position: "* Pegawai - Position"
     notes: Notes
+    kit_list: KIT LIST
+    navy: TENTERA LAUT DIRAJA MALAYSIA
+    detail: Staff Details
   unit_types:
     title: Measurement Types
     new: New Unit Type

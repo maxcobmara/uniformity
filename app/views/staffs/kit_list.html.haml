@@ -1,28 +1,30 @@
 - provide(:title, 'Staff Details')
 - model_class = Staff
 .page-header
-  %h1= t 'staffs.title', :default => model_class.model_name.human
-%p#notice= notice
-%ul.nav.nav-tabs
-  %li.active= link_to t('staff_measurements.title'),        '#tab1', data: {toggle: 'tab'}
-  %li= link_to t('kit_staffs.title'),  '#tab2', data: {toggle: 'tab'}
-  
-#myTabContent.tab-content{:style => "padding-left:50px;"}
-  .row
-    .span8
-      %h4
-        = @staff.id_no
-        &nbsp; - &nbsp; 
-        = check_kin {@staff.rank.name}
-        &nbsp; - &nbsp; 
-        = @staff.name
+  %h1= t 'staffs.kit_list', :default => model_class.model_name.human.pluralize
+  %h2= t 'staffs.navy'
 
-  #tab1.tab-pane.active
-    .div{:style => "padding: 15px 50px 10px 50px; "}
+%h4= t 'staffs.detail'
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'staffs.name'
+      %th= t 'staffs.id_no'
+      %th= t 'staffs.rank_id'
+
+
+  %tbody
+    %tr
+      %td= @staff.name
+      %td= @staff.id_no
+      %td= check_kin {@staff.rank.name}
+
+
     - if @staff.staff_measurements == []
       No Items
     - else
-      %table{:width => "75%"}
+
+      %table.table.table-bordered
         %thead
           %tr
             %th{:align => "left"}= t 'uniform_items.uniform_item_name'
@@ -35,17 +37,15 @@
               %td= staff_measurement.uniform_item.uniform_details
               %td{:align => "center"}= staff_measurement.measurement_type
               %td{:align => "center"}= staff_measurement.value
-              %td{:align => "center"}= check_kin {staff_measurement.unit_type.short_name} 
-    	  
-  #tab2.tab-pane
-    .div{:style => "padding: 15px 50px 10px 50px; "}
+              %td{:align => "center"}= check_kin {staff_measurement.unit_type.short_name}
+
     - if @staff.kit_staffs == []
       No Items
     - else
-      %table{:width => "75%"}
+      %table.table.table-bordered
         %thead
           %tr
-            %th
+            %th= t 'kit_staffs.title'
             %th{:align => "left"}= t 'kit_staffs.kit'
         %tbody 
           - main_ancestor=[]
@@ -66,7 +66,7 @@
                     /to do later - item assigned (stock_issueds)
                   - else
                     /Nil
-                  
+
             - for ancestor in kit_staff.kit.ancestor_ids
               - if main_ancestor.include?(ancestor) == false
                 - main_ancestor << ancestor 
@@ -86,14 +86,8 @@
             - @staff.kit_staffs.map(&:kit_id)
 
 
-/ = UniformItem.find(item.uniform_id).uniform_stock.uniform_stock_issues.sum(:quantity)
+
+
+
+
  
-.form-actions
-  = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), staffs_path, :class => 'btn'
-  = link_to content_tag(:i, "", :class => "fa fa-edit") + " " + t('.edit', :default => t("helpers.links.edit")), |
-    edit_staff_path(@staff), :class => 'btn'
-  = link_to content_tag(:i, "", :class => "fa fa-trash-o icon-white") + " " + t('.destroy', :default => t("helpers.links.destroy")), |
-    staff_path(@staff),                                                                                                    |
-    :method => 'delete',                                                                                                           |
-    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },                   |
-    :class => 'btn btn-danger'                                                                                                     |

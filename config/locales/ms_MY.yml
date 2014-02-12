@@ -190,6 +190,9 @@ ms_MY:
     llp_expertise: "* LLP - Kepakaran / Cawangan"
     peg_position: "* Pegawai - Jawatan"
     notes: Nota
+    kit_list: KIT LIST
+    navy: TENTERA LAUT DIRAJA MALAYSIA
+    detail: Maklumat Anggota
   unit_types:
     title: Unit Pengukuran
     new: Unit Pengukuran Baru
