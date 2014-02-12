@@ -24,7 +24,12 @@ Uniformity::Application.routes.draw do
 
   resources :uniform_items
   
-  resources :staffs
+  resources :staffs do
+    collection do
+      get 'kit_list'
+    end
+  end
+ 
   
   resources :ranks
   
