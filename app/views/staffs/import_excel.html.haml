@@ -1,0 +1,58 @@
+- provide(:title, 'Import staff excel file')
+- model_class = Staff
+.page-header
+  %h1= t 'staffs.import_excel', :default => [:'helpers.titles.new', 'Import %{model}'], :model => model_class.model_name.human
+
+= form_tag import_staffs_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag "Import", :class => 'btn btn-primary' 
+
+= link_to (t 'staffs.excel_format'), '/public/excel_format/staff_excel.xls', :action => 'download_excel_format'
+%br
+%H5= t 'staffs.pre_conditions'
+%ol
+  %li= t 'staffs.condition_unique'
+  %li= t 'staffs.condition_presence'
+  %li= t 'staffs.condition_position_if_officer'
+  %li= t 'staffs.condition_position_if_llp'
+  %li= t 'staffs.condition_gender'
+  %li= t 'staffs.condition_religion'
+%br
+%font{:color => "red"} 
+  =(t 'staffs.failure')+" - "
+  %b=(t 'staffs.invalid_excel_data')
+  %br
+  =t 'staffs.failure2'
+%br	
+%br
+- if @invalid_staffs && @invalid_staffs.count>0
+  %h4=t 'staffs.invalid_excel_data'
+  %table.table.table-condensed.table-hover{:style => "width: 90%; "}
+    %thead
+      %tr
+        %th= t 'staffs.id_no'
+        %th= t 'staffs.rank_id'
+        %th= t 'staffs.name'  
+        %th= t 'staffs.position_id'
+        %th= t 'staffs.gender'
+        %th= t 'staffs.religion'
+        %th= t 'staffs.errors_counting'
+        %th= t 'staffs.errors_description'
+    %tbody
+    - for invalid_staff in @invalid_staffs
+      %tr
+        %td= invalid_staff.id_no
+        %td= invalid_staff.rank.name
+        %td= invalid_staff.name
+        %td= invalid_staff.position.name
+        %td= (Staff::GENDER.find_all{|disp, value| value == invalid_staff.gender}).map {|disp, value| disp}.to_s
+        %td= (Staff::RELIGION.find_all{|disp, value| value == invalid_staff.religion}).map {|disp, value| disp}.to_s
+        %td{:align => "center"}= invalid_staff.errors.count
+        - invalid_staff.errors.each do |key, value|
+          %td
+            = invalid_staff[key]
+            = value
+
+      
+        
+   

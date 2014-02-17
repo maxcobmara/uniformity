@@ -62,6 +62,7 @@ en:
     removed: " was successfully removed."
     removed_forbidden: "Removal of kit was forbidden, due to existing uniform item/kit list of selected kit."
     remove_master: " (Master Kit) was successfully removed, due to deletion of last 'uniform item' of Master Kit"
+    import_excel: Import Data From Excel
   errors:
   date:
     formats:
@@ -197,8 +198,26 @@ en:
     peg_position: "* Pegawai - Position"
     notes: Notes
     kit_list: KIT LIST
-    navy: TENTERA LAUT DIRAJA MALAYSIA
+    navy: ROYAL MALAYSIAN NAVY
     detail: Staff Details
+    import_excel: Import Staff From Excel File
+    imported: Staffs from Excel file are successfully imported
+    invalid_excel: "Excel file data are invalid. "
+    errors_count: "Excel record(s) are invalid for import."
+    invalid_excel_data: Invalid Excel data
+    errors_counting: Total Errors
+    errors_description: Errors Description
+    pre_conditions: "Excel File Pre-Conditions"
+    condition_unique: "Armed Force No - Must be unique and presence"
+    condition_presence: "Name, Rank, Gender and Religion - Must be presence."
+    condition_position_if_officer: "Position - Must be presence if an Officer."
+    condition_position_if_llp: "Expertise - Must be presence if Other Rank Staff."
+    condition_gender: "Gender - To provide either 'Male' or 'Female'."
+    condition_religion: "Religion - To provide either 'Islam', 'Sikh' or 'Others'"
+    failure: "Failure to comply with condition 1 - 4 will cause failure in import."
+    failure2: "Provided data other than those mentioned in condition 5 and 6 will not be saved."
+    errors_counting: Total Errors
+    errors_description: Errors Description
   unit_types:
     title: Measurement Types
     new: New Unit Type
