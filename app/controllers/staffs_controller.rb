@@ -65,6 +65,36 @@ class StaffsController < ApplicationController
   def kit_list
      @staff = Staff.find(params[:id])
   end 
+  
+  def import_excel
+  end
+  
+  def import
+      #use this line or line 88-89
+      #Vehicle.import(params[:file]) 
+      #redirect_to vehicles_url, notice: (t 'vehicles.imported') 
+      
+      #OR use these lines onwards
+      @staffs = Staff.import(params[:file]) 
+      if @staffs.all?(&:valid?)
+        @staffs.each(&:save!)
+        respond_to do |format|
+          flash[:notice] 
+          format.html { redirect_to staffs_url, notice: (t 'staffs.imported') }
+        end
+      else
+        @invalid_staffs = Staff.get_invalid(@staffs) 
+        respond_to do |format|
+          flash[:notice] = (t 'staffs.invalid_excel')+@invalid_staffs.count.to_s+" "+(t 'staffs.errors_count')  #yellow box
+          format.html { render action: 'import_excel' }
+          flash.discard
+        end
+      end
+  end
+  
+  def download_excel_format
+    send_file ("#{::Rails.root.to_s}/public/excel_format/staff_excel.xls")
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

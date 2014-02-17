@@ -19,4 +19,13 @@ class Rank < ActiveRecord::Base
     "#{shortname}"+" - "+"#{name}"
   end
 
+  def self.get_rank(fr_excel)
+    ranks=where('name ILIKE (?) OR shortname ILIKE (?)',fr_excel, fr_excel)
+    if ranks.count > 0
+      return ranks[0].id
+    else
+      return 21 #id for rank
+    end    
+  end
+
 end

@@ -29,8 +29,14 @@ Uniformity::Application.routes.draw do
       get 'kit_list'
     end
   end
- 
   
+  resources :staffs do 
+    collection { post :import }
+  end
+  
+  match '/public/excel_format/staff_excel.xls', to: 'staffs#download_excel_format', via: 'get', target: '_self'
+  match 'import_excel', to:'staffs#import_excel', via: 'get'
+ 
   resources :ranks
   
   resources :units

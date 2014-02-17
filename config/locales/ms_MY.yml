@@ -57,6 +57,7 @@ ms_MY:
     removed: " telah berjaya dihapuskan."
     removed_forbidden: "Rekod tidak boleh dihapuskan kerana samada kit mengandungi item uniform ATAU kit terdapat di dalam senarai kit anggota."
     remove_master: " (Kit Utama/Induk) telah berjaya dihapuskan, setelah rekod terakhir 'item uniform' dihapuskan"
+    import_excel: Import Data Dari Excel
   errors:
   date:
     formats:
@@ -193,6 +194,24 @@ ms_MY:
     kit_list: KIT LIST
     navy: TENTERA LAUT DIRAJA MALAYSIA
     detail: Maklumat Anggota
+    import_excel: Import Anggota Dari Fail Excel
+    imported: Anggota dari fail Excel telah berjaya diimport
+    invalid_excel: "Data fail Excel tidak sah. "   
+    errors_count: "rekod dari fail Excel tidak sah untuk diimport."
+    invalid_excel_data: Data Excel yang tidak sah
+    errors_counting: Jumlah Ralat
+    errors_description: Deskripsi Ralat
+    pre_conditions: "Pra-Syarat Fail Excel"
+    condition_unique: "No. Tentera - Mestilah unik dan tiada rekod yang bertindan."
+    condition_presence: "Nama, Pangkat, Jantina dan Agama - Mesti wujud (ada rekod)."
+    condition_position_if_officer: "Jawatan - Mesti wujud (ada rekod) jika anggota adalah Pegawai."
+    condition_position_if_llp: "Kepakaran/Cawangan - Mesti wujud (ada rekod) jika anggota adalah Lain-Lain Pangkat."
+    condition_gender: "Jantina - Masukkan samada 'Male' atau 'Female'."
+    condition_religion: "Agama - Masukkan samada 'Islam', 'Sikh' atau 'Others'"
+    failure: "Data tidak akan diimport jika syarat 1 - 4 tidak dipenuhi."
+    failure2: "Kemasukan data selain daripada yang dinyatakan bagi syarat 5 dan 6 tidak akan disimpan."
+    errors_counting: Jumlah Ralat
+    errors_description: Deskripsi Ralat
   unit_types:
     title: Unit Pengukuran
     new: Unit Pengukuran Baru
