@@ -10,7 +10,7 @@
       %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_company_path
     %ul.nav.pull-right
       %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
-      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+      %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
 
 .row.searchit{style: "display:none;"}
   .span9offset1
