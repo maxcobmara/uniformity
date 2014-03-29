@@ -4,7 +4,7 @@ class KitsController < ApplicationController
   # GET /kits
   # GET /kits.json
   def index
-    @kits = Kit.order(combo_code: :asc).all
+    @kits = Kit.order(combo_code: :asc)
     @search = Kit.search(params[:q])
     @kits = @search.result
   end
