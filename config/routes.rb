@@ -15,7 +15,18 @@ Uniformity::Application.routes.draw do
     collection do
       get 'request_report'
       get 'outstanding_report'
+      get 'outstanding2_report'
+	  get 'request_detail'
+	  get 'outstanding_detail'
     end
+  end
+  
+  resources :uniform_stocks do
+	collection do
+		match 'outstanding_detail' => 'uniform_stocks#outstanding_detail', via: [:get, :post], as: :search1
+		match 'request_detail' => 'uniform_stocks#request_detail', via: [:get, :post], as: :search2
+		match 'outstanding2_report' => 'uniform_stocks#outstanding2_report', via: [:get, :post], as: :search3
+	end
   end
 
   resources :kit_uniforms

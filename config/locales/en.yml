@@ -92,15 +92,22 @@ en:
     staff_sizes: Staff Sizes
     match_stock: Match Stock
     provision: Provision
+    report: Report
   report:
     request_report: Uniform Stock Request Report
+    request_detail: Uniform Stock Request
+    outstanding_detail: Outstanding Uniform Stock
     total_required: Total Required
     total_stock: Total Stock
     stock_balance: Stock Balance
-    total_assigned: Total Assigned
+    #total_assigned: Total Assigned
+    total_provided: Total Provided
     total_requested: Total Requested
-    outstanding_report: Uniform Stock Outstanding Report
+    outstanding_report: Summary of Provided and Outstanding Uniform Stock
+    outstanding2_report: Details of Provided and Outstanding Uniform Stock
     total_outstanding: Total Outstanding 
+    summary: "Summary of Provided & Outstanding Uniforms"
+    detailed: "Details of Provided & Outstanding Uniforms"
   home: 
     welcome: Welcome to Uniformity
     uniformity: Uniform Management System  
@@ -152,6 +159,8 @@ en:
     max_quantity: Max Quantity
     min_quantity: Min Quantity
     unit_type_id: Unit Type
+    outstanding_detail: Outstanding Uniform Stock
+    request_detail: Uniform Stock Request
   uniform_stock_receiveds:
     title: Uniform Stock Receiveds
     new: New Uniform Stock Received
