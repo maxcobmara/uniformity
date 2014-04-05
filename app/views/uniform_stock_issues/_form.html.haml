@@ -14,7 +14,7 @@
       .controls= f.collection_select :issued_by, Staff.all, :id, :staff_details, :include_blank => (t 'helpers.prompt.select_staff'), :html_options => {:class => 'selectpicker'}
     .control-group
       = f.label :issued_on, :class => 'control-label'
-      .controls= f.text_field :issued_on, :class => 'text_field', :type => :text, 'data-behaviour' => 'datepicker_before'
+      .controls= f.text_field :issued_on, :class => 'text_field input-medium', :type => :text, 'data-behaviour' => 'datepicker_before'
     .control-group
       = f.label :quantity, :class => 'control-label'
       .controls= f.text_field :quantity, :class => 'text_field input-small'

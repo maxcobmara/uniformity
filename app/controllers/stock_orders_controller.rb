@@ -5,6 +5,8 @@ class StockOrdersController < ApplicationController
   # GET /stock_orders.json
   def index
     @stock_orders = StockOrder.all
+	@search = StockOrder.search(params[:q])
+    @stock_orders = @search.result
   end
 
   # GET /stock_orders/1

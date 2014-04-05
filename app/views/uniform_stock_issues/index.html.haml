@@ -16,8 +16,8 @@
   .span9offset1
     = search_form_for @search, class: "form-inline" do |f|
       .field
-        = f.label :issued_by_cont, "Issued by Contains"
-        = f.text_field :issued_by_cont, class: "input-medium search-query"
+        = f.label :uniform_stock_uniform_item_name_cont, "Uniform Stock (name) contains"
+        = f.text_field :uniform_stock_uniform_item_name_cont, class: "input-medium search-query"
         = f.label :document_id_cont, "Document Contains"
         = f.text_field :document_id_cont, class: "input-medium search-query"
         = f.submit "Search", class: "btn btn-warning"
@@ -35,14 +35,15 @@
       %th 
 
   %tbody
-    - @uniform_stock_issues.each do |uniform_stock_issue|
-      %tr
-        %td= uniform_stock_issue.uniform_stock.uniform_item.uniform_details
-        %td= check_kin {uniform_stock_issue.receiver.staff_details.capitalize}
-        %td= check_kin {uniform_stock_issue.staff_details.capitalize}
-        %td= check_kin {l(uniform_stock_issue.issued_on)}
-        %td= uniform_stock_issue.quantity
-        %td= uniform_stock_issue.document_id
-        = render :partial => 'action_menu', :locals => { :uniform_stock_issue => uniform_stock_issue }
+    - @uniform_stock_issues.group_by(&:stock_id).each do |stock_id,uniform_stock_issues|
+      - uniform_stock_issues.each do |uniform_stock_issue|
+        %tr
+          %td= uniform_stock_issue.uniform_stock.uniform_item.uniform_details
+          %td= check_kin {uniform_stock_issue.receiver.staff_details}
+          %td= check_kin {uniform_stock_issue.issuer.staff_details}
+          %td= check_kin {(uniform_stock_issue.issued_on.strftime("%d-%b-%Y"))}
+          %td= uniform_stock_issue.quantity
+          %td= uniform_stock_issue.document_id
+          = render :partial => 'action_menu', :locals => { :uniform_stock_issue => uniform_stock_issue }
       
       

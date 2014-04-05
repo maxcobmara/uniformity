@@ -67,8 +67,26 @@ class UniformStocksController < ApplicationController
     @uniform_stocks = UniformStock.all
   end
   
+  def request_detail
+	@uniform_stocks = UniformStock.all
+    @search = UniformStock.search(params[:q])
+    @uniform_stocks = @search.result
+  end
+  
   def outstanding_report
     @uniform_stocks = UniformStock.all
+  end
+  
+  def outstanding2_report
+    @uniform_stocks = UniformStock.all
+	@search = UniformStock.search(params[:q])
+    @uniform_stocks = @search.result
+  end
+  
+  def outstanding_detail
+	@uniform_stocks = UniformStock.all
+    @search = UniformStock.search(params[:q])
+    @uniform_stocks = @search.result
   end
 
   private

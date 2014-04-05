@@ -19,23 +19,31 @@
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_stocks.stock_list'), uniform_stocks_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_stocks.receive'), uniform_stock_receiveds_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_stocks.issue'), uniform_stock_issues_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_stocks.request'), '/uniform_stocks/request_report'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_stocks.request'), '/uniform_stocks/request_detail'
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_stocks.order'), stock_orders_path
-          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_stocks.outstanding'), '/uniform_stocks/outstanding_report'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_stocks.outstanding'), '/uniform_stocks/outstanding_detail'
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_stocks.suppliers'), companies_path
           
-      %li.icon.icon-left
-        = link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.people'), '#'
-        .mp-level
-          %h2.icon= t 'menu.people'
-          %a.mp-back{:href => "#"}= t 'helpers.links.back'
-          %ul
-            %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'units.title'), units_path
-            %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'expertises.title2'), expertises_path
-            %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'positions.title'), positions_path			
-            %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'staffs.title'), staffs_path
-            %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.match_stock'), '#'
-            %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.provision'), kit_staffs_path
-            %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'unit_types.title'), unit_types_path
-          
+    %li.icon.icon-left
+      = link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.people'), '#'
+      .mp-level
+        %h2.icon= t 'menu.people'
+        %a.mp-back{:href => "#"}= t 'helpers.links.back'
+        %ul
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'units.title'), units_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'expertises.title2'), expertises_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'positions.title'), positions_path			
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'staffs.title'), staffs_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.match_stock'), '#'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.provision'), kit_staffs_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'unit_types.title'), unit_types_path
+
+    %li.icon.icon-left
+      = link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.report'), '#'
+      .mp-level
+        %h2.icon= t 'menu.report'
+        %a.mp-back{:href => "#"}= t 'helpers.links.back'
+        %ul
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'report.summary'), '/uniform_stocks/outstanding_report'
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'report.detailed'), '/uniform_stocks/outstanding2_report'         
         

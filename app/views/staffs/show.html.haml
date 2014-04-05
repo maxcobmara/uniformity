@@ -47,6 +47,9 @@
           %tr
             %th
             %th{:align => "left"}= t 'kit_staffs.kit'
+            %th{:align => "left"} Provision
+            %th{:align => "left"} Provided
+            %th{:align => "left"} Outstanding
         %tbody 
           - main_ancestor=[]
           - @uniform_stock_ids = UniformStockIssue.where('issued_to=?', @staff.id).map(&:stock_id)
@@ -56,17 +59,26 @@
             - for item in kit_staff.kit.kit_uniforms
               %tr
                 %td=item.uniform_item.uniform_details
-                %td 
+                %td
                   - if count == 0
                     =kit_staff.kit.kit_details
                     - count+=1
-                %td= item.kit_qty(@staff.gender,@staff.rank.rate,@staff.rank.shortname)
-                %td
-                  - if @uniform_item_ids.include?(item.uniform_id)
-                    /to do later - item assigned (stock_issueds)
+                %td{:align => "center"} 
+                  - provision = item.kit_qty(@staff.gender,@staff.rank.rate,@staff.rank.shortname)
+                  = provision
+                %td{:align => "center"} 
+                  - stock = UniformStock.where('uniform_id=?',item.uniform_id)
+                  - if stock.count>0
+                    - stockid = stock[0].id
+                    - provided = UniformStockIssue.where('issued_to=? AND stock_id=?', @staff.id, stockid).sum(:quantity)
                   - else
-                    /Nil
-                  
+                    - provided=0
+                  - unless provision.nil? || provision.blank?
+                    = provided
+                %td{:align => "center"}
+                  - unless provision.nil? || provision.blank?
+                    = provision - provided
+                   
             - for ancestor in kit_staff.kit.ancestor_ids
               - if main_ancestor.include?(ancestor) == false
                 - main_ancestor << ancestor 
@@ -79,7 +91,21 @@
                         - if count2 == 0
                           = Kit.find(ancestor).kit_details
                           - count2+=1
-                      %td=kit_item.kit_qty(@staff.gender,@staff.rank.rate,@staff.rank.shortname)
+                      %td{:align => "center"}
+                        - provision = kit_item.kit_qty(@staff.gender,@staff.rank.rate,@staff.rank.shortname)
+                        = provision
+                      %td{:align => "center"} 
+                        - stock = UniformStock.where('uniform_id=?',kit_item.uniform_id)
+                        - if stock.count>0
+                          - stockid = stock[0].id
+                          - provided = UniformStockIssue.where('issued_to=? AND stock_id=?', @staff.id, stockid).sum(:quantity)
+                        - else
+                          - provided=0
+                        - unless provision.nil? || provision.blank?
+                          = provided
+                      %td{:align => "center"}
+                        - unless provision.nil? || provision.blank?
+                          = provision - provided
             - @staff.kit_staffs.pluck(:kit_id).include?(kit_staff.kit_id)
             - kit_staff.kit.ancestor_ids.count
             - kit_staff.kit.ancestor_ids

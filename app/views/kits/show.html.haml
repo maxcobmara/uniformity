@@ -74,8 +74,27 @@
           - for kit_uniform in @kit.parent.kit_uniforms
             %tr
               %td= kit_uniform.uniform_item.name
-              %td{:align => "center"}= kit_uniform.quantity
-              %td{:align => "center"}= kit_uniform.senior_rate
+              - if @group == 1
+                %td{:align => "center"}= kit_uniform.quantity
+                %td{:align => "center"}= kit_uniform.senior_rate
+              - elsif @group == 2
+                %td{:align => "center"}= kit_uniform.pk
+                %td{:align => "center"}= kit_uniform.pkk
+                %td{:align => "center"}= kit_uniform.graduan	
+              - elsif @group == 3
+                %td{:align => "center"}= kit_uniform.peg_l
+                %td{:align => "center"}= kit_uniform.peg_p
+              - elsif @group == 4
+                %td{:align => "center"}= kit_uniform.peg
+                %td{:align => "center"}= kit_uniform.quantity
+                %td{:align => "center"}= kit_uniform.senior_rate
+              - elsif @group == 5
+                %td{:align => "center"}= kit_uniform.peg_l
+                %td{:align => "center"}= kit_uniform.kadet_l
+                %td{:align => "center"}= kit_uniform.peg_p
+                %td{:align => "center"}= kit_uniform.kadet_p
+              - else
+                %td{:align => "center"}= kit_uniform.quantity2
               %td= kit_uniform.notes
               %td{:align => "center"} *
 

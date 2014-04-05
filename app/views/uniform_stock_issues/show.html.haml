@@ -14,7 +14,7 @@
   %dd= check_kin {@uniform_stock_issue.issuer.staff_details}
 %dl.dl-horizontal
   %dt= t 'uniform_stock_issues.issued_on', :default =>model_class.human_attribute_name(:issued_on) + ":"
-  %dd= l(@uniform_stock_issue.issued_on)
+  %dd= check_kin {@uniform_stock_issue.issued_on.strftime("%d-%b-%Y")}
 %dl.dl-horizontal
   %dt= t 'uniform_stock_issues.quantity', :default =>model_class.human_attribute_name(:quantity) + ":"
   %dd=@uniform_stock_issue.quantity

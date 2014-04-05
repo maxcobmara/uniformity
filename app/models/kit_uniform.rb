@@ -99,6 +99,11 @@ class KitUniform < ActiveRecord::Base
         qty = peg_p 
       end
     end
+	#--for newly generated MASTER KIT---start--NOT SPECIFIC FOR PEG OR LLP
+	if qty.to_i<1
+		qty= quantity2
+	end
+	#--for newly generated MASTER KIT---end
     return qty
   end
 

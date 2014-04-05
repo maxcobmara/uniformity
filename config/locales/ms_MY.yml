@@ -86,15 +86,22 @@ ms_MY:
     staff_sizes: Ukuran Staf
     match_stock: Padanan Stok
     provision: Hak
+    report: Laporan
   report:
     request_report: Laporan Permohonan Stok Uniform
+    request_detail: Permohonan Stok Uniform
+    outstanding_detail: Stok Uniform Tertunggak
     total_required: Jumlah Diperlukan
     total_stock: Jumlah Stok
     stock_balance: BakI Stok
-    total_assigned: Jumlah Diperuntukkan
+    #total_assigned: Jumlah Diperuntukkan
+    total_provided: Jumlah Diperuntukkan
     total_requested: Jumlah Permohonan
-    outstanding_report: Laporan Stok Uniform Tertunggak (Outstanding)  
+    outstanding_report: Ringkasan Stok Uniform Diperuntukkan dan Tertunggak
+    outstanding2_report: Perincian Stok Uniform Diperuntukkan dan Tertunggak
     total_outstanding: Jumlah Yang Masih Tertunggak
+    summary: "Ringkasan Uniform Diperuntukan & Tertunggak"
+    detailed: "Perincian Uniform Diperuntukkan & Tertunggak"
   home:
     welcome: Selamat Datang ke Uniformity
     uniformity: Sistem Pengurusan Uniform
@@ -146,6 +153,8 @@ ms_MY:
     max_quantity: Kuantiti Maksima
     min_quantity: Kuantiti Minima
     unit_type_id: Unit Pengukuran
+    outstanding_detail: Stok Uniform Tertunggak
+    request_detail: Permohonan Stok Uniform
   uniform_stock_receiveds:
     title: Penerimaan Stok Uniform
     new: Penerimaan Stok Uniform Baru
