@@ -26,12 +26,17 @@ en:
     models:
       uniform_stock: Uniform Stock
       uniform_stock_received: Uniform Stock Received
+      uniform_stock_issue: Uniform Stock Issued
       staff: Staff
     attributes:
       uniform_stock:
         stock_id: Uniform Stock
       uniform_stock_received:
         stock_id: Uniform Stock
+        received_on: Received On
+      uniform_stock_issue:
+        stock_id: Uniform Stock
+        issued_on: Issued On
       staff:
         position_id: Position
         expertise_id: Expertise / Branch
@@ -171,6 +176,7 @@ en:
     received_on: Received On
     received_by: Received By
     contract_id: Contract
+    rv_no: "Received No"
   uniform_stock_issues:
     title: Uniform Stock Issues
     new: New Uniform Stock Issue
@@ -182,6 +188,7 @@ en:
     issued_by: Issued by
     issued_on: Issued On
     document_id: Document
+    iv_no: "Issued No"
   units:
     title: Units
     title2: Unit
@@ -307,6 +314,7 @@ en:
         received_on: Received On
         received_by: Received By
         contract_id: Contract
+        rv_no: "Received No"
       uniform_stock_issue:
         stock_id: Uniform Stock
         quantity: Quantity
@@ -315,6 +323,7 @@ en:
         issued_by: Issued By
         issued_on: Issued On
         document_id: Document
+        iv_no: "Issued No"
       uniform_stock:
         uniform_id: Uniform Stok
         size: Size

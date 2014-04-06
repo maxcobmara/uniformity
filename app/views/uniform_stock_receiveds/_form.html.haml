@@ -25,9 +25,10 @@
     .control-group
       = f.label :contract_id, :class => 'control-label'
       .controls= f.collection_select :contract_id, Contract.all, :id, :contract_no, :include_blank => t('helpers.prompt.select_contract'), :html_options => {:class => 'selectpicker'}
-
+ 	  
     .form-actions
       = f.submit  t('.submit', :default => t("helpers.links.submit")), :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         uniform_stock_receiveds_path, :class => 'btn'     
 
+= @uniform_stock_received.rv_no 

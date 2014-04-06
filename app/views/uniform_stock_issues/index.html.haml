@@ -26,6 +26,7 @@
 %table.table.table-condensed.table-hover
   %thead
     %tr
+      %th= t 'uniform_stock_issues.iv_no'
       %th= t 'uniform_stock_issues.stock_id'
       %th= t 'uniform_stock_issues.issued_to'
       %th= t 'uniform_stock_issues.issued_by'
@@ -38,6 +39,7 @@
     - @uniform_stock_issues.group_by(&:stock_id).each do |stock_id,uniform_stock_issues|
       - uniform_stock_issues.each do |uniform_stock_issue|
         %tr
+          %td= uniform_stock_issue.iv_no
           %td= uniform_stock_issue.uniform_stock.uniform_item.uniform_details
           %td= check_kin {uniform_stock_issue.receiver.staff_details}
           %td= check_kin {uniform_stock_issue.issuer.staff_details}
