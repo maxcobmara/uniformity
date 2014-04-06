@@ -254,6 +254,8 @@ en:
     staff_id: Staff
     staff_group_id: Staff Group
     new: New Provision
+    provided: Provided
+    outstanding: Outstanding
   positions:
     title: Positions
     name: Name

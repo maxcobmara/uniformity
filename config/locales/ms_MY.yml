@@ -246,7 +246,9 @@ ms_MY:
     kit: Kit
     kit_id: Kit
     staff_id: Anggota
-    staff_group_id: Kumpulan Anggota  	
+    staff_group_id: Kumpulan Anggota
+    provided: Peruntukan
+    outstanding: Tertunggak
   positions:
     title: Jawatan
     name: Nama
