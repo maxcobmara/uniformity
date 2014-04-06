@@ -43,7 +43,7 @@
             %td=required = (item.kit_qty(staff.gender,staff.rank.rate,staff.rank.shortname)).to_i  #refer KitUniform model
             - provided_exist = UniformStockIssue.where('stock_id=? AND issued_to=?', UniformStock.where('uniform_id=?',uni.uniform_id)[0].id, staff.id)
             - unless provided_exist.nil? || provided_exist.blank?
-              - provided=provided_exist[0].quantity
+              - provided=provided_exist.sum(:quantity)
             - else
               - provided=0
             %td=provided

@@ -23,11 +23,12 @@
 %table.table.table-condensed.table-hover
   %thead
     %tr
+      %th= t 'uniform_stock_receiveds.rv_no'
       %th= t 'uniform_stock_receiveds.stock_id'
-      %th= sort_link @search, :quantity, t('uniform_stock_receiveds.quantity') 
-      %th= sort_link @search, :quantity, t('uniform_stock_receiveds.size')
-      %th= sort_link @search, :received_on, t('uniform_stock_receiveds.received_on')
       %th= t 'uniform_stock_receiveds.received_by'
+      %th= sort_link @search, :received_on, t('uniform_stock_receiveds.received_on')
+      %th= sort_link @search, :quantity, t('uniform_stock_receiveds.quantity') 
+      %th= sort_link @search, :size, t('uniform_stock_receiveds.size')
       %th= t 'uniform_stock_receiveds.contract_id'
       %th 
 
@@ -35,11 +36,12 @@
     - @uniform_stock_receiveds.group_by(&:stock_id).each do |stock_id,uniform_stock_receiveds|
       - uniform_stock_receiveds.each do |uniform_stock_received|
         %tr
+          %td= uniform_stock_received.rv_no
           %td= uniform_stock_received.uniform_stock.uniform_item.uniform_details
+          %td= check_kin {uniform_stock_received.receiver.name}
+          %td= check_kin {uniform_stock_received.received_on.strftime("%d-%b-%Y")}
           %td= uniform_stock_received.quantity
           %td= uniform_stock_received.size
-          %td= check_kin {l(uniform_stock_received.received_on)}
-          %td= check_kin {uniform_stock_received.receiver.name}
           %td= check_kin {uniform_stock_received.contract.name}
           = render :partial => 'action_menu', :locals => { :uniform_stock_received => uniform_stock_received }
       

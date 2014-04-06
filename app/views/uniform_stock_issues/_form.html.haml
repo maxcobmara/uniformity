@@ -1,3 +1,6 @@
+/- kit_id = KitUniform.where('uniform_id=?',uni.uniform_id)[0].kit_id
+/- staffs_rec = UniformStock.staffs_for_kits(kit_id)
+	  
 .container{:style => "padding-left: 60px;"}
   = form_for @uniform_stock_issue, :html => { :class => 'form-horizontal' }  do |f|
     = render 'shared/error_messages', object: f.object
