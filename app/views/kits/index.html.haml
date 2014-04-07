@@ -9,7 +9,7 @@
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("plus-circle", text: (t 'actions.new_master_kit'))), new_kit_path
     %ul.nav.pull-right
-      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
+      //%li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to content_tag(:i, " Print", class: 'fa fa-print'), '#', :onclick => "window.print();return false;"
 
 .row.searchit{style: "display:none;"}
