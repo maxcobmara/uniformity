@@ -16,8 +16,10 @@
   .span9offset1
     = search_form_for @search, class: "form-inline" do |f|
       .field
-        = f.label :staff_group_id_cont, "Staff Group Contains"
-        = f.text_field :staff_group_id_cont, class: "input-medium search-query"
+        = f.label :kit_name_cont, "Kits Contains"
+        = f.text_field :kit_name_cont, class: "input-medium search-query"
+        = f.label :staff_id_no_cont, "Staffs ID Contains"
+        = f.text_field :staff_id_no_cont, class: "input-medium search-query"
         = f.submit "Search", class: "btn btn-warning"
       
       
