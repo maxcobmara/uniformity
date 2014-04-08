@@ -57,7 +57,7 @@ class StaffsController < ApplicationController
   def destroy
     @staff.destroy
     respond_to do |format|
-      format.html { redirect_to staffs_url }
+      format.html { redirect_to staffs_url, notice: (t 'staffs.title')+(t 'actions.removed') }
       format.json { head :no_content }
     end
   end

@@ -1,7 +1,14 @@
 .container{:style => "padding-left: 60px;"}
   = form_for @uniform_stock_received, :html => { :class => 'form-horizontal' }  do |f|
     = render 'shared/error_messages', object: f.object
-          
+	
+    .control-group 
+      - unless @uniform_stock_received.id.nil?
+        = f.label :rv_no, :class => 'control-label' 
+      .controls
+        - unless @uniform_stock_received.id.nil?
+          = @uniform_stock_received.rv_no 	
+		 
     .control-group
       = f.label :stock_id, :class => 'control-label'
       .controls= f.collection_select :stock_id, UniformStock.all, :id, :uniform_stock_details, :include_blank => (t 'helpers.prompt.select_stock'), :html_options => {:class => 'selectpicker'}
@@ -31,4 +38,4 @@
       = link_to t('.cancel', :default => t("helpers.links.cancel")), |
         uniform_stock_receiveds_path, :class => 'btn'     
 
-= @uniform_stock_received.rv_no 
+

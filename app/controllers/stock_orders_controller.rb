@@ -58,7 +58,7 @@ class StockOrdersController < ApplicationController
   def destroy
     @stock_order.destroy
     respond_to do |format|
-      format.html { redirect_to stock_orders_url }
+      format.html { redirect_to stock_orders_url, notice: (t 'stock_orders.title')+(t 'actions.removed') }
       format.json { head :no_content }
     end
   end

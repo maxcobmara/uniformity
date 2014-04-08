@@ -29,7 +29,7 @@ class ExpertisesController < ApplicationController
 
     respond_to do |format|
       if @expertise.save
-        format.html { redirect_to @expertise, notice: 'Expertise was successfully created.' }
+        format.html { redirect_to @expertise, notice: (t 'expertises.title')+(t 'actions.created')}
         format.json { render action: 'show', status: :created, location: @expertise }
         format.js
       else
@@ -44,7 +44,7 @@ class ExpertisesController < ApplicationController
   def update
     respond_to do |format|
       if @expertise.update(expertise_params)
-        format.html { redirect_to @expertise, notice: 'Expertise was successfully updated.' }
+        format.html { redirect_to @expertise, notice: (t 'expertises.title')+(t 'actions.updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -58,7 +58,7 @@ class ExpertisesController < ApplicationController
   def destroy
     @expertise.destroy
     respond_to do |format|
-      format.html { redirect_to expertises_url }
+      format.html { redirect_to expertises_url, notice: (t 'expertises.title')+(t 'actions.removed') }
       format.json { head :no_content }
       format.js
     end
