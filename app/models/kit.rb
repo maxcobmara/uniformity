@@ -5,7 +5,7 @@ class Kit < ActiveRecord::Base
   
   has_ancestry    :cache_depth => true
   
-  has_many        :kit_uniforms, :dependent => :destroy #kit cannot be removed if kit_uniform exist
+  has_many        :kit_uniforms, :dependent => :destroy 	#kit cannot be removed if kit_uniform exist
   accepts_nested_attributes_for :kit_uniforms, allow_destroy: true, reject_if: proc { |kit_uniforms| kit_uniforms[:uniform_id].blank? }
  
   has_many        :kit_staffs #kit cannot be removed if kit_staffs exist

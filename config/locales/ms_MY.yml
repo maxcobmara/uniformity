@@ -32,6 +32,8 @@ ms_MY:
       uniform_stock_issue:
         stock_id: Stok Uniform
         issued_on: Tarikh Dikeluarkan
+        issued_to: Penerima
+        quantity: Kuantiti
       staff:
         position_id: Jawatan
         expertise_id: Kepakaran / Cawangan
