@@ -4,11 +4,11 @@
           
     .control-group
       = f.label :kit_id, :class => 'control-label'
-      .controls= f.collection_select :kit_id, Kit.find(:all, :order => 'id ASC'), :id, :kit_details, :include_blank => 'Select Kit', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :kit_id, Kit.find(:all, :order => 'id ASC'), :id, :kit_details, :include_blank => (t 'helpers.prompt.select_kit'), :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :staff_id, :class => 'control-label'
-      .controls= f.collection_select :staff_id, Staff.find(:all, :order => 'id_no ASC'), :id, :staff_details, :include_blank => 'Select Kit', :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :staff_id, Staff.find(:all, :order => 'id_no ASC'), :id, :staff_details, :include_blank => (t 'helpers.prompt.select_staff'), :html_options => {:class => 'selectpicker'}
     .control-group
       /= f.label :staff_group_id, :class => 'control-label'
       /.controls= f.number_field :staff_group_id, :class => 'text_field input-xxlarge'

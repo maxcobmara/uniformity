@@ -30,7 +30,7 @@ class KitStaffsController < ApplicationController
 
     respond_to do |format|
       if @kit_staff.save
-        format.html { redirect_to @kit_staff, notice: 'Kit staff was successfully created.' }
+        format.html { redirect_to @kit_staff, notice: (t 'kit_staffs.title')+(t 'actions.created') }
         format.json { render action: 'show', status: :created, location: @kit_staff }
       else
         format.html { render action: 'new' }
@@ -44,7 +44,7 @@ class KitStaffsController < ApplicationController
   def update
     respond_to do |format|
       if @kit_staff.update(kit_staff_params)
-        format.html { redirect_to @kit_staff, notice: 'Kit staff was successfully updated.' }
+        format.html { redirect_to @kit_staff, notice: (t 'kit_staffs.title')+(t 'actions.updated')}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -58,7 +58,7 @@ class KitStaffsController < ApplicationController
   def destroy
     @kit_staff.destroy
     respond_to do |format|
-      format.html { redirect_to kit_staffs_url }
+      format.html { redirect_to kit_staffs_url , notice: (t 'kit_staffs.title')+(t 'actions.removed') }
       format.json { head :no_content }
     end
   end

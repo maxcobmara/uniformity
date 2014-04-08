@@ -58,7 +58,7 @@ class UniformStockReceivedsController < ApplicationController
   def destroy
     @uniform_stock_received.destroy
     respond_to do |format|
-      format.html { redirect_to uniform_stock_receiveds_url }
+      format.html { redirect_to uniform_stock_receiveds_url, notice: (t 'uniform_stock_receiveds.title')+(t 'actions.removed')  }
       format.json { head :no_content }
     end
   end

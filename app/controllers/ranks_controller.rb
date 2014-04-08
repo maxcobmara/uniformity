@@ -29,7 +29,7 @@ class RanksController < ApplicationController
 
     respond_to do |format|
       if @rank.save
-        format.html { redirect_to @rank, notice: 'Rank was successfully created.' }
+        format.html { redirect_to @rank, notice: (t 'ranks.title')+(t 'actions.created') }
 		format.js
         format.json { render action: 'index', status: :created, location: @rank }
       else
@@ -46,7 +46,7 @@ class RanksController < ApplicationController
 	@rank = Rank.find(params[:id])
     respond_to do |format|
       if @rank.update(rank_params)
-        format.html { redirect_to @rank, notice: 'Rank was successfully updated.' }
+        format.html { redirect_to @rank, notice: (t 'ranks.title')+(t 'actions.updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -61,7 +61,7 @@ class RanksController < ApplicationController
 	@rank = Rank.find(params[:id])
     @rank.destroy
     respond_to do |format|
-      format.html { redirect_to ranks_url }
+      format.html { redirect_to ranks_url, notice: (t 'ranks.title')+(t 'actions.removed')}
 	  format.js
       format.json { head :no_content }
     end

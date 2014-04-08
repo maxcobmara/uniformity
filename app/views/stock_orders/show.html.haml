@@ -11,7 +11,7 @@
   %dd= @stock_order.quantity
 %dl.dl-horizontal
   %dt= t 'stock_orders.unit_type_id', :default => model_class.human_attribute_name(:unit_type_id) + ":"
-  %dd= @stock_order.unit_type.description
+  %dd= @stock_order.unit_type.try(:description)
 %dl.dl-horizontal
   %dt= t 'stock_orders.company_id', :default => model_class.human_attribute_name(:company_id) + ":"
   %dd= @stock_order.supplier.name

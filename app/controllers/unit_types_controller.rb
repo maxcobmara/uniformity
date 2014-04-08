@@ -62,7 +62,7 @@ class UnitTypesController < ApplicationController
   def destroy
     @unit_type.destroy
     respond_to do |format|
-      format.html { redirect_to unit_types_url }
+      format.html { redirect_to unit_types_url, notice: (t 'unit_types.title')+(t 'actions.removed') }
       format.json { head :no_content }
       format.js
     end

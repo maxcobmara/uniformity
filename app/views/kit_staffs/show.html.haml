@@ -4,16 +4,15 @@
   %h1= t 'kit_staffs.title', :default => model_class.model_name.human
 %p#notice= notice
 %dl.dl-horizontal
-  %dt= t 'staffs.kit_id', :default => model_class.human_attribute_name(:kit_id) + ":"
+  %dt= t 'kit_staffs.kit_id', :default => model_class.human_attribute_name(:kit_id) + ":"
   %dd= check_kin {@kit_staff.kit.kit_details}
 %dl.dl-horizontal
-  %dt= t 'staffs.staff_id', :default => model_class.human_attribute_name(:staff_id) + ":"
-  %dd=  check_kin {@kit_staff.staff.staff_details}
+  %dt= t 'kit_staffs.staff_id', :default => model_class.human_attribute_name(:staff_id) + ":"
+  %dd= check_kin {@kit_staff.staff.staff_details}
 /%dl.dl-horizontal
 /  %dt= t 'staffs.staff_group_id', :default => model_class.human_attribute_name(:staff_group_id) + ":"
 /  %dd=  @kit_staff.staff_group_id
 
-//
 .div{:style => "padding: 15px 50px 10px 50px; "}
   %table{:width => "75%"}
     %thead
@@ -32,10 +31,6 @@
               =@kit_staff.kit.kit_details
               - count+=1
           %td= item.kit_qty(@kit_staff.staff.gender,@kit_staff.staff.rank.rate,@kit_staff.staff.rank.shortname)
-
-        
-//
-
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), kit_staffs_path, :class => 'btn'
