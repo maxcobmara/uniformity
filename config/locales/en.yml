@@ -37,6 +37,8 @@ en:
       uniform_stock_issue:
         stock_id: Uniform Stock
         issued_on: Issued On
+        issued_to: Issued To
+        quantity: Quantity
       staff:
         position_id: Position
         expertise_id: Expertise / Branch
