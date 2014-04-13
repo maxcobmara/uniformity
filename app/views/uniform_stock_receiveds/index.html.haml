@@ -37,7 +37,7 @@
       - uniform_stock_receiveds.each do |uniform_stock_received|
         %tr
           %td= uniform_stock_received.rv_no
-          %td= uniform_stock_received.uniform_stock.uniform_item.uniform_details
+          %td= uniform_stock_received.uniform_stock.try(:uniform_item).try(:uniform_details)
           %td= check_kin {uniform_stock_received.receiver.name}
           %td= check_kin {uniform_stock_received.received_on.strftime("%d-%b-%Y")}
           %td= uniform_stock_received.quantity

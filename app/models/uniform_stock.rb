@@ -1,6 +1,7 @@
 class UniformStock < ActiveRecord::Base
-  has_many :uniform_stock_receiveds#, dependent: :destroy if no stock received --> destry uniformstock failed
-  has_many :uniform_stock_issues#, dependent: :destroy - same as above
+  before_destroy  :check_uni_stock_receiveds, :check_uni_stock_issues
+  has_many :uniform_stock_receiveds	
+  has_many :uniform_stock_issues	
   has_many :stock_orders
   belongs_to :uniform_item, :foreign_key => 'uniform_id'
   belongs_to :unit_type, :foreign_key => 'unit_type_id'
@@ -46,4 +47,19 @@ class UniformStock < ActiveRecord::Base
      UniformStockIssue.where('stock_id IN(?)', UniformStock.where('uniform_id=?',uni_id).map(&:id)).sum(:quantity)
   end
   
+  private 
+  
+    def check_uni_stock_receiveds
+	  stock_ids = UniformStockReceived.all.map(&:stock_id) 
+      if stock_ids.include?(id)
+        return false
+      end
+    end
+	
+	def check_uni_stock_issues
+	  stock_ids = UniformStockIssue.all.map(&:stock_id)  
+      if stock_ids.include?(id)
+        return false
+      end
+    end
 end
