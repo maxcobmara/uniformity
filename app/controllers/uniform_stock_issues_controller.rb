@@ -30,7 +30,7 @@ class UniformStockIssuesController < ApplicationController
 
     respond_to do |format|
       if @uniform_stock_issue.save
-        format.html { redirect_to @uniform_stock_issue, notice: (t 'uniform_issues.title')+(t 'actions.created') }
+        format.html { redirect_to @uniform_stock_issue, notice: (t 'uniform_stock_issues.title')+(t 'actions.created') }
         format.json { render action: 'show', status: :created, location: @uniform_stock_issue }
       else
         format.html { render action: 'new' }

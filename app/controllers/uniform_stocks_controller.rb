@@ -58,7 +58,12 @@ class UniformStocksController < ApplicationController
   def destroy
     @uniform_stock.destroy
     respond_to do |format|
-      format.html { redirect_to uniform_stocks_url, notice: (t 'uniform_stocks.title')+(t 'actions.removed')  }
+	  if @uniform_stock.destroy
+        flash[:notice] = (t 'uniform_stocks.title')+(t 'actions.removed') 
+      else
+        flash[:error] = (t 'actions.removed_forbidden_uniform_stock')
+      end 
+      format.html { redirect_to uniform_stocks_url }
       format.json { head :no_content }
     end
   end

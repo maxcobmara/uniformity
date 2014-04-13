@@ -40,7 +40,7 @@
       - uniform_stock_issues.each do |uniform_stock_issue|
         %tr
           %td= uniform_stock_issue.iv_no
-          %td= uniform_stock_issue.uniform_stock.uniform_item.try(:uniform_details)
+          %td= uniform_stock_issue.uniform_stock.try(:uniform_item).try(:uniform_details)
           %td= uniform_stock_issue.receiver.try(:staff_details)
           %td= uniform_stock_issue.issuer.try(:staff_details)
           %td= check_kin {(uniform_stock_issue.issued_on.strftime("%d-%b-%Y"))}
