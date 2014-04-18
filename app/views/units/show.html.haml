@@ -11,7 +11,7 @@
   %dd= @unit.name
 %dl.dl-horizontal
   %dt=  t 'units.parent_id', :default => model_class.human_attribute_name(:parent_id) + ":"
-  %dd= @unit.parent.name
+  %dd= @unit.parent.try(:name)
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), units_path, :class => 'btn'

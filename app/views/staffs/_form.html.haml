@@ -16,11 +16,11 @@
     
     .control-group
       = f.label :expertise_id, :class => 'control-label'
-      .controls= f.collection_select :expertise_id, Expertise.all, :id, :expertise_details, :include_blank => (t 'helpers.prompt.select_expertise'), :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :expertise_id, Expertise.all.order(:short_name), :id, :expertise_details, :include_blank => (t 'helpers.prompt.select_expertise'), :html_options => {:class => 'selectpicker'}
 
     .control-group
       = f.label :position_id, :class => 'control-label'
-      .controls= f.collection_select :position_id, Position.all, :id, :name, :include_blank => (t 'helpers.prompt.select_position'), :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :position_id, Position.all.order(:name), :id, :name, :include_blank => (t 'helpers.prompt.select_position'), :html_options => {:class => 'selectpicker'}
 	  
     .control-group
       = f.label :unit_id, :class => 'control-label'
