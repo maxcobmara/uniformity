@@ -67,7 +67,8 @@ en:
     created: " was successfully created."
     updated: " was successfully updated."
     removed: " was successfully removed."
-    removed_forbidden: "Removal of Kit was forbidden, due to existing Uniform Item/Kit List of selected Kit."
+    removed_forbidden: "Removal of Kit is forbidden, due to existing Uniform Item/Kit List of selected Kit."
+    removed_forbidden_unit: "Removal of Unit is forbidden, due to existing Subunits of selected Unit."
     remove_master: " (Master Kit) was successfully removed, due to deletion of last 'uniform item' of Master Kit"
     import_excel: Import Data From Excel
     removed_forbidden_uniform_stock: "Removal of Uniform Stock was forbidden, due to existing Uniform Stock Received/Uniform Stock Issue of selected Uniform Stock."

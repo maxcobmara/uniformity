@@ -63,7 +63,8 @@ ms_MY:
     updated: " telah berjaya dikemaskini."
     removed: " telah berjaya dihapuskan."
     removed_forbidden: "Rekod tidak boleh dihapuskan kerana samada Kit mengandungi Item Uniform ATAU Kit terdapat di dalam senarai Kit Anggota."
-    remove_master: " (Kit Utama/Induk) telah berjaya dihapuskan, setelah rekod terakhir 'item uniform' dihapuskan"
+    removed_forbidden_unit: "Rekod tidak boleh dihapuskan kerana terdapat Subunit bagi Unit yang hendak dihapuskan."
+    remove_master: " (Kit Utama/Induk) telah berjaya dihapuskan, setelah rekod terakhir 'item uniform' dihapuskan."
     import_excel: Import Data Dari Excel
     removed_forbidden_uniform_stock: "Rekod tidak boleh dihapuskan kerana samada Stok Uniform terdapat di dalam Penerimaan Stok Uniform ATAU Pengeluaran Stok Uniform."
   errors:

@@ -56,7 +56,11 @@ class UnitsController < ApplicationController
   # DELETE /units/1
   # DELETE /units/1.json
   def destroy
-    @unit.destroy
+    if @unit.destroy
+      flash[:notice] = (t 'units.title')+(t 'actions.removed') 
+    else
+      flash[:error] = (t 'actions.removed_forbidden_unit')
+    end  
     respond_to do |format|
       format.html { redirect_to units_url }
       format.json { head :no_content }
