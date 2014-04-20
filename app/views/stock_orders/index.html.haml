@@ -34,10 +34,10 @@
   %tbody
     - @stock_orders.each do |stock_order|
       %tr
-        %td= stock_order.uniform_stock.uniform_stock_details
+        %td= stock_order.uniform_stock.try(:uniform_stock_details)
         %td= stock_order.quantity
-        %td= stock_order.unit_type.description
-        %td= stock_order.supplier.name
+        %td= stock_order.unit_type.try(:description)
+        %td= stock_order.supplier.try(:name)
         %td= stock_order.remark
         = render :partial => 'action_menu', :locals => { :stock_order => stock_order }
       

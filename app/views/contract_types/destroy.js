@@ -1,0 +1,1 @@
+$('#tr_<%= @contract_type.id =%>').remove();

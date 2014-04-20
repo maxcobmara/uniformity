@@ -1,0 +1,5 @@
+- provide(:title, 'Edit contract')
+- model_class = Contract
+.page-header
+  %h1= t 'contracts.edit', :default => [:'helpers.titles.new', 'Edit %{model}'], :model => model_class.model_name.human
+= render :partial => 'form'

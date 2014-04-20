@@ -1,4 +1,8 @@
 Uniformity::Application.routes.draw do
+  resources :contract_types
+  
+  resources :contracts
+  
   resources :stock_orders
 
   resources :expertises
