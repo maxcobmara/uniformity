@@ -1,0 +1,62 @@
+- provide(:title, 'Contract')
+- model_class = Contract
+.page-header
+  %h1= t 'contracts.title', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_contract_path
+    %ul.nav.pull-right
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
+      %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.label :contract_no_cont, "Contract no Contains :"
+        = f.text_field :contract_no_cont, class: "input-medium search-query"
+        = f.label :contractor_name_cont, "Contractor Contains :"
+        = f.text_field :contractor_name_cont, class: "input-medium search-query"
+        = f.submit "Search", class: "btn btn-warning"
+      
+      
+.row.bold
+  .span3
+    = t 'contracts.contract_no'
+    %br
+    = t 'contracts.name'
+    %br
+    = t 'contracts.description'
+    %br
+    =t 'contracts.value'
+  .span3=sort_link @search, :company_id, t('contracts.company_id')
+  .span3
+    =sort_link @search, :starts_on, t('contracts.starts_on')
+    &nbsp;-&nbsp;
+    =sort_link @search, :ends_on, t('contracts.ends_on')
+  .span1=t 'contracts.issued_by'
+  .span1=t 'contracts.contract_type' 
+  .span1
+- @contracts.uniform_contract.each do |contract|
+  .row{style: "padding-top:15px;"}
+    .span3.bold= contract.contract_no
+    .span3.bold= contract.contractor.try(:name)
+    .span3
+      = contract.starts_on
+      &nbsp;-&nbsp;
+      = contract.ends_on
+    .span1= contract.issuer.try(:name)
+    .span1= contract.type.try(:short_name)
+    .span1
+      = render :partial => 'action_menu', :locals => { :contract => contract }
+  .row
+    .span6= contract.name
+  .row
+    .span8= contract.description
+  .row
+    .span6.bold= ringgols(contract.value)
+      
+      

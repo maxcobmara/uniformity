@@ -23,6 +23,8 @@
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_stocks.order'), stock_orders_path
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_stocks.outstanding'), '/uniform_stocks/outstanding_detail'
           %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_stocks.suppliers'), companies_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'uniform_stocks.contracts'), contracts_path
+          %li= link_to content_tag(:i, "", :class => "icon-numb") + (t 'contract_types.title'), contract_types_path
           
     %li.icon.icon-left
       = link_to content_tag(:i, "", :class => "icon-numb") + (t 'menu.people'), '#'

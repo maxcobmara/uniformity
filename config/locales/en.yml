@@ -28,6 +28,7 @@ en:
       uniform_stock_received: Uniform Stock Received
       uniform_stock_issue: Uniform Stock Issued
       staff: Staff
+      contract: Contract
     attributes:
       uniform_stock:
         stock_id: Uniform Stock
@@ -44,6 +45,8 @@ en:
         expertise_id: Expertise / Branch
         gender: Gender
         religion: Religion
+      contract:
+        value: Value
     errors:
       template:
         body: "There were problems with the following fields:"
@@ -170,6 +173,7 @@ en:
     unit_type_id: Unit Type
     outstanding_detail: Outstanding Uniform Stock
     request_detail: Uniform Stock Request
+    contracts: Contracts
   uniform_stock_receiveds:
     title: Uniform Stock Receiveds
     new: New Uniform Stock Received
@@ -238,6 +242,10 @@ en:
     failure2: "Provided data other than those mentioned in condition 5 and 6 will not be saved."
     errors_counting: Total Errors
     errors_description: Errors Description
+  contract_types:
+    title: Contract Types
+    short_name: Short Name
+    description: Description
   unit_types:
     title: Measurement Types
     new: New Unit Type
@@ -269,6 +277,17 @@ en:
     short_name: Short Name
     name: Name
     branch: Branch
+  contracts:
+    title: Contract
+    contract_no: Contract No
+    name: Contract Title
+    description: Description
+    company_id: Contractor
+    value: Value
+    starts_on: Starts On
+    ends_on: End On
+    issued_by: Issued By
+    contract_type: Contract Type
   companies:
     title: Suppliers
     name: Name
@@ -372,4 +391,7 @@ en:
       select_gender: Select Gender
       select_religion: Select Religion
       select_supplier: Select Supplier
+      select_company: Select Contractor
+      select_issuer: Select Issuer
+      select_authoriser: Select Authoriser
       

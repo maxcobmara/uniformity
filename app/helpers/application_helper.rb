@@ -24,6 +24,11 @@ module ApplicationHelper
     f.hidden_field(:_destroy) + link_to(name, '#', class: "remove_fields")
   end
   
+  #Turns decimal into Ringgit
+  def ringgols(money)
+    number_to_currency(money, :unit => "RM ", :separator => ".", :delimiter => ",", :precision => 2)
+  end
+  
   ###devise
   def resource_name
     :user

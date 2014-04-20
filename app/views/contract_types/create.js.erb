@@ -1,0 +1,4 @@
+$('#contract_type_form').remove();
+$('#contract_type_list tr:last').after('<%= j render("list") %>');
+location.reload(false);
+

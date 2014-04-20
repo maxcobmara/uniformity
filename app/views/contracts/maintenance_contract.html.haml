@@ -1,0 +1,35 @@
+.navbar
+  %ul.nav
+    %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+
+%h2
+  = t 'report.maintenance_report'
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= t 'contracts.contract_no'
+      %th= t 'contracts.name' 
+      %th= t 'contracts.description' 
+      %th= t 'contracts.value'
+      %th= t 'contracts.company_id'
+      %th= t 'contracts.starts_on'
+      %th= t 'contracts.ends_on'
+      %th= t 'contracts.issued_by'
+      %th= t 'contracts.contract_type'
+
+
+  %tbody
+    - @contracts.each do |contract|
+      %tr
+        %td= contract.contract_no
+        %td= contract.name 
+        %td= contract.description
+        %td= ringgols(contract.value)
+        %td= check_kin {contract.contractor.name}
+        %td= check_kin {l(contract.starts_on)}
+        %td= check_kin {l(contract.ends_on)}
+        %td= contract.issued_by
+        %td= check_kin {contract.type.short_name}
+
+
+

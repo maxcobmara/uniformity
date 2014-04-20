@@ -23,6 +23,7 @@ ms_MY:
       uniform_stock_received: Penerimaan Stok Uniform
       uniform_stock_issue: Pengeluaran Stok Uniform
       staff: Staff
+      contract: Kontrak
     attributes:
       uniform_stock:
         stock_id: Stok Uniform
@@ -39,6 +40,8 @@ ms_MY:
         expertise_id: Kepakaran / Cawangan
         gender: Jantina
         religion: Agama
+      contract:
+        value: Nilai
     errors:
       template:
         body: "Berikut adalah beberapa masalah:"
@@ -164,6 +167,7 @@ ms_MY:
     unit_type_id: Unit Pengukuran
     outstanding_detail: Stok Uniform Tertunggak
     request_detail: Permohonan Stok Uniform
+    contracts: Kontrak 
   uniform_stock_receiveds:
     title: Penerimaan Stok Uniform
     new: Penerimaan Stok Uniform Baru
@@ -232,6 +236,10 @@ ms_MY:
     failure2: "Kemasukan data selain daripada yang dinyatakan bagi syarat 5 dan 6 tidak akan disimpan."
     errors_counting: Jumlah Ralat
     errors_description: Deskripsi Ralat
+  contract_types:
+    title: Jenis Kontrak
+    short_name: Nama Ringkas
+    description: Deskripsi
   unit_types:
     title: Unit Pengukuran
     new: Unit Pengukuran Baru
@@ -262,6 +270,19 @@ ms_MY:
     short_name: Nama Ringkas
     name: Nama
     branch: Cawangan
+  contracts:
+    title: Kontrak
+    contract_no: "No. Kontrak"
+    name: Tajuk Kontrak
+    description: Deskripsi  
+    company_id: Kontraktor
+    value: Nilai
+    starts_on: Tarikh Mula
+    ends_on: Tarikh Tamat
+    issued_by: Dikeluarkan Oleh
+    contract_type: Jenis Kontrak
+    new: Kontrak Baru
+    edit: Sunting Kontrak
   companies:
     title: Pembekal
     name: Nama
@@ -334,6 +355,17 @@ ms_MY:
         short_name: Nama Ringkas
         name: Nama
         parent_id: Unit Induk
+      contract:
+        contract_no: "No. Kontrak"
+        name: Tajuk Kontrak
+        description: Deskripsi  
+        company_id: Kontraktor
+        value: Nilai
+        starts_on: Tarikh Mula
+        issued_by: Dikeluarkan Oleh
+        contract_type: Jenis Kontrak
+        contract_dates: Tarikh Kontrak
+        to: hingga
       company:
         name: Nama
         address: Alamat
@@ -365,3 +397,6 @@ ms_MY:
       select_gender: Pilih Jantina
       select_religion: Pilih Agama
       select_supplier: Pilih Pembekal
+      select_company: Pilih Kontraktor
+      select_issuer: Pilih Pengeluar
+      select_contract_type: Pilih Jenis Kontrak
