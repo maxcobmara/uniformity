@@ -7,8 +7,11 @@ class Kit < ActiveRecord::Base
   
   has_many        :kit_uniforms, :dependent => :destroy 	#kit cannot be removed if kit_uniform exist
   accepts_nested_attributes_for :kit_uniforms, allow_destroy: true, reject_if: proc { |kit_uniforms| kit_uniforms[:uniform_id].blank? }
+  
+  has_many        :uniform_items, through: :kit_uniforms
  
   has_many        :kit_staffs #kit cannot be removed if kit_staffs exist
+  has_many        :staffs, through: :kit_staffs
    
   validates       :code, :name, presence: true
   validate        :kit_uniforms_must_exist_if_master_kit

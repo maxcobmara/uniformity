@@ -53,7 +53,7 @@ $(document).ready(function(){
        autoclose: true
      });
   
-    $('select').selectpicker();
+    $('.selectpicker').selectpicker();
   
 $('#myTab a').click(function (e) {
   e.preventDefault()
