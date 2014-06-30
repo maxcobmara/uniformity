@@ -57,7 +57,7 @@ class UniformItemsController < ApplicationController
   def destroy
     @uniform_item.destroy
     respond_to do |format|
-      format.html { redirect_to uniform_items_url }
+      format.html { redirect_to uniform_items_url, notice: (t 'uniform_items.title')+(t 'actions.removed') }
       format.json { head :no_content }
     end
   end

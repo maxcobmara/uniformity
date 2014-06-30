@@ -57,9 +57,43 @@ class StaffsController < ApplicationController
   def destroy
     @staff.destroy
     respond_to do |format|
-      format.html { redirect_to staffs_url }
+      format.html { redirect_to staffs_url, notice: (t 'staffs.title')+(t 'actions.removed') }
       format.json { head :no_content }
     end
+  end
+  
+  def kit_list
+     @staff = Staff.find(params[:id])
+  end 
+  
+  def import_excel
+  end
+  
+  def import
+      #use this line or line 88-89
+      #Vehicle.import(params[:file]) 
+      #redirect_to vehicles_url, notice: (t 'vehicles.imported') 
+      
+      #OR use these lines onwards
+      @staffs = Staff.import(params[:file]) 
+      if @staffs.all?(&:valid?)
+        @staffs.each(&:save!)
+        respond_to do |format|
+          flash[:notice] 
+          format.html { redirect_to staffs_url, notice: (t 'staffs.imported') }
+        end
+      else
+        @invalid_staffs = Staff.get_invalid(@staffs) 
+        respond_to do |format|
+          flash[:notice] = (t 'staffs.invalid_excel')+@invalid_staffs.count.to_s+" "+(t 'staffs.errors_count')  #yellow box
+          format.html { render action: 'import_excel' }
+          flash.discard
+        end
+      end
+  end
+  
+  def download_excel_format
+    send_file ("#{::Rails.root.to_s}/public/excel_format/staff_excel.xls")
   end
 
   private
@@ -70,6 +104,6 @@ class StaffsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
-      params.require(:staff).permit(:id_no, :rank_id, :name, staff_measurements_attributes: [:id, :uniform_id, :measurement_type, :value, :unit_type_id], kit_staffs_attributes: [:id, :kit_id, :staff_group_id])
+      params.require(:staff).permit(:id_no, :rank_id, :name, :unit_id,:expertise_id, :position_id, :gender, :religion, staff_measurements_attributes: [:id, :uniform_id, :measurement_type, :value, :unit_type_id, :_destroy], kit_staffs_attributes: [:id, :kit_id, :staff_group_id, :_destroy])
     end
 end

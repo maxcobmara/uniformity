@@ -17,6 +17,42 @@
       #long: "%d %B, %Y"
       #events: "%A, %e %b"
 ms_MY:
+  activerecord:
+    models:
+      uniform_stock: Stok Uniform
+      uniform_stock_received: Penerimaan Stok Uniform
+      uniform_stock_issue: Pengeluaran Stok Uniform
+      staff: Staff
+      contract: Kontrak
+    attributes:
+      uniform_stock:
+        stock_id: Stok Uniform
+      uniform_stock_received:
+        stock_id: Stok Uniform
+        received_on: Tarikh Terima
+      uniform_stock_issue:
+        stock_id: Stok Uniform
+        issued_on: Tarikh Dikeluarkan
+        issued_to: Penerima
+        quantity: Kuantiti
+      staff:
+        position_id: Jawatan
+        expertise_id: Kepakaran / Cawangan
+        gender: Jantina
+        religion: Agama
+      contract:
+        value: Nilai
+    errors:
+      template:
+        body: "Berikut adalah beberapa masalah:"
+        header:
+          one: "%{model} ini mempunyai 1 kesalahan dari disimpan"
+          other: "%{model} ini mempunyai %{count} kesalahan dari yang disimpan"
+      messages:
+          blank: tidak boleh dikosongkan
+          not_a_number: adalah bukan nombor
+          too_short: "sangat pendek (minima ialah {{count}} huruf)"
+          taken: sudah digunakan
   actions:
     new: Baru
     new_master_kit: Kit Baru (Utama)
@@ -29,7 +65,11 @@ ms_MY:
     created: " telah berjaya disimpan."
     updated: " telah berjaya dikemaskini."
     removed: " telah berjaya dihapuskan."
-    removed_forbidden: "Rekod tidak boleh dihapuskan kerana samada kit mengandungi item uniform ATAU kit terdapat di dalam senarai kit anggota."
+    removed_forbidden: "Rekod tidak boleh dihapuskan kerana samada Kit mengandungi Item Uniform ATAU Kit terdapat di dalam senarai Kit Anggota."
+    removed_forbidden_unit: "Rekod tidak boleh dihapuskan kerana terdapat Subunit bagi Unit yang hendak dihapuskan."
+    remove_master: " (Kit Utama/Induk) telah berjaya dihapuskan, setelah rekod terakhir 'item uniform' dihapuskan."
+    import_excel: Import Data Dari Excel
+    removed_forbidden_uniform_stock: "Rekod tidak boleh dihapuskan kerana samada Stok Uniform terdapat di dalam Penerimaan Stok Uniform ATAU Pengeluaran Stok Uniform."
   errors:
   date:
     formats:
@@ -57,7 +97,23 @@ ms_MY:
     #depot: Depot
     staff_sizes: Ukuran Staf
     match_stock: Padanan Stok
-    provision: Peruntukan
+    provision: Hak
+    report: Laporan
+  report:
+    request_report: Laporan Permohonan Stok Uniform
+    request_detail: Permohonan Stok Uniform
+    outstanding_detail: Stok Uniform Tertunggak
+    total_required: Jumlah Diperlukan
+    total_stock: Jumlah Stok
+    stock_balance: BakI Stok
+    #total_assigned: Jumlah Diperuntukkan
+    total_provided: Jumlah Diperuntukkan
+    total_requested: Jumlah Permohonan
+    outstanding_report: Ringkasan Stok Uniform Diperuntukkan dan Tertunggak
+    outstanding2_report: Perincian Stok Uniform Diperuntukkan dan Tertunggak
+    total_outstanding: Jumlah Yang Masih Tertunggak
+    summary: "Ringkasan Uniform Diperuntukan & Tertunggak"
+    detailed: "Perincian Uniform Diperuntukkan & Tertunggak"
   home:
     welcome: Selamat Datang ke Uniformity
     uniformity: Sistem Pengurusan Uniform
@@ -109,6 +165,9 @@ ms_MY:
     max_quantity: Kuantiti Maksima
     min_quantity: Kuantiti Minima
     unit_type_id: Unit Pengukuran
+    outstanding_detail: Stok Uniform Tertunggak
+    request_detail: Permohonan Stok Uniform
+    contracts: Kontrak 
   uniform_stock_receiveds:
     title: Penerimaan Stok Uniform
     new: Penerimaan Stok Uniform Baru
@@ -119,6 +178,7 @@ ms_MY:
     received_on: Tarikh Terima
     received_by: Diterima Oleh
     contract_id: Kontrak
+    rv_no: "No. Penerimaan"
   uniform_stock_issues:
     title: Pengeluaran Stok Uniform
     new: Pengeluaran Stok Uniform Baru
@@ -130,6 +190,7 @@ ms_MY:
     issued_by: Pengeluar
     issued_on: Tarikh Dikeluarkan
     document_id: Dokumen 
+    iv_no: "No. Pengeluaran"
   units:
     title: Unit
     title2: Unit
@@ -146,6 +207,39 @@ ms_MY:
     rank_id: Pangkat
     name: Nama
     staff_group_id: Kumpulan Staf
+    expertise_id: Kepakaran / Cawangan
+    position_id: Jawatan
+    unit_id: Unit / Markas
+    gender: Jantina
+    religion: Agama
+    llp_expertise: "* LLP - Kepakaran / Cawangan"
+    peg_position: "* Pegawai - Jawatan"
+    notes: Nota
+    kit_list: KIT LIST
+    navy: TENTERA LAUT DIRAJA MALAYSIA
+    detail: Maklumat Anggota
+    import_excel: Import Anggota Dari Fail Excel
+    imported: Anggota dari fail Excel telah berjaya diimport
+    invalid_excel: "Data fail Excel tidak sah. "   
+    errors_count: "rekod dari fail Excel tidak sah untuk diimport."
+    invalid_excel_data: Data Excel yang tidak sah
+    errors_counting: Jumlah Ralat
+    errors_description: Deskripsi Ralat
+    pre_conditions: "Pra-Syarat Fail Excel"
+    condition_unique: "No. Tentera - Mestilah unik dan tiada rekod yang bertindan."
+    condition_presence: "Nama, Pangkat, Jantina dan Agama - Mesti wujud (ada rekod)."
+    condition_position_if_officer: "Jawatan - Mesti wujud (ada rekod) jika anggota adalah Pegawai."
+    condition_position_if_llp: "Kepakaran/Cawangan - Mesti wujud (ada rekod) jika anggota adalah Lain-Lain Pangkat."
+    condition_gender: "Jantina - Masukkan samada 'Male' atau 'Female'."
+    condition_religion: "Agama - Masukkan samada 'Islam', 'Sikh' atau 'Others'"
+    failure: "Data tidak akan diimport jika syarat 1 - 4 tidak dipenuhi."
+    failure2: "Kemasukan data selain daripada yang dinyatakan bagi syarat 5 dan 6 tidak akan disimpan."
+    errors_counting: Jumlah Ralat
+    errors_description: Deskripsi Ralat
+  contract_types:
+    title: Jenis Kontrak
+    short_name: Nama Ringkas
+    description: Deskripsi
   unit_types:
     title: Unit Pengukuran
     new: Unit Pengukuran Baru
@@ -161,7 +255,53 @@ ms_MY:
   kit_staffs:
     title: Hak
     add_details: Tambah Kit
-    kit: Kit   	
+    kit: Kit
+    kit_id: Kit
+    staff_id: Anggota
+    staff_group_id: Kumpulan Anggota
+    provided: Peruntukan
+    outstanding: Tertunggak
+  positions:
+    title: Jawatan
+    name: Nama
+  expertises:
+    title: Kepakaran
+    title2: Kepakaran / Cawangan
+    short_name: Nama Ringkas
+    name: Nama
+    branch: Cawangan
+  contracts:
+    title: Kontrak
+    contract_no: "No. Kontrak"
+    name: Tajuk Kontrak
+    description: Deskripsi  
+    company_id: Kontraktor
+    value: Nilai
+    starts_on: Tarikh Mula
+    ends_on: Tarikh Tamat
+    issued_by: Dikeluarkan Oleh
+    contract_type: Jenis Kontrak
+    new: Kontrak Baru
+    edit: Sunting Kontrak
+  companies:
+    title: Pembekal
+    name: Nama
+    address: Alamat
+    contact_person: Staf Dihubungi
+    phone: "No. Telefon"
+    fax: "No. Faks"
+    email: Emel
+    new: Pembekal Baru
+    edit: Sunting Pembekal
+  stock_orders:
+    title: Tempahan Stok Uniform
+    stock_id: Stok Uniform
+    quantity: Kuantiti
+    unit_type_id: Jenis Ukuran
+    company_id: Pembekal
+    remark: Nota
+    new: Tempahan Stok Uniform Baru
+    edit: Sunting Tempahan Stok Uniform
   helpers:
     links:
       new: Cipta
@@ -179,6 +319,11 @@ ms_MY:
         id_no: No Tentera
         rank_id: Pangkat
         name: Nama
+        expertise_id: "* Kepakaran / Cawangan"
+        position_id: "* Jawatan"
+        unit_id: Unit / Markas
+        gender: Jantina
+        religion: Agama
       unit_type:
         short_name: Nama Ringkas
         description: Deskripsi
@@ -189,6 +334,7 @@ ms_MY:
         received_on: Tarikh Terima
         received_by: Diterima Oleh
         contract_id: Kontrak
+        rv_no: "No. Penerimaan"
       uniform_stock_issue:
         stock_id: Stok Uniform
         quantity: Kuantiti
@@ -197,6 +343,7 @@ ms_MY:
         issued_by: Pengeluar
         issued_on: Tarikh Dikeluarkan
         document_id: Dokumen
+        iv_no: "No. Pengeluaran"
       uniform_stock:
         uniform_id: Stok Uniform 
         size: Saiz
@@ -208,6 +355,30 @@ ms_MY:
         short_name: Nama Ringkas
         name: Nama
         parent_id: Unit Induk
+      contract:
+        contract_no: "No. Kontrak"
+        name: Tajuk Kontrak
+        description: Deskripsi  
+        company_id: Kontraktor
+        value: Nilai
+        starts_on: Tarikh Mula
+        issued_by: Dikeluarkan Oleh
+        contract_type: Jenis Kontrak
+        contract_dates: Tarikh Kontrak
+        to: hingga
+      company:
+        name: Nama
+        address: Alamat
+        contact_person: Staf Dihubungi
+        phone: "No. Telefon"
+        fax: "No. Faks"
+        email: Emel
+      stock_order:
+        stock_id: Stok Uniform
+        quantity: Kuantiti
+        unit_type_id: Jenis Ukuran
+        company_id: Pembekal
+        remark: Nota
     prompt:
       select_rank: Pilih Pangkat
       select_uniform: Pilih Item Uniform
@@ -217,4 +388,15 @@ ms_MY:
       select_staff: Pilih Anggota
       select_contract: Pilih Kontrak
       select_unit_type: Pilih Unit Ukuran
-      select_unit: Pilih Unit    
+      select_unit: Pilih Unit
+      sequence: Urutan
+      sequence_text: "Format Urutan : 01 untuk 1, 11 untuk 11"
+      select_expertise: Pilih Kepakaran
+      select_position: Pilih Jawatan
+      select_unit_formasi: Pilih Unit / Markas
+      select_gender: Pilih Jantina
+      select_religion: Pilih Agama
+      select_supplier: Pilih Pembekal
+      select_company: Pilih Kontraktor
+      select_issuer: Pilih Pengeluar
+      select_contract_type: Pilih Jenis Kontrak

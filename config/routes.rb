@@ -1,4 +1,12 @@
 Uniformity::Application.routes.draw do
+  resources :contract_types
+  
+  resources :contracts
+  
+  resources :stock_orders
+
+  resources :expertises
+
   resources :kit_staffs
 
   resources :staff_measurements
@@ -7,7 +15,23 @@ Uniformity::Application.routes.draw do
 
   resources :uniform_stock_receiveds
 
-  resources :uniform_stocks
+  resources :uniform_stocks do
+    collection do
+      get 'request_report'
+      get 'outstanding_report'
+      get 'outstanding2_report'
+	  get 'request_detail'
+	  get 'outstanding_detail'
+    end
+  end
+  
+  resources :uniform_stocks do
+	collection do
+		match 'outstanding_detail' => 'uniform_stocks#outstanding_detail', via: [:get, :post], as: :search1
+		match 'request_detail' => 'uniform_stocks#request_detail', via: [:get, :post], as: :search2
+		match 'outstanding2_report' => 'uniform_stocks#outstanding2_report', via: [:get, :post], as: :search3
+	end
+  end
 
   resources :kit_uniforms
 
@@ -15,13 +39,28 @@ Uniformity::Application.routes.draw do
 
   resources :uniform_items
   
-  resources :staffs
+  resources :staffs do
+    collection do
+      get 'kit_list'
+    end
+  end
   
+  resources :staffs do 
+    collection { post :import }
+  end
+  
+  match '/public/excel_format/staff_excel.xls', to: 'staffs#download_excel_format', via: 'get', target: '_self'
+  match 'import_excel', to:'staffs#import_excel', via: 'get'
+ 
   resources :ranks
   
   resources :units
   
   resources :unit_types
+  
+  resources :positions
+  
+  resources :companies
 
   devise_for :users
   resources :users

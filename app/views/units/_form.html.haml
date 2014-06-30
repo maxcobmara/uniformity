@@ -1,7 +1,16 @@
 .container{:style => "padding-left: 60px;"}
   = form_for @unit, :html => { :class => 'form-horizontal' }  do |f|
+    = f.hidden_field :parent_id
     = render 'shared/error_messages', object: f.object
-          
+
+    .control-group
+      = f.label :code, :class => 'control-label'
+      .controls
+        .input-prepend
+          %span.add-on{:style => "height:30px"}= @unit.parent.shortname unless @unit.parent.nil?
+          = f.text_field :code,  :size => '50', :class => "span2", :id => "prependedInput", :placeholder => (t 'helpers.prompt.sequence') 
+        %div= (t 'helpers.prompt.sequence_text')
+		          
     .control-group
       = f.label :short_name, :class => 'control-label'
       .controls= f.text_field :shortname, :class => 'text_field'
@@ -9,10 +18,6 @@
     .control-group
       = f.label :name, :class => 'control-label'
       .controls= f.text_field :name, :class => 'text_field'
-    
-    .control-group
-      = f.label :parent_id, :class => 'control-label'
-      .controls.controls= f.collection_select :parent_id, Unit.order(shortname: :asc).all, :id, :shortname, :include_blank => t('helpers.prompt.select_unit'), :html_options => {:class => 'selectpicker'}
  
     .form-actions
       = f.submit t("helpers.links.submit"), :class => 'btn btn-primary'

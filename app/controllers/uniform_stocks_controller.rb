@@ -5,6 +5,8 @@ class UniformStocksController < ApplicationController
   # GET /uniform_stocks.json
   def index
     @uniform_stocks = UniformStock.all
+    @search = UniformStock.search(params[:q])
+    @uniform_stocks = @search.result
   end
 
   # GET /uniform_stocks/1
@@ -56,9 +58,40 @@ class UniformStocksController < ApplicationController
   def destroy
     @uniform_stock.destroy
     respond_to do |format|
+	  if @uniform_stock.destroy
+        flash[:notice] = (t 'uniform_stocks.title')+(t 'actions.removed') 
+      else
+        flash[:error] = (t 'actions.removed_forbidden_uniform_stock')
+      end 
       format.html { redirect_to uniform_stocks_url }
       format.json { head :no_content }
     end
+  end
+
+  def request_report
+    @uniform_stocks = UniformStock.all
+  end
+  
+  def request_detail
+	@uniform_stocks = UniformStock.all
+    @search = UniformStock.search(params[:q])
+    @uniform_stocks = @search.result
+  end
+  
+  def outstanding_report
+    @uniform_stocks = UniformStock.all
+  end
+  
+  def outstanding2_report
+    @uniform_stocks = UniformStock.all
+	@search = UniformStock.search(params[:q])
+    @uniform_stocks = @search.result
+  end
+  
+  def outstanding_detail
+	@uniform_stocks = UniformStock.all
+    @search = UniformStock.search(params[:q])
+    @uniform_stocks = @search.result
   end
 
   private

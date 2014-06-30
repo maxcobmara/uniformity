@@ -5,6 +5,8 @@ class UniformStockIssuesController < ApplicationController
   # GET /uniform_stock_issues.json
   def index
     @uniform_stock_issues = UniformStockIssue.all
+    @search = UniformStockIssue.search(params[:q])
+    @uniform_stock_issues = @search.result
   end
 
   # GET /uniform_stock_issues/1
@@ -28,7 +30,7 @@ class UniformStockIssuesController < ApplicationController
 
     respond_to do |format|
       if @uniform_stock_issue.save
-        format.html { redirect_to @uniform_stock_issue, notice: 'Uniform stock issue was successfully created.' }
+        format.html { redirect_to @uniform_stock_issue, notice: (t 'uniform_stock_issues.title')+(t 'actions.created') }
         format.json { render action: 'show', status: :created, location: @uniform_stock_issue }
       else
         format.html { render action: 'new' }
@@ -42,7 +44,7 @@ class UniformStockIssuesController < ApplicationController
   def update
     respond_to do |format|
       if @uniform_stock_issue.update(uniform_stock_issue_params)
-        format.html { redirect_to @uniform_stock_issue, notice: 'Uniform stock issue was successfully updated.' }
+        format.html { redirect_to @uniform_stock_issue, notice: (t 'uniform_stock_issues.title')+(t 'actions.updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +58,7 @@ class UniformStockIssuesController < ApplicationController
   def destroy
     @uniform_stock_issue.destroy
     respond_to do |format|
-      format.html { redirect_to uniform_stock_issues_url }
+      format.html { redirect_to uniform_stock_issues_url, notice: (t 'uniform_stock_issues.title')+(t 'actions.removed') }
       format.json { head :no_content }
     end
   end

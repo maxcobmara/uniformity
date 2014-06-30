@@ -22,6 +22,42 @@
 #en:
   #hello: "Hello world"
 en:
+  activerecord:
+    models:
+      uniform_stock: Uniform Stock
+      uniform_stock_received: Uniform Stock Received
+      uniform_stock_issue: Uniform Stock Issued
+      staff: Staff
+      contract: Contract
+    attributes:
+      uniform_stock:
+        stock_id: Uniform Stock
+      uniform_stock_received:
+        stock_id: Uniform Stock
+        received_on: Received On
+      uniform_stock_issue:
+        stock_id: Uniform Stock
+        issued_on: Issued On
+        issued_to: Issued To
+        quantity: Quantity
+      staff:
+        position_id: Position
+        expertise_id: Expertise / Branch
+        gender: Gender
+        religion: Religion
+      contract:
+        value: Value
+    errors:
+      template:
+        body: "There were problems with the following fields:"
+        header:
+          one: "1 errors prohibited this %{model} from being saved"
+          other: "%{count} prohibited this %{model} from being saved"
+      messages:
+          blank: "Can't Be Blank"
+          not_a_number: is not number
+          too_short: "is too short (minimum is {{count}} characters)"
+          taken: has already been taken
   actions:
     new: New
     new_master_kit: New Master Kit
@@ -34,7 +70,11 @@ en:
     created: " was successfully created."
     updated: " was successfully updated."
     removed: " was successfully removed."
-    removed_forbidden: "Removal of kit was forbidden, due to existing uniform item/kit list of selected kit."
+    removed_forbidden: "Removal of Kit is forbidden, due to existing Uniform Item/Kit List of selected Kit."
+    removed_forbidden_unit: "Removal of Unit is forbidden, due to existing Subunits of selected Unit."
+    remove_master: " (Master Kit) was successfully removed, due to deletion of last 'uniform item' of Master Kit"
+    import_excel: Import Data From Excel
+    removed_forbidden_uniform_stock: "Removal of Uniform Stock was forbidden, due to existing Uniform Stock Received/Uniform Stock Issue of selected Uniform Stock."
   errors:
   date:
     formats:
@@ -64,6 +104,22 @@ en:
     staff_sizes: Staff Sizes
     match_stock: Match Stock
     provision: Provision
+    report: Report
+  report:
+    request_report: Uniform Stock Request Report
+    request_detail: Uniform Stock Request
+    outstanding_detail: Outstanding Uniform Stock
+    total_required: Total Required
+    total_stock: Total Stock
+    stock_balance: Stock Balance
+    #total_assigned: Total Assigned
+    total_provided: Total Provided
+    total_requested: Total Requested
+    outstanding_report: Summary of Provided and Outstanding Uniform Stock
+    outstanding2_report: Details of Provided and Outstanding Uniform Stock
+    total_outstanding: Total Outstanding 
+    summary: "Summary of Provided & Outstanding Uniforms"
+    detailed: "Details of Provided & Outstanding Uniforms"
   home: 
     welcome: Welcome to Uniformity
     uniformity: Uniform Management System  
@@ -115,6 +171,9 @@ en:
     max_quantity: Max Quantity
     min_quantity: Min Quantity
     unit_type_id: Unit Type
+    outstanding_detail: Outstanding Uniform Stock
+    request_detail: Uniform Stock Request
+    contracts: Contracts
   uniform_stock_receiveds:
     title: Uniform Stock Receiveds
     new: New Uniform Stock Received
@@ -125,6 +184,7 @@ en:
     received_on: Received On
     received_by: Received By
     contract_id: Contract
+    rv_no: "Received No"
   uniform_stock_issues:
     title: Uniform Stock Issues
     new: New Uniform Stock Issue
@@ -136,6 +196,7 @@ en:
     issued_by: Issued by
     issued_on: Issued On
     document_id: Document
+    iv_no: "Issued No"
   units:
     title: Units
     title2: Unit
@@ -152,6 +213,39 @@ en:
     rank_id: Rank
     name: Nama
     staff_group_id: Staff Group Id
+    expertise_id: Expertise / Branch
+    position_id: Position
+    unit_id: Unit / 'Markas'
+    gender: Gender
+    religion: Religion
+    llp_expertise: "* LLP - Expertise / Branch"
+    peg_position: "* Pegawai - Position"
+    notes: Notes
+    kit_list: KIT LIST
+    navy: ROYAL MALAYSIAN NAVY
+    detail: Staff Details
+    import_excel: Import Staff From Excel File
+    imported: Staffs from Excel file are successfully imported
+    invalid_excel: "Excel file data are invalid. "
+    errors_count: "Excel record(s) are invalid for import."
+    invalid_excel_data: Invalid Excel data
+    errors_counting: Total Errors
+    errors_description: Errors Description
+    pre_conditions: "Excel File Pre-Conditions"
+    condition_unique: "Armed Force No - Must be unique and presence"
+    condition_presence: "Name, Rank, Gender and Religion - Must be presence."
+    condition_position_if_officer: "Position - Must be presence if an Officer."
+    condition_position_if_llp: "Expertise - Must be presence if Other Rank Staff."
+    condition_gender: "Gender - To provide either 'Male' or 'Female'."
+    condition_religion: "Religion - To provide either 'Islam', 'Sikh' or 'Others'"
+    failure: "Failure to comply with condition 1 - 4 will cause failure in import."
+    failure2: "Provided data other than those mentioned in condition 5 and 6 will not be saved."
+    errors_counting: Total Errors
+    errors_description: Errors Description
+  contract_types:
+    title: Contract Types
+    short_name: Short Name
+    description: Description
   unit_types:
     title: Measurement Types
     new: New Unit Type
@@ -168,6 +262,51 @@ en:
     title: Provision
     add_details: Add Kit
     kit: Kit
+    kit_id: Kit
+    staff_id: Staff
+    staff_group_id: Staff Group
+    new: New Provision
+    provided: Provided
+    outstanding: Outstanding
+  positions:
+    title: Positions
+    name: Name
+  expertises:
+    title: Expertises
+    title2: Expertises / Branches
+    short_name: Short Name
+    name: Name
+    branch: Branch
+  contracts:
+    title: Contract
+    contract_no: Contract No
+    name: Contract Title
+    description: Description
+    company_id: Contractor
+    value: Value
+    starts_on: Starts On
+    ends_on: End On
+    issued_by: Issued By
+    contract_type: Contract Type
+  companies:
+    title: Suppliers
+    name: Name
+    address: Address
+    contact_person: Contact Person
+    phone: Phone
+    fax: Fax
+    email: Email
+    new: New Supplier
+    edit: Edit Supplier
+  stock_orders:
+    title: Uniform Stock Order
+    stock_id: Uniform Stock
+    quantity: Quantity
+    unit_type_id: Unit Type
+    company_id: Supplier
+    remark: Remark
+    new: New Stock Order
+    edit: Edit Stock Order
   helpers:
     links:
       new: New
@@ -185,6 +324,11 @@ en:
         id_no: Armed Force No
         rank_id: Rank
         name: Name
+        expertise_id: "* Expertise / Branch"
+        position_id: "* Position"
+        unit_id: Unit / 'Markas'
+        gender: Gender
+        religion: Religion
       unit_type:
         short_name: Short Name
         description: Description
@@ -195,6 +339,7 @@ en:
         received_on: Received On
         received_by: Received By
         contract_id: Contract
+        rv_no: "Received No"
       uniform_stock_issue:
         stock_id: Uniform Stock
         quantity: Quantity
@@ -203,6 +348,7 @@ en:
         issued_by: Issued By
         issued_on: Issued On
         document_id: Document
+        iv_no: "Issued No"
       uniform_stock:
         uniform_id: Uniform Stok
         size: Size
@@ -214,6 +360,19 @@ en:
         short_name: Short Name
         name: Name
         parent_id: Parent Unit
+      company:
+        name: Name
+        address: Address
+        contact_person: Contact Person
+        phone: Phone
+        fax: Fax
+        email: Email  
+      stock_order:
+        stock_id: Stock Order
+        quantity: Quantity
+        unit_type_id: Unit Type
+        company_id: Supplier
+        remark: Remark
     prompt:
       select_rank: Select Rank
       select_uniform: Select Uniform Item
@@ -224,4 +383,15 @@ en:
       select_contract: Select Contract
       select_unit_type: Select Measurement Type
       select_unit: Select Unit
+      sequence: Sequence
+      sequence_text: "Sequence format : 01 for 1, 11 for 11"
+      select_expertise: Select Expertise
+      select_position: Select Position
+      select_unit_formasi: Select Unit / 'Markas'
+      select_gender: Select Gender
+      select_religion: Select Religion
+      select_supplier: Select Supplier
+      select_company: Select Contractor
+      select_issuer: Select Issuer
+      select_authoriser: Select Authoriser
       

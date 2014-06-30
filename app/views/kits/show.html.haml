@@ -17,26 +17,84 @@
     - if @kit.kit_uniforms == [] && @kit.parent.kit_uniforms == []
       No Items
     - else
-      %table{:style => "width:80%"}
+      - @group = KitUniform.group(@kit)
+      %table.table.table-bordered{:style => "width:80%"}
         %tr
           %td Uniform Item Name
-          %td Junior Rate
-          %td Senior Rate
+          - if @group == 1
+            %td Junior Rate
+            %td Senior Rate
+          - elsif @group == 2
+            %td PK
+            %td PKK
+            %td Graduan
+          - elsif @group == 3
+            %td Peg Lelaki
+            %td Peg Wanita
+          - elsif @group == 4
+            %td Peg
+            %td Junior Rate
+            %td Senior Rate
+          - elsif @group == 5
+            %td Peg Lelaki
+            %td Kadet Lelaki
+            %td Peg Wanita
+            %td Kadet Wanita
+          - else
+            %td Hak
           %td Notes
           %td Inherited
         - for kit_uniform in @kit.kit_uniforms
           %tr
-            %td= kit_uniform.uniform_item.name
-            %td{:align => "center"}= kit_uniform.quantity
-            %td{:align => "center"}= kit_uniform.senior_rate
+            %td= kit_uniform.uniform_item.name	
+            - if @group == 1
+              %td{:align => "center"}= kit_uniform.quantity
+              %td{:align => "center"}= kit_uniform.senior_rate
+            - elsif @group == 2
+              %td{:align => "center"}= kit_uniform.pk
+              %td{:align => "center"}= kit_uniform.pkk
+              %td{:align => "center"}= kit_uniform.graduan	
+            - elsif @group == 3
+              %td{:align => "center"}= kit_uniform.peg_l
+              %td{:align => "center"}= kit_uniform.peg_p
+            - elsif @group == 4
+              %td{:align => "center"}= kit_uniform.peg
+              %td{:align => "center"}= kit_uniform.quantity
+              %td{:align => "center"}= kit_uniform.senior_rate
+            - elsif @group == 5
+              %td{:align => "center"}= kit_uniform.peg_l
+              %td{:align => "center"}= kit_uniform.kadet_l
+              %td{:align => "center"}= kit_uniform.peg_p
+              %td{:align => "center"}= kit_uniform.kadet_p
+            - else
+              %td{:align => "center"}= kit_uniform.quantity2
             %td= kit_uniform.notes
             %td
         - if !@kit.is_root?	
           - for kit_uniform in @kit.parent.kit_uniforms
             %tr
               %td= kit_uniform.uniform_item.name
-              %td{:align => "center"}= kit_uniform.quantity
-              %td{:align => "center"}= kit_uniform.senior_rate
+              - if @group == 1
+                %td{:align => "center"}= kit_uniform.quantity
+                %td{:align => "center"}= kit_uniform.senior_rate
+              - elsif @group == 2
+                %td{:align => "center"}= kit_uniform.pk
+                %td{:align => "center"}= kit_uniform.pkk
+                %td{:align => "center"}= kit_uniform.graduan	
+              - elsif @group == 3
+                %td{:align => "center"}= kit_uniform.peg_l
+                %td{:align => "center"}= kit_uniform.peg_p
+              - elsif @group == 4
+                %td{:align => "center"}= kit_uniform.peg
+                %td{:align => "center"}= kit_uniform.quantity
+                %td{:align => "center"}= kit_uniform.senior_rate
+              - elsif @group == 5
+                %td{:align => "center"}= kit_uniform.peg_l
+                %td{:align => "center"}= kit_uniform.kadet_l
+                %td{:align => "center"}= kit_uniform.peg_p
+                %td{:align => "center"}= kit_uniform.kadet_p
+              - else
+                %td{:align => "center"}= kit_uniform.quantity2
               %td= kit_uniform.notes
               %td{:align => "center"} *
 

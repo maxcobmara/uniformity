@@ -5,6 +5,8 @@ class UnitsController < ApplicationController
   # GET /units.json
   def index
     @units = Unit.all
+    @search = Unit.search(params[:q])
+    @units = @search.result
   end
 
   # GET /units/1
@@ -14,7 +16,7 @@ class UnitsController < ApplicationController
 
   # GET /units/new
   def new
-    @unit = Unit.new
+    @unit = Unit.new(:parent_id => params[:parent_id])
   end
 
   # GET /units/1/edit
@@ -28,7 +30,7 @@ class UnitsController < ApplicationController
 
     respond_to do |format|
       if @unit.save
-        format.html { redirect_to @unit, notice: 'Unit was successfully created.' }
+        format.html { redirect_to @unit, notice: (t 'units.title')+(t 'actions.created') }
         format.json { render action: 'show', status: :created, location: @unit }
       else
         format.html { render action: 'new' }
@@ -42,7 +44,7 @@ class UnitsController < ApplicationController
   def update
     respond_to do |format|
       if @unit.update(unit_params)
-        format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
+        format.html { redirect_to @unit, notice: (t 'units.title')+(t 'actions.removed') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -54,7 +56,11 @@ class UnitsController < ApplicationController
   # DELETE /units/1
   # DELETE /units/1.json
   def destroy
-    @unit.destroy
+    if @unit.destroy
+      flash[:notice] = (t 'units.title')+(t 'actions.removed') 
+    else
+      flash[:error] = (t 'actions.removed_forbidden_unit')
+    end  
     respond_to do |format|
       format.html { redirect_to units_url }
       format.json { head :no_content }
@@ -69,6 +75,6 @@ class UnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_params
-      params.require(:unit).permit(:shortname, :name, :parent_id)
+      params.require(:unit).permit(:shortname, :name, :parent_id, :ancestry, :ancestry_depth, :code, :combo_code)
     end
 end

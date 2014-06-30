@@ -1,0 +1,33 @@
+.container{:style => "padding-left: 60px;"}
+  = form_for @company, :html => { :class => 'form-horizontal' }  do |f|
+    = render 'shared/error_messages', object: f.object
+          
+    .control-group
+      = f.label :name, :class => 'control-label'
+      .controls= f.text_field :name, :class => 'text_field input-xxlarge'
+    
+    .control-group
+      = f.label :address, :class => 'control-label'
+      .controls= f.text_area :address, :class => 'text_field input-xxlarge'
+    
+    .control-group
+      = f.label :contact_person, :class => 'control-label'
+      .controls= f.text_field :contact_person, :class => 'text_field input-xxlarge'
+   
+    .control-group
+      = f.label :phone, :class => 'control-label'
+      .controls= f.text_field :phone, :class => 'text_field'    
+
+    .control-group
+      = f.label :fax, :class => 'control-label'
+      .controls= f.text_field :fax, :class => 'text_field'
+   
+    .control-group
+      = f.label :email, :class => 'control-label'
+      .controls= f.text_field :email, :class => 'text_field'
+
+    .form-actions
+      = f.submit (t 'helpers.links.submit'), :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+        companies_path, :class => 'btn'     
+

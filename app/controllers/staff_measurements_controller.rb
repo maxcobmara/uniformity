@@ -28,7 +28,7 @@ class StaffMeasurementsController < ApplicationController
 
     respond_to do |format|
       if @staff_measurement.save
-        format.html { redirect_to @staff_measurement, notice: 'Staff measurement was successfully created.' }
+        format.html { redirect_to @staff_measurement, notice: (t 'staff_measurements.title')+(t 'actions.created')}
         format.json { render action: 'show', status: :created, location: @staff_measurement }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class StaffMeasurementsController < ApplicationController
   def update
     respond_to do |format|
       if @staff_measurement.update(staff_measurement_params)
-        format.html { redirect_to @staff_measurement, notice: 'Staff measurement was successfully updated.' }
+        format.html { redirect_to @staff_measurement, notice: (t 'staff_measurements.title')+(t 'actions.updated')}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +56,7 @@ class StaffMeasurementsController < ApplicationController
   def destroy
     @staff_measurement.destroy
     respond_to do |format|
-      format.html { redirect_to staff_measurements_url }
+      format.html { redirect_to staff_measurements_url, notice: (t 'staff_measurements.title')+(t 'actions.removed') }
       format.json { head :no_content }
     end
   end

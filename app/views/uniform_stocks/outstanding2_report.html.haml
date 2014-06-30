@@ -1,0 +1,50 @@
+.navbar
+  %ul.nav
+    %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+    %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
+	
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, url: outstanding2_report_uniform_stocks_path, class: "form-inline" do |f|
+      .field
+        = f.label :uniform_item_name_cont, "Uniform Stock (name) contains"
+        = f.text_field :uniform_item_name_cont, class: "input-medium search-query"
+        = f.submit "Search", class: "btn btn-warning"
+%br		
+%h1= t 'report.outstanding2_report' 
+
+%table.table.table-bordered
+  %thead
+  - @uniform_stocks.group_by(&:uniform_id).each do |uni_id, uniform_stock|
+    - total_required = UniformStock.total_required(uni_id)
+    - total_provided = UniformStock.issue(uni_id)
+    %tr
+      %th=UniformStock.find_by_uniform_id(uni_id).uniform_item.uniform_details
+      %th
+        = t 'report.total_required'
+        = " : "+total_required.to_s
+      %th
+        = t 'report.total_provided'
+        = " : "+total_provided.to_s
+      %th
+        = t 'report.total_outstanding'
+        = " : "+(total_required-total_provided).to_s  
+    %tbody	
+    - uniform_stock.each do |uni|   
+      - items = KitUniform.where('uniform_id=?',uni.uniform_id)		#if uniform 659, check fr here
+      - kit_ids = items.pluck(:kit_id)
+      - total_required=0	
+      - no=0
+      - items.each_with_index do |item,ind|
+        - staffs_rec = UniformStock.staffs_for_kits(kit_ids[ind])
+        - for staff in staffs_rec
+          %tr
+            %td=(no+=1).to_s + ") "+staff.staff_details
+            %td=required = (item.kit_qty(staff.gender,staff.rank.rate,staff.rank.shortname)).to_i  #refer KitUniform model
+            - provided_exist = UniformStockIssue.where('stock_id=? AND issued_to=?', UniformStock.where('uniform_id=?',uni.uniform_id)[0].id, staff.id)
+            - unless provided_exist.nil? || provided_exist.blank?
+              - provided=provided_exist.sum(:quantity)
+            - else
+              - provided=0
+            %td=provided
+            %td=required-provided

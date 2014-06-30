@@ -1,3 +1,5 @@
+require 'rake'
+#Uniformity::Application.load_tasks
 class UnitTypesController < ApplicationController
   before_action :set_unit_type, only: [:show, :edit, :update, :destroy]
 
@@ -5,11 +7,14 @@ class UnitTypesController < ApplicationController
   # GET /unit_types.json
   def index
     @unit_types = UnitType.all
+    @unit_type = UnitType.new
   end
 
   # GET /unit_types/1
   # GET /unit_types/1.json
   def show
+    %x(bundle exec thor datashift:export:excel -m Expertise -r public/Expertise.xls)
+    Rake::Task['datashift:export_all'].invoke #- NOT OK
   end
 
   # GET /unit_types/new
@@ -29,6 +34,7 @@ class UnitTypesController < ApplicationController
     respond_to do |format|
       if @unit_type.save
         format.html { redirect_to @unit_type, notice: (t 'unit_types.title')+(t 'actions.created') }
+        format.js
         format.json { render action: 'show', status: :created, location: @unit_type }
       else
         format.html { render action: 'new' }
@@ -56,8 +62,9 @@ class UnitTypesController < ApplicationController
   def destroy
     @unit_type.destroy
     respond_to do |format|
-      format.html { redirect_to unit_types_url }
+      format.html { redirect_to unit_types_url, notice: (t 'unit_types.title')+(t 'actions.removed') }
       format.json { head :no_content }
+      format.js
     end
   end
 

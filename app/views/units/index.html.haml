@@ -3,31 +3,25 @@
 .page-header
   %h1= t 'units.title', :default => model_class.model_name.human.pluralize
   
-  
+    
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("truck", text: (t 'actions.new'))), new_unit_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
+      %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.label :name_cont, "Unit Name Contains"
+        = f.text_field :name_cont, class: "input-medium search-query"
+        = f.submit "Search", class: "btn btn-warning"
+
       
-      
-%table.table.table-condensed.table-hover
-  %thead
-    %tr
-      %th= t 'units.short_name'
-      %th= t 'units.name'
-  %tbody
-    - @units.group_by(&:parent).each do |parent, units|
-      - if parent
-        %tr
-          %td{:colspan => "2"}
-            = link_to parent.shortname, parent
-            = link_to parent.name, parent
-      - for unit in units
-        - unless unit.parent_id.blank? || unit.parent_id == 0
-          %tr
-            %td{style: "padding-left:20px;"}= link_to unit.shortname, unit
-            %td= unit.name
+.span8offset4.tree			
+  = nested_groups(@units.arrange(:order => :combo_code)) 
+  - nested_groups(@units.arrange(:order => :ancestry))     
       

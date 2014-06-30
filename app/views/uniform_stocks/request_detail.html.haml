@@ -1,0 +1,52 @@
+- provide(:title, 'Uniform_Stock')
+- model_class = UniformStock
+.page-header
+  %h1= t 'uniform_stocks.request_detail'
+/t 'uniform_stocks.stock_id', :default => model_class.model_name.human.pluralize
+  
+  
+.navbar.navbar-inverse
+  .navbar-inner
+    %ul.nav
+      /%li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_uniform_stock_path
+    %ul.nav.pull-right
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
+      %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, url: request_detail_uniform_stocks_path, class: "form-inline" do |f|
+      .field
+        = f.label :uniform_item_name_cont, "Uniform Stock (name) contains"
+        = f.text_field :uniform_item_name_cont, class: "input-medium search-query"
+        = f.submit "Search", class: "btn btn-warning"
+
+      
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th= t 'uniform_stocks.stock_id' 
+      %th= t 'report.total_required'
+      %th= t 'report.total_stock'
+      %th= t 'report.total_provided'
+      %th= t 'report.stock_balance'
+      %th= t 'report.total_outstanding'
+      %th= (t 'report.total_requested').upcase
+
+  %tbody
+    - @uniform_stocks.group_by(&:uniform_id).each do |uni_id, uniform_stock|
+      %tr
+        %td= UniformStock.find_by_uniform_id(uni_id).uniform_item.uniform_details
+        %td= total_required = UniformStock.total_required(uni_id)
+        %td= receive = UniformStock.receive(uni_id)
+        %td= issue = UniformStock.issue(uni_id)
+        %td= stock_balance = receive-issue
+        %td= outstanding = total_required-issue
+        - requested = total_required-receive
+        %td 
+          - if requested < 0
+            = 0
+          - else
+            = requested 
+
+      

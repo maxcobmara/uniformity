@@ -8,9 +8,11 @@
   .navbar-inner
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("user", text: (t 'actions.new'))), new_staff_path
+    %ul.nav
+      %li= link_to content_tag(:li, fa_icon("user", text: (t 'actions.import_excel'))), import_excel_path	 
     %ul.nav.pull-right
       %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
-      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
+      %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
 
       
 .row.searchit{style: "display:none;"}
@@ -35,7 +37,7 @@
     - @staffs.each do |staff|
       %tr
         %td= link_to staff.id_no, staff
-        %td= staff.rank.name
-        %td= staff.name
+        %td= check_kin {staff.rank.name}
+        %td= staff.name.gsub(/\w+/, &:capitalize) 
         = render :partial => 'action_menu', :locals => { :staff => staff }
       

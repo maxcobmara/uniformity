@@ -9,30 +9,40 @@
     %ul.nav
       %li= link_to content_tag(:li, fa_icon("asterisk", text: (t 'actions.new'))), new_uniform_stock_received_path
     %ul.nav.pull-right
-      %li#toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#"
-      %li= link_to content_tag(:li, fa_icon("print", text: (t 'actions.print'))), "#"
-      
+      %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
+      %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
+
+.row.searchit{style: "display:none;"}
+  .span9offset1
+    = search_form_for @search, class: "form-inline" do |f|
+      .field
+        = f.label :uniform_stock_uniform_item_name_cont, "Uniform Stock (name) contains"
+        = f.text_field :uniform_stock_uniform_item_name_cont, class: "input-medium search-query"
+        = f.submit "Search", class: "btn btn-warning"
       
 %table.table.table-condensed.table-hover
   %thead
     %tr
+      %th= t 'uniform_stock_receiveds.rv_no'
       %th= t 'uniform_stock_receiveds.stock_id'
-      %th= t 'uniform_stock_receiveds.quantity' 
-      %th= t 'uniform_stock_receiveds.size'
-      %th= t 'uniform_stock_receiveds.received_on'
       %th= t 'uniform_stock_receiveds.received_by'
+      %th= sort_link @search, :received_on, t('uniform_stock_receiveds.received_on')
+      %th= sort_link @search, :quantity, t('uniform_stock_receiveds.quantity') 
+      %th= sort_link @search, :size, t('uniform_stock_receiveds.size')
       %th= t 'uniform_stock_receiveds.contract_id'
       %th 
 
   %tbody
-    - @uniform_stock_receiveds.each do |uniform_stock_received|
-      %tr
-        %td= uniform_stock_received.uniform_stock.uniform_item.uniform_details
-        %td= uniform_stock_received.quantity
-        %td= uniform_stock_received.size
-        %td= uniform_stock_received.received_on
-        %td= uniform_stock_received.receiver.name
-        %td= uniform_stock_received.contract.name
-        = render :partial => 'action_menu', :locals => { :uniform_stock_received => uniform_stock_received }
+    - @uniform_stock_receiveds.group_by(&:stock_id).each do |stock_id,uniform_stock_receiveds|
+      - uniform_stock_receiveds.each do |uniform_stock_received|
+        %tr
+          %td= uniform_stock_received.rv_no
+          %td= uniform_stock_received.uniform_stock.try(:uniform_item).try(:uniform_details)
+          %td= check_kin {uniform_stock_received.receiver.name}
+          %td= check_kin {uniform_stock_received.received_on.strftime("%d-%b-%Y")}
+          %td= uniform_stock_received.quantity
+          %td= uniform_stock_received.size
+          %td= check_kin {uniform_stock_received.contract.name}
+          = render :partial => 'action_menu', :locals => { :uniform_stock_received => uniform_stock_received }
       
       

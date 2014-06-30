@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require bootstrap.min
 //= require bootstrap-transition
 //= require bootstrap-datepicker
 //= require bootstrap-select
@@ -53,12 +53,7 @@ $(document).ready(function(){
        autoclose: true
      });
   
-    $('.selectpicker select').selectpicker();
-    
-    $('.select_wide').selectpicker({
-      style: 'btn-info',
-      size: 6
-    });
+    $('.selectpicker').selectpicker();
   
     $('#myTab a').click(function (e) {
       e.preventDefault()
@@ -69,5 +64,6 @@ $(document).ready(function(){
       $('.searchit').toggle(); 
     });
   
-})
 
+  
+})

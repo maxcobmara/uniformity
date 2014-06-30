@@ -4,7 +4,8 @@ class KitsController < ApplicationController
   # GET /kits
   # GET /kits.json
   def index
-    @kits = Kit.order(combo_code: :asc).all
+    @search = Kit.order(combo_code: :asc).search(params[:q])
+    @kits = @search.result
   end
 
   # GET /kits/1
@@ -43,7 +44,11 @@ class KitsController < ApplicationController
   def update
     respond_to do |format|
       if @kit.update(kit_params)
-        format.html { redirect_to @kit, notice: (t 'kits.title')+(t 'actions.updated')  }
+        if @kit.ancestry_depth == 0 && @kit.kit_uniforms.blank?          
+          format.html { redirect_to @kit, notice: (t 'kits.title')+(t 'actions.remove_master') }
+        else
+          format.html { redirect_to @kit, notice: (t 'kits.title')+(t 'actions.updated') }
+        end
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -75,6 +80,6 @@ class KitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kit_params
-      params.require(:kit).permit(:code, :combo_code, :name, :ancestry, :ancestry_depth, :parent_id, kit_uniforms_attributes: [:id, :uniform_id, :quantity, :senior_rate, :notes])
+      params.require(:kit).permit(:code, :combo_code, :name, :ancestry, :ancestry_depth, :parent_id, kit_uniforms_attributes: [:id, :uniform_id, :quantity, :senior_rate, :notes, :pk, :pkk, :graduan, :peg_l, :peg_p, :kadet_l, :kadet_p, :peg, :quantity2,:_destroy])
     end
 end

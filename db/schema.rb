@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209094400) do
+ActiveRecord::Schema.define(version: 20140119101557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -244,6 +244,13 @@ ActiveRecord::Schema.define(version: 20131209094400) do
     t.string   "serial_no"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "staff_id"
+    t.integer  "unit_id"
+    t.boolean  "smart_tag"
+    t.date     "issue_date"
+    t.date     "start_date"
+    t.date     "expired_date"
+    t.string   "smarttag_serial"
   end
 
   create_table "vehicle_categories", force: true do |t|

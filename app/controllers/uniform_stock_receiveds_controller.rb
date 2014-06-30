@@ -5,6 +5,8 @@ class UniformStockReceivedsController < ApplicationController
   # GET /uniform_stock_receiveds.json
   def index
     @uniform_stock_receiveds = UniformStockReceived.all
+    @search = UniformStockReceived.search(params[:q])
+    @uniform_stock_receiveds = @search.result
   end
 
   # GET /uniform_stock_receiveds/1
@@ -56,7 +58,7 @@ class UniformStockReceivedsController < ApplicationController
   def destroy
     @uniform_stock_received.destroy
     respond_to do |format|
-      format.html { redirect_to uniform_stock_receiveds_url }
+      format.html { redirect_to uniform_stock_receiveds_url, notice: (t 'uniform_stock_receiveds.title')+(t 'actions.removed')  }
       format.json { head :no_content }
     end
   end

@@ -4,17 +4,20 @@
   %h1= t 'uniform_stock_issues.title', :default => model_class.model_name.human
 %p#notice= notice
 %dl.dl-horizontal
+  %dt= t 'uniform_stock_issues.iv_no', :default =>model_class.human_attribute_name(:iv_no) + ":"
+  %dd=  @uniform_stock_issue.iv_no
+%dl.dl-horizontal
   %dt= t 'uniform_stock_issues.stock_id', :default =>model_class.human_attribute_name(:stock_id) + ":"
   %dd=  @uniform_stock_issue.uniform_stock.uniform_item.uniform_details
 %dl.dl-horizontal
   %dt= t 'uniform_stock_issues.issued_to', :default =>model_class.human_attribute_name(:issued_to) + ":"
-  %dd=  @uniform_stock_issue.receiver.name
+  %dd= check_kin {@uniform_stock_issue.receiver.staff_details}
 %dl.dl-horizontal
   %dt= t 'uniform_stock_issues.issued_by', :default =>model_class.human_attribute_name(:issued_by) + ":"
-  %dd=  @uniform_stock_issue.issuer.name
+  %dd= check_kin {@uniform_stock_issue.issuer.staff_details}
 %dl.dl-horizontal
   %dt= t 'uniform_stock_issues.issued_on', :default =>model_class.human_attribute_name(:issued_on) + ":"
-  %dd=@uniform_stock_issue.issued_on
+  %dd= check_kin {@uniform_stock_issue.issued_on.strftime("%d-%b-%Y")}
 %dl.dl-horizontal
   %dt= t 'uniform_stock_issues.quantity', :default =>model_class.human_attribute_name(:quantity) + ":"
   %dd=@uniform_stock_issue.quantity

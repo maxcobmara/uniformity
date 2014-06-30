@@ -4,7 +4,7 @@
           
     .control-group
       = f.label :uniform_id, :class => 'control-label'
-      .controls= f.collection_select :uniform_id, UniformItem.all, :id, :uniform_details, :include_blank => (t 'helpers.prompt.select_uniform'), :html_options => {:class => 'selectpicker'}
+      .controls= f.collection_select :uniform_id, UniformItem.all.order(:code), :id, :uniform_details, :include_blank => (t 'helpers.prompt.select_uniform'), :html_options => {:class => 'selectpicker'}
     
     .control-group
       = f.label :size, :class => 'control-label'

@@ -19,6 +19,15 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def link_to_remove_fields(name, f)
+    f.hidden_field(:_destroy) + link_to(name, '#', class: "remove_fields")
+  end
+  
+  #Turns decimal into Ringgit
+  def ringgols(money)
+    number_to_currency(money, :unit => "RM ", :separator => ".", :delimiter => ",", :precision => 2)
+  end
   
   ###devise
   def resource_name
@@ -31,5 +40,16 @@ module ApplicationHelper
  
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
+  end
+  
+  #null helper by mymn
+  #use check kin {model.relation.field}
+  #see "how to use a nuclear submarine as a nutcracker"
+  def check_kin
+    begin
+       return yield
+    rescue
+       return " Data Not Available "
+    end
   end
 end

@@ -1,0 +1,44 @@
+%fieldset{style: "padding-top:10px; padding-bottom:5px; border-bottom: solid 1px #DDD;"}
+  .form-inline{role: "form"}
+<<<<<<< HEAD
+    .row
+      .span1
+      .span6
+        = f.collection_select :uniform_id, UniformItem.order(:code, :name), :id, :uniform_details, :include_blank => (t 'helpers.prompt.select_uniform'), :class => 'select_wide'
+      .span2
+        = f.number_field :quantity, :class => 'text_field input-medium', placeholder: "Junior Rate"
+      .span2
+        = f.number_field :senior_rate, :class => 'text_field input-medium', placeholder: "Senior Rate"
+    .row
+      .span7.offset1= f.text_field :notes, :class => 'text_field input-xxlarge', placeholder: "Notes"
+=======
+    /= f.select :staff_group, KitUniform::STAFFGROUP, :prompt => "Select" 
+    = f.collection_select :uniform_id, UniformItem.order(:code, :name), :id, :uniform_details, :include_blank => (t 'helpers.prompt.select_uniform'), :html_options => {:class => 'selectpicker'}
+    - @group = KitUniform.group(@kit)
+    = f.hidden_field :staff_group, :value => @group
+    - if @group == 1	 
+      = f.number_field :quantity, :class => 'text_field input-small', placeholder: "Junior Rate"
+      = f.number_field :senior_rate, :class => 'text_field input-small', placeholder: "Senior Rate"
+    - elsif @group == 2
+      = f.number_field :pk, :class => 'text_field input-small', placeholder: "PK"
+      = f.number_field :pkk, :class => 'text_field input-small', placeholder: "PKK"
+      = f.number_field :graduan, :class => 'text_field input-small', placeholder: "Graduan"
+    - elsif @group == 3
+      = f.number_field :peg_l, :class => 'text_field input-small', placeholder: "Pegawai - Lelaki"
+      = f.number_field :peg_p, :class => 'text_field input-small', placeholder: "Pegawai - Wanita"
+    - elsif @group == 4
+      = f.number_field :peg, :class => 'text_field input-small', placeholder: "Pegawai"
+      = f.number_field :quantity, :class => 'text_field input-small', placeholder: "Junior Rate"
+      = f.number_field :senior_rate, :class => 'text_field input-small', placeholder: "Senior Rate"
+    - elsif @group == 5
+      = f.number_field :peg_l, :class => 'text_field input-small', placeholder: "Pegawai"
+      = f.number_field :kadet_l, :class => 'text_field input-small', placeholder: "Pegawai"
+      = f.number_field :peg_p, :class => 'text_field input-small', placeholder: "Junior Rate"
+      = f.number_field :kadet_p, :class => 'text_field input-small', placeholder: "Senior Rate"    
+    - elsif @group == 6	
+      = f.number_field :quantity2, :class => 'text_field input-small', placeholder: "Quantity"
+    = f.text_field :notes, :class => 'text_field input-xxlarge', placeholder: "Notes"
+    = f.hidden_field :_destroy
+    = link_to_remove_fields (fa_icon "trash-o"), f 
+
+>>>>>>> 6f87fc624e8873f60a5cdf9ee383b327b4d4d218

@@ -1,0 +1,14 @@
+
+%h1 Editing contract_type
+
+
+= form_for @contract_type do |f|
+  %div#contract_type_errors{:style => "display:none;"}
+    = render 'shared/error_messages', object: f.object
+  
+  %td= f.text_field :short_name
+  %td= f.text_field :description
+  %td= f.submit
+= link_to 'Show', @contract_type
+|
+\#{link_to 'Back', contract_types_path}
