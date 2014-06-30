@@ -53,16 +53,21 @@ $(document).ready(function(){
        autoclose: true
      });
   
-    $('select').selectpicker();
-  
-$('#myTab a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
+    $('.selectpicker select').selectpicker();
     
-  $('.toga').click(function() {
-    $('.searchit').toggle(); 
-  });
+    $('.select_wide').selectpicker({
+      style: 'btn-info',
+      size: 6
+    });
+  
+    $('#myTab a').click(function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    });
+    
+    $('.toga').click(function() {
+      $('.searchit').toggle(); 
+    });
   
 })
 

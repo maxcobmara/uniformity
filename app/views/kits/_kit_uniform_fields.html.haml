@@ -1,6 +1,12 @@
-%fieldset
+%fieldset{style: "padding-top:10px; padding-bottom:5px; border-bottom: solid 1px #DDD;"}
   .form-inline{role: "form"}
-    = f.collection_select :uniform_id, UniformItem.order(:code, :name), :id, :uniform_details, :include_blank => (t 'helpers.prompt.select_uniform'), :html_options => {:class => 'selectpicker'}
-    = f.number_field :quantity, :class => 'text_field input-small', placeholder: "Junior Rate"
-    = f.number_field :senior_rate, :class => 'text_field input-small', placeholder: "Senior Rate"
-    = f.text_field :notes, :class => 'text_field input-xxlarge', placeholder: "Notes"
+    .row
+      .span1
+      .span6
+        = f.collection_select :uniform_id, UniformItem.order(:code, :name), :id, :uniform_details, :include_blank => (t 'helpers.prompt.select_uniform'), :class => 'select_wide'
+      .span2
+        = f.number_field :quantity, :class => 'text_field input-medium', placeholder: "Junior Rate"
+      .span2
+        = f.number_field :senior_rate, :class => 'text_field input-medium', placeholder: "Senior Rate"
+    .row
+      .span7.offset1= f.text_field :notes, :class => 'text_field input-xxlarge', placeholder: "Notes"

@@ -1,7 +1,7 @@
 .topnav
   - if user_signed_in?
     =link_to (fa_icon "home"), root_url
-    %a#trigger.menu-trigger{:href => "#"}= fa_icon "reorder", text: ""
+    %a#trigger.menu-trigger{:href => "#"}= fa_icon "bars", text: ""
     %a{:href => destroy_user_session_path, 'data-method' => :delete}= fa_icon "sign-out", text: ""
     %span{:style => "font-size:0.9em"}= current_user.email
   -else
