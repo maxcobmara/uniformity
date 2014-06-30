@@ -44,7 +44,7 @@
         %td= invalid_staff.id_no
         %td= invalid_staff.rank.name
         %td= invalid_staff.name
-        %td= invalid_staff.position.name
+        %td= invalid_staff.try(:position).try(:name)
         %td= (Staff::GENDER.find_all{|disp, value| value == invalid_staff.gender}).map {|disp, value| disp}[0].to_s
         %td= (Staff::RELIGION.find_all{|disp, value| value == invalid_staff.religion}).map {|disp, value| disp}[0].to_s
         %td{:align => "center"}= invalid_staff.errors.count

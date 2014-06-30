@@ -11,4 +11,22 @@ class Expertise < ActiveRecord::Base
   def expertise_details
     "#{short_name}"+" - "+"#{name}"
   end
+  
+  def self.get_expertise(fr_excel,arr_fr_excel)
+    expertises=where('short_name ILIKE (?)',fr_excel.squeeze(" ").strip)
+    if expertises.count > 0
+      return expertises[0].id
+    else
+      #return 19 #id for panglima tentera laut
+      unless arr_fr_excel.include?(fr_excel)
+        expertise = find_by_short_name(fr_excel) || new 
+        expertise.short_name = fr_excel 
+        expertise.save!
+        return expertise.id
+      end
+      
+
+    end
+  end
+  
 end

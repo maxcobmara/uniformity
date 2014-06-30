@@ -45,8 +45,8 @@
       %ul.nav.nav-tabs
         %li.active= link_to t('staff_measurements.title'),        '#tab1', data: {toggle: 'tab'}
         %li= link_to t('kit_staffs.title'),  '#tab2', data: {toggle: 'tab'}
-        %li= link_to '',   '#tab3', data: {toggle: 'tab'}
-        %li= link_to '','#tab4', data: {toggle: 'tab'} 
+        %li= link_to t('staffs.imported_sizes'),   '#tab3', data: {toggle: 'tab'}
+
  
       - if @staff.kit_staffs == []
         Please click 'Update Staff' to apply default kit	
@@ -65,6 +65,62 @@
                 = f.fields_for :kit_staffs do |builder|
                   = render 'kit_staff_fields', f: builder
                 = link_to_add_fields (t 'kit_staffs.add_details'), f, :kit_staffs 
+
+          #tab3.tab-pane
+            .form-group
+              .col-lg-offset-2.col-lg-10
+                %fieldset
+                  %table
+                    %tr
+                      %th{:align=>"left"}= t('staffs.baju')
+                      %th{:align=>"left"}= t('staffs.seluar')
+                      %th{:align=>"left"}= t('staffs.beret')
+                      %th{:align=>"left"}= t('staffs.pcap')
+                      %th{:align=>"left"}= t('staffs.bhat')
+                      %th{:align=>"left"}= t('staffs.scap')
+                      %th{:align=>"left"}= t('staffs.kasut')
+                      %th{:align=>"left"}= t('staffs.jbiru')
+                    %tr
+                      %td{:style=>"padding: 0px 8px 0px 0px;"}
+                        - if @staff.size_data.nil? || @staff.size_data.blank?
+                          =f.text_field :bb1, :class => 'text_field input-small'
+                        - else
+                          = f.text_field :bb1, :class => 'text_field input-small', :value=> @staff.size_data[:baju]
+                      %td{:style=>"padding: 0px 8px 0px 0px;"}
+                        - if @staff.size_data.nil? || @staff.size_data.blank?
+                          = f.text_field :ss1, :class => 'text_field input-small'
+                        - else
+                          = f.text_field :ss1, :class => 'text_field input-small', :value=> @staff.size_data[:seluar]
+                      %td{:style=>"padding: 0px 8px 0px 0px;"}
+                        - if @staff.size_data.nil? || @staff.size_data.blank?
+                          = f.text_field :bb2, :class => 'text_field input-small'
+                        - else
+                          = f.text_field :bb2, :class => 'text_field input-small', :value=> @staff.size_data[:beret]
+                      %td{:style=>"padding: 0px 8px 0px 0px;"}
+                        - if @staff.size_data.nil? || @staff.size_data.blank?
+                          = f.text_field :pp1, :class => 'text_field input-small'
+                        - else
+                          = f.text_field :pp1, :class => 'text_field input-small', :value=> @staff.size_data[:pcap]
+                      %td{:style=>"padding: 0px 8px 0px 0px;"}
+                        - if @staff.size_data.nil? || @staff.size_data.blank?
+                          =f.text_field :bb3, :class => 'text_field input-small'
+                        - else
+                          = f.text_field :bb3, :class => 'text_field input-small', :value=> @staff.size_data[:bhat]
+                      %td{:style=>"padding: 0px 8px 0px 0px;"}
+                        - if @staff.size_data.nil? || @staff.size_data.blank?
+                          =f.text_field :ss2, :class => 'text_field input-small'
+                        - else
+                          = f.text_field :ss2, :class => 'text_field input-small', :value=> @staff.size_data[:scap]	  
+                      %td{:style=>"padding: 0px 8px 0px 0px;"}
+                        - if @staff.size_data.nil? || @staff.size_data.blank?
+                          = f.text_field :kk1, :class => 'text_field input-small'
+                        - else
+                          = f.text_field :kk1, :class => 'text_field input-small', :value=> @staff.size_data[:kasut]
+                      %td{:style=>"padding: 0px 8px 0px 0px;"}
+                        - if @staff.size_data.nil? || @staff.size_data.blank?
+                          = f.text_field :jj1, :class => 'text_field input-small'
+                        - else
+                          = f.text_field :jj1, :class => 'text_field input-small', :value=> @staff.size_data[:jbiru]
 
       %br
  
