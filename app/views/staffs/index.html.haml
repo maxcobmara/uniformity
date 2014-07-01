@@ -32,6 +32,14 @@
       %th= sort_link @search, :id_no,   t('staffs.id_no')
       %th= sort_link @search, :rank_id, t('staffs.rank_id')
       %th= sort_link @search, :name, t('staffs.name')
+      %th= t('staffs.baju')
+      %th= t('staffs.seluar')
+      %th= t('staffs.beret')
+      %th= t('staffs.pcap')
+      %th= t('staffs.bhat')
+      %th= t('staffs.scap')
+      %th= t('staffs.kasut')
+      %th= t('staffs.jbiru')
       %th
   %tbody
     - @staffs.each do |staff|
@@ -39,5 +47,23 @@
         %td= link_to staff.id_no, staff
         %td= check_kin {staff.rank.name}
         %td= staff.name.gsub(/\w+/, &:capitalize) 
+        - unless staff.size_data.nil? || staff.size_data.blank?      
+          %td= staff.size_data[:baju]         
+          %td= staff.size_data[:seluar]
+          %td= staff.size_data[:beret]
+          %td= staff.size_data[:pcap]
+          %td= staff.size_data[:bhat]
+          %td= staff.size_data[:scap]
+          %td= staff.size_data[:kasut]
+          %td= staff.size_data[:jbiru]
+        - else
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;
         = render :partial => 'action_menu', :locals => { :staff => staff }
       

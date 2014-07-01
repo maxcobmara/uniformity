@@ -236,6 +236,15 @@ ms_MY:
     failure2: "Kemasukan data selain daripada yang dinyatakan bagi syarat 5 dan 6 tidak akan disimpan."
     errors_counting: Jumlah Ralat
     errors_description: Deskripsi Ralat
+    imported_sizes: Saiz-Saiz Diimport
+    baju: Baju
+    seluar: Seluar
+    beret: Beret
+    pcap: "P/Cap"
+    bhat: "B/Hat"
+    scap: "S/Cap"
+    kasut: Kasut
+    jbiru: Jaket Biru
   contract_types:
     title: Jenis Kontrak
     short_name: Nama Ringkas

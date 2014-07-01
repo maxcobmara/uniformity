@@ -242,6 +242,15 @@ en:
     failure2: "Provided data other than those mentioned in condition 5 and 6 will not be saved."
     errors_counting: Total Errors
     errors_description: Errors Description
+    imported_sizes: Imported Sizes
+    baju: Shirts
+    seluar: Trousers
+    beret: Beret
+    pcap: "P/Cap"
+    bhat: "B/Hat"
+    scap: "S/Cap"
+    kasut: Shoes
+    jbiru: Blue Jacket
   contract_types:
     title: Contract Types
     short_name: Short Name

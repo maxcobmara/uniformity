@@ -6,6 +6,7 @@
 %ul.nav.nav-tabs
   %li.active= link_to t('staff_measurements.title'),        '#tab1', data: {toggle: 'tab'}
   %li= link_to t('kit_staffs.title'),  '#tab2', data: {toggle: 'tab'}
+  %li= link_to t('staffs.imported_sizes'),  '#tab3', data: {toggle: 'tab'}
   
 #myTabContent.tab-content{:style => "padding-left:50px;"}
   .row
@@ -111,7 +112,33 @@
             - kit_staff.kit.ancestor_ids
             - @staff.kit_staffs.map(&:kit_id)
 
-
+  #tab3.tab-pane
+    .div{:style => "padding: 15px 50px 10px 50px; "}
+    - if @staff.size_data.nil? || @staff.size_data.blank?
+      No Items
+    - else
+      %table{:width => "75%"}
+        %thead
+          %tr
+            %th= t 'staffs.baju'
+            %th= t 'staffs.seluar'
+            %th= t 'staffs.beret'
+            %th= t 'staffs.pcap'
+            %th= t 'staffs.bhat'
+            %th= t 'staffs.scap'
+            %th= t 'staffs.kasut'
+            %th= t 'staffs.jbiru'
+        %tbody 
+          %tr
+            %td{:align => "center"}= @staff.size_data[:baju]
+            %td{:align => "center"}= @staff.size_data[:seluar]
+            %td{:align => "center"}= @staff.size_data[:beret]
+            %td{:align => "center"}= @staff.size_data[:pcap]  
+            %td{:align => "center"}= @staff.size_data[:bhat]
+            %td{:align => "center"}= @staff.size_data[:scap]
+            %td{:align => "center"}= @staff.size_data[:kasut]
+            %td{:align => "center"}= @staff.size_data[:jbiru]
+  
 / = UniformItem.find(item.uniform_id).uniform_stock.uniform_stock_issues.sum(:quantity)
  
 .form-actions

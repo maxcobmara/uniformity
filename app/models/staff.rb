@@ -1,5 +1,5 @@
 class Staff < ActiveRecord::Base
-  before_save :assign_default_provision
+  before_save :assign_default_provision, :save_size_data
   
   has_many :staff_measurements, dependent: :destroy 
   accepts_nested_attributes_for :staff_measurements, allow_destroy: true, reject_if: proc { |staff_measurements| staff_measurements[:uniform_id].blank? }
@@ -24,7 +24,9 @@ class Staff < ActiveRecord::Base
   validates_presence_of :expertise_id, :if => :rank_staff?
   validates_uniqueness_of :id_no
   
-  attr_accessor :rank_excel, :position_excel, :gender_excel, :religion_excel #fr excel
+  serialize :size_data
+  
+  attr_accessor :rank_excel, :position_excel,:expertise_excel, :gender_excel, :religion_excel, :baju, :seluar, :beret, :pcap, :bhat, :scap, :kasut, :jbiru, :b1,:s1,:b2,:p1,:b3,:s2,:k1,:j1,:bb1,:ss1,:bb2,:pp1,:bb3,:ss2,:kk1,:jj1 #fr excel
   
   def rank_officer?
     !rank_id.nil? && rank.rate > 2
@@ -51,6 +53,25 @@ class Staff < ActiveRecord::Base
     end
   end
   
+  def save_size_data
+    #this part for existing data - from EDIT form (not required for IMPORT EXCEL) :bb1,:ss1,:bb2,:pp1,:bb3,:ss2,:kk1,:jj1,
+    if (!(bb1.nil?||bb1.blank?) || !(ss1.nil?||ss1.blank?) || !(bb2.nil?||bb2.blank?) || !(pp1.nil?||pp1.blank?) || !(bb3.nil?||bb3.blank?) || !(ss2.nil?||ss2.blank?) || !(kk1.nil?||kk1.blank?) || !(jj1.nil?||jj1.blank?))     
+      unless bb1.nil? || bb1.blank?
+        baju=bb1.upcase
+      else
+        baju=''
+      end
+      unless jj1.nil? || jj1.blank?
+        jbiru=jj1.upcase
+      else
+        jbiru=''
+      end
+      self.size_data = {baju: baju,seluar: ss1.to_s,beret: bb2.to_s, pcap: pp1.to_s, bhat: bb3.to_s, scap: ss2.to_s, kasut: kk1.to_s, jbiru: jbiru}
+      #else
+      #do nothing - leaves size_data as it is - > dont put any ELSE or after(before save) import_excel, this part will saved fraction as float.
+    end
+  end
+  
   def staff_details
     "#{id_no} " + "#{name}".gsub(/\w+/, &:capitalize) 
   end
@@ -61,17 +82,26 @@ class Staff < ActiveRecord::Base
     staffs=[]
     header = spreadsheet.row(1)
     staff_positions=[]
+    staff_expertises=[]
    
     #decoration = find_by_id(row["id"]) || new
     (5..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       staff = find_by_id(row["id_no"]) || new 
-      staff.attributes = row.to_hash.slice("id_no","rank_excel","name","position_excel","gender_excel","religion_excel") 
+      staff.attributes = row.to_hash.slice("id_no","rank_excel","name","position_excel","expertise_excel","gender_excel","religion_excel","baju","seluar","beret","pcap","bhat","scap","kasut","jbiru") 
  
       # retrieve fr excel, assign position_id according to drop down
       unless (staff.position_excel.nil? || staff.position_excel.blank?)
         staff.position_id = Position.get_position(staff.position_excel,staff_positions)    
         staff_positions<<staff.position_excel if !Position.all.pluck(:name).include?(staff.position_excel)
+      else
+        staff.position_id=0
+      end
+      
+      # retrieve fr excel, assign expertise/branch according to drop down
+      unless (staff.expertise_excel.nil? || staff.expertise_excel.blank?)
+        staff.expertise_id = Expertise.get_expertise(staff.expertise_excel,staff_expertises)
+        staff_expertises<<staff.expertise_excel if !Expertise.all.pluck(:short_name).include?(staff.expertise_excel)
       end
  
       # retrieve fr excel, assign rank_id according to drop down
@@ -90,7 +120,51 @@ class Staff < ActiveRecord::Base
         staff.religion = 1 if staff.religion_excel.downcase == "islam"
         staff.religion = 2 if staff.religion_excel.downcase == "sikh"
         staff.religion = 3 if staff.religion_excel.downcase == "others"              
-      end    
+      end 
+    
+      #STAFF SIZING - START
+      unless (staff.baju.nil? || staff.baju.blank?)
+        b1=staff.baju.to_s
+      else
+        b1=''
+      end
+      unless (staff.seluar.nil? || staff.seluar.blank?)
+        s1=staff.seluar.to_s   
+      else
+        s1=''
+      end
+      unless (staff.beret.nil? || staff.beret.blank?)
+        b2=staff.beret.to_s 
+      else
+        b2=''
+      end
+      unless (staff.pcap.nil? || staff.pcap.blank?)
+        p1=staff.pcap.to_s  
+      else
+        p1=''
+      end
+      unless (staff.bhat.nil? || staff.bhat.blank?)
+        b3=staff.bhat.to_s
+      else
+        b3=''
+      end
+      unless (staff.scap.nil? || staff.scap.blank?)
+        s2=staff.scap.to_s
+      else
+        s2=''
+      end
+      unless (staff.kasut.nil? || staff.kasut.blank?)
+        k1=staff.kasut.to_s
+      else
+        k1=''
+      end
+      unless (staff.jbiru.nil? || staff.jbiru.blank?)
+        j1=staff.jbiru.to_s
+      else
+        j1=''
+      end
+      staff.size_data = {baju: b1,seluar: s1.to_s,beret: b2.to_s, pcap: p1.to_s, bhat: b3.to_s, scap: s2.to_s, kasut: k1.to_s, jbiru: j1.to_s}
+      #STAFF SIZING - END
 
       #excel_reg_nos<<staff.id_no
       #staffs<<staff 
