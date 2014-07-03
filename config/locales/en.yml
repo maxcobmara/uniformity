@@ -75,6 +75,7 @@ en:
     remove_master: " (Master Kit) was successfully removed, due to deletion of last 'uniform item' of Master Kit"
     import_excel: Import Data From Excel
     removed_forbidden_uniform_stock: "Removal of Uniform Stock was forbidden, due to existing Uniform Stock Received/Uniform Stock Issue of selected Uniform Stock."
+    contains: contains
   errors:
   date:
     formats:
@@ -211,7 +212,7 @@ en:
     edit: Edit Staff
     id_no: Armed Force No
     rank_id: Rank
-    name: Nama
+    name: Name
     staff_group_id: Staff Group Id
     expertise_id: Expertise / Branch
     position_id: Position
@@ -242,7 +243,7 @@ en:
     failure2: "Provided data other than those mentioned in condition 5 and 6 will not be saved."
     errors_counting: Total Errors
     errors_description: Errors Description
-    imported_sizes: Imported Sizes
+    imported_sizes: Basic Sizes
     baju: Shirts
     seluar: Trousers
     beret: Beret
@@ -251,6 +252,8 @@ en:
     scap: "S/Cap"
     kasut: Shoes
     jbiru: Blue Jacket
+    format_data: "Format Data :"
+    size_input_format: "Shirt & Blue Jacket : S,M,L,XL, Trosers : 32,33,34, Beret, P/cap,Bhat, S/cap & Shoes : 8,8 1/2,6 3/4."
   contract_types:
     title: Contract Types
     short_name: Short Name
@@ -403,4 +406,6 @@ en:
       select_company: Select Contractor
       select_issuer: Select Issuer
       select_authoriser: Select Authoriser
-      
+      select_size_for: Search Sizing For
+      select_size: Select Size
+     
