@@ -2,8 +2,7 @@
 - model_class = Staff
 .page-header
   %h1= t 'staffs.title', :default => model_class.model_name.human.pluralize
-  
-  
+ 
 .navbar.navbar-inverse
   .navbar-inner
     %ul.nav
@@ -13,18 +12,23 @@
     %ul.nav.pull-right
       %li.toga= link_to content_tag(:li, fa_icon("search", text: (t 'actions.search'))), "#", class: "toga"
       %li= link_to_function(fa_icon("print", text: (t 'actions.print')), "javascript:print()")
-
       
 .row.searchit{style: "display:none;"}
   .span9offset1
     = search_form_for @search, class: "form-inline" do |f| 
       .field
-        = f.label :id_no_cont, "Code Contains"
-        = f.text_field :id_no_cont, class: "input-medium search-query"
-        = f.label :name_cont, "Name Contains"
-        = f.text_field :name_cont, class: "input-large search-query"
-        = f.submit "Search", class: "btn btn-warning"
-      
+        %table
+          %tr
+            %td{:style=>"padding:6px"}= f.label :id_no_cont, t('staffs.id_no')+" "+t('actions.contains')
+            %td{:style=>"padding:6px"}= f.text_field :id_no_cont, class: "input-medium search-query"
+            %td{:style=>"padding:6px"}= f.label :name_cont,  t('staffs.name')+" "+t('actions.contains')
+            %td{:style=>"padding:6px"}= f.text_field :name_cont, class: "input-large search-query"
+            %td{:style=>"padding:6px"}= label_tag 'q[size_data_cont]', t('helpers.prompt.select_size_for')
+            %td{:style=>"padding:6px 0px 6px 6px"}= select_tag(:size_select, options_for_select([[t('helpers.prompt.select_item'),0],[t('staffs.baju'),1],[t('staffs.seluar'),2],[t('staffs.beret'),3],[t('staffs.pcap'),4],[t('staffs.bhat'),5],[t('staffs.scap'),6],[t('staffs.kasut'),7],[t('staffs.jbiru'),8]]), class: 'selectpicker')
+            %td#result_div{:style=>"padding:6px; width:120px;"}    
+        /working sample
+        /= select_tag('q[size_data_cont_any]',options_for_select([['33', ':seluar: 33'],['34', ':seluar: \'34\''],['XL', ':baju: XL']]  ) )  		
+        = f.submit "Search", class: "btn btn-warning" 
       
 %table.table.table-condensed.table-hover
   %thead

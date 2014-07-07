@@ -80,6 +80,9 @@
                       %th{:align=>"left"}= t('staffs.scap')
                       %th{:align=>"left"}= t('staffs.kasut')
                       %th{:align=>"left"}= t('staffs.jbiru')
+                      %td{:align=>"center"}
+                        %i
+                          %font{:color=>"grey", :size=>"2pt", :weight=>"bold"}= t('staffs.format_data')
                     %tr
                       %td{:style=>"padding: 0px 8px 0px 0px;"}
                         - if @staff.size_data.nil? || @staff.size_data.blank?
@@ -121,7 +124,9 @@
                           = f.text_field :jj1, :class => 'text_field input-small'
                         - else
                           = f.text_field :jj1, :class => 'text_field input-small', :value=> @staff.size_data[:jbiru]
-
+                      %td
+                        %i
+                          %font{:color=>"grey",:size=>"2pt"}=t 'staffs.size_input_format'
       %br
  
     .form-actions

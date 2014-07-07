@@ -70,6 +70,7 @@ ms_MY:
     remove_master: " (Kit Utama/Induk) telah berjaya dihapuskan, setelah rekod terakhir 'item uniform' dihapuskan."
     import_excel: Import Data Dari Excel
     removed_forbidden_uniform_stock: "Rekod tidak boleh dihapuskan kerana samada Stok Uniform terdapat di dalam Penerimaan Stok Uniform ATAU Pengeluaran Stok Uniform."
+    contains: mengandungi
   errors:
   date:
     formats:
@@ -236,7 +237,7 @@ ms_MY:
     failure2: "Kemasukan data selain daripada yang dinyatakan bagi syarat 5 dan 6 tidak akan disimpan."
     errors_counting: Jumlah Ralat
     errors_description: Deskripsi Ralat
-    imported_sizes: Saiz-Saiz Diimport
+    imported_sizes: Saiz Asas
     baju: Baju
     seluar: Seluar
     beret: Beret
@@ -245,6 +246,7 @@ ms_MY:
     scap: "S/Cap"
     kasut: Kasut
     jbiru: Jaket Biru
+    size_input_format: "Baju & Jaket Biru : S,M,L,XL, Seluar : 32,33,34, Beret, P/Cap, B/Hat, S/Cap & Kasut : 8,8 1/2,6 3/4."
   contract_types:
     title: Jenis Kontrak
     short_name: Nama Ringkas
@@ -409,3 +411,5 @@ ms_MY:
       select_company: Pilih Kontraktor
       select_issuer: Pilih Pengeluar
       select_contract_type: Pilih Jenis Kontrak
+      select_size_for: Carian Saiz Bagi
+      select_size: Pilih Saiz

@@ -41,7 +41,6 @@ class StaffsController < ApplicationController
   # PATCH/PUT /staffs/1
   # PATCH/PUT /staffs/1.json
   def update
-    #raise params.inspect
     respond_to do |format|
       if @staff.update(staff_params)
         format.html { redirect_to @staff, notice: (t 'staffs.title')+(t 'actions.updated') }
@@ -71,7 +70,6 @@ class StaffsController < ApplicationController
   end
   
   def import
-      #raise params.inspect
       #use this line or line 88-89
       #Vehicle.import(params[:file]) 
       #redirect_to vehicles_url, notice: (t 'vehicles.imported') 
@@ -97,6 +95,61 @@ class StaffsController < ApplicationController
   
   def download_excel_format
     send_file ("#{::Rails.root.to_s}/public/excel_format/staff_excel.xls")
+  end
+
+  def update_text
+    @bajus=[]
+    @seluars=[]
+    @berets=[]
+    @pcaps=[]
+    @bhats=[]
+    @scaps=[]
+    @kasuts=[]
+    @jbirus=[]
+    Staff.pluck(:size_data).uniq.compact.each do |item|
+      @bajus<<item[:baju]
+      @seluars<<item[:seluar] 
+      @berets<<item[:beret]		  
+      @pcaps<<item[:pcap]
+      @bhats<<item[:bhat]
+      @scaps<<item[:scap]
+      @kasuts<<item[:kasut]
+      @jbirus<<item[:jbiru]
+    end
+    bajuss=@bajus.uniq-[""]
+    seluarss=@seluars.uniq.compact-[""]
+    beretss=@berets.uniq.compact-[""]
+    pcapss=@pcaps.uniq.compact-[""]
+    bhatss=@bhats.uniq.compact-[""]
+    scapss=@scaps.uniq.compact-[""]
+    kasutss=@kasuts.uniq.compact-[""]
+    jbiruss=@jbirus.uniq-[""]
+
+    @item_text = params[:item_name]
+    #MOST WORKING ONE 
+    #@listing = Staff.all.map{|s|[s.name, s.id]}.insert(0, "Select Staff Name")
+    if @item_text == t("staffs.baju") 
+      @listing = bajuss.map{|s|[s, ':baju: '+s]}.insert(0, t('helpers.prompt.select_size'))
+    elsif @item_text == t("staffs.seluar")                                                    
+      @listing = seluarss.map{|s|[s, ':seluar: \''+s+'\'']}.insert(0, t('helpers.prompt.select_size'))
+    elsif @item_text == t("staffs.beret")
+      #@listing = beretss.map{|s|[s, ':beret: '+s]}.insert(0, t('helpers.prompt.select_size'))                                                
+      @listing = beretss.map{|s|s.include?('/') ? [s, ':beret: '+s] : [s, ':beret: \''+s+'\'']}.insert(0, t('helpers.prompt.select_size'))
+    elsif @item_text == t("staffs.pcap")                                                    
+      #@listing = pcapss.map{|s|[s, ':pcap: '+s]}.insert(0, t('helpers.prompt.select_size'))
+      @listing = pcapss.map{|s|s.include?('/') ? [s, ':pcap: '+s] : [s, ':pcap: \''+s+'\'']}.insert(0, t('helpers.prompt.select_size'))
+    elsif @item_text == t("staffs.bhat")                                                    
+      #@listing = bhatss.map{|s|[s, ':bhat: \''+s+'\'']}.insert(0, t('helpers.prompt.select_size'))
+      @listing = bhatss.map{|s|s.include?('/') ? [s, ':bhat: '+s] : [s, ':bhat: \''+s+'\'']}.insert(0, t('helpers.prompt.select_size'))
+    elsif @item_text == t("staffs.scap")                                                    
+      #@listing = scapss.map{|s|[s, ':scap: \''+s+'\'']}.insert(0, t('helpers.prompt.select_size'))
+      @listing = scapss.map{|s|s.include?('/') ? [s, ':scap: '+s] : [s, ':scap: \''+s+'\'']}.insert(0, t('helpers.prompt.select_size'))
+    elsif @item_text == t("staffs.kasut")                                                    
+      #@listing = kasutss.map{|s|[s, ':kasut: \''+s+'\'']}.insert(0, t('helpers.prompt.select_size'))
+      @listing = kasutss.map{|s|s.include?('/') ? [s, ':kasut: '+s] : [s, ':kasut: \''+s+'\'']}.insert(0, t('helpers.prompt.select_size'))
+    elsif @item_text == t("staffs.jbiru")                                                         
+      @listing = bajuss.map{|s|[s, ':jbiru: '+s]}.insert(0, t('helpers.prompt.select_size')) 
+    end
   end
 
   private

@@ -26,7 +26,8 @@ class Staff < ActiveRecord::Base
   
   serialize :size_data
   
-  attr_accessor :rank_excel, :position_excel,:expertise_excel, :gender_excel, :religion_excel, :baju, :seluar, :beret, :pcap, :bhat, :scap, :kasut, :jbiru, :b1,:s1,:b2,:p1,:b3,:s2,:k1,:j1,:bb1,:ss1,:bb2,:pp1,:bb3,:ss2,:kk1,:jj1 #fr excel
+  attr_accessor :rank_excel, :position_excel,:expertise_excel, :gender_excel, :religion_excel, :baju, :seluar, :beret, :pcap, :bhat, :scap, :kasut, :jbiru, :b1,:s1,:b2,:p1,:b3,:s2,:k1,:j1,:bb1,:ss1,:bb2,:pp1,:bb3,:ss2,:kk1,:jj1   
+  #baju(excel), b1(retrieve baju), bb1(edit)  
   
   def rank_officer?
     !rank_id.nil? && rank.rate > 2
@@ -53,8 +54,9 @@ class Staff < ActiveRecord::Base
     end
   end
   
-  def save_size_data
-    #this part for existing data - from EDIT form (not required for IMPORT EXCEL) :bb1,:ss1,:bb2,:pp1,:bb3,:ss2,:kk1,:jj1,
+  #only applied on UPDATE, have NO effect on IMPORT EXCEL 
+  #params in EDIT form :bb1,:ss1,:bb2,:pp1,:bb3,:ss2,:kk1,:jj1
+  def save_size_data  
     if (!(bb1.nil?||bb1.blank?) || !(ss1.nil?||ss1.blank?) || !(bb2.nil?||bb2.blank?) || !(pp1.nil?||pp1.blank?) || !(bb3.nil?||bb3.blank?) || !(ss2.nil?||ss2.blank?) || !(kk1.nil?||kk1.blank?) || !(jj1.nil?||jj1.blank?))     
       unless bb1.nil? || bb1.blank?
         baju=bb1.upcase
@@ -67,8 +69,6 @@ class Staff < ActiveRecord::Base
         jbiru=''
       end
       self.size_data = {baju: baju,seluar: ss1.to_s,beret: bb2.to_s, pcap: pp1.to_s, bhat: bb3.to_s, scap: ss2.to_s, kasut: kk1.to_s, jbiru: jbiru}
-      #else
-      #do nothing - leaves size_data as it is - > dont put any ELSE or after(before save) import_excel, this part will saved fraction as float.
     end
   end
   
@@ -122,7 +122,7 @@ class Staff < ActiveRecord::Base
         staff.religion = 3 if staff.religion_excel.downcase == "others"              
       end 
     
-      #STAFF SIZING - START
+      #STAFF SIZING - START - retrieve fr excel, assign sizing accordingly ('staff.baju'-baju:field in excel)
       unless (staff.baju.nil? || staff.baju.blank?)
         b1=staff.baju.to_s
       else
