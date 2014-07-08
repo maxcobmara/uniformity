@@ -54,6 +54,12 @@ $(document).ready(function(){
      });
   
     $('.selectpicker').selectpicker();
+    
+    $('.select_wide').selectpicker({
+      style: 'btn-info',
+      size: 6
+    });
+    
   
     $('#myTab a').click(function (e) {
       e.preventDefault()
