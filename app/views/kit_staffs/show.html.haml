@@ -5,13 +5,25 @@
 %p#notice= notice
 %dl.dl-horizontal
   %dt= t 'kit_staffs.kit_id', :default => model_class.human_attribute_name(:kit_id) + ":"
-  %dd= check_kin {@kit_staff.kit.kit_details}
+  %dd
+    =@kit_staff.try(:kit).try(:kit_details)
+    - if @kit_staff.kit.kit_uniforms.count==0
+      %font{:color=>"red"}
+        = t 'kit_staffs.no_items_and_parent_are'
+        - a=Kit.where('id in(?)',@kit_staff.kit.ancestor_ids).pluck(:combo_code)
+        - a.each_with_index do |x,ind|
+          = x
+          ="," if ind<a.count-1
+          =")" if ind==a.count-1
+      
 %dl.dl-horizontal
   %dt= t 'kit_staffs.staff_id', :default => model_class.human_attribute_name(:staff_id) + ":"
-  %dd= check_kin {@kit_staff.staff.staff_details}
+  %dd=@kit_staff.try(:staff).try(:staff_details)
 /%dl.dl-horizontal
 /  %dt= t 'staffs.staff_group_id', :default => model_class.human_attribute_name(:staff_group_id) + ":"
 /  %dd=  @kit_staff.staff_group_id
+
+
 
 .div{:style => "padding: 15px 50px 10px 50px; "}
   %table{:width => "75%"}
@@ -20,8 +32,20 @@
         %th
         %th{:align => "left"}= t 'kit_staffs.kit'
     %tbody 
-      /- main_ancestor=[]
-      /- for kit_staff in @kit_staffs
+      /this part will display ancestor's kit details (parent) IF CURRENT KIT HAS NO UNFORM ITEM
+      - if @kit_staff.kit.kit_uniforms.count==0
+        - for ancestor in @kit_staff.kit.ancestor_ids
+          - count2=0
+          - for item2 in Kit.where(id: ancestor).first.kit_uniforms
+            %tr
+              %td=item2.uniform_item.uniform_details
+              %td 
+                - if count2 == 0
+                  = Kit.where(id: ancestor).first.kit_details
+                  - count2+=1
+              %td= item2.kit_qty(@kit_staff.staff.gender,@kit_staff.staff.rank.rate,@kit_staff.staff.rank.shortname) if @kit_staff.staff
+      
+      /this part will display current kit details accordingly
       - count=0 
       - for item in @kit_staff.kit.kit_uniforms
         %tr
@@ -30,7 +54,10 @@
             - if count == 0
               =@kit_staff.kit.kit_details
               - count+=1
-          %td= item.kit_qty(@kit_staff.staff.gender,@kit_staff.staff.rank.rate,@kit_staff.staff.rank.shortname)
+          %td= item.kit_qty(@kit_staff.staff.gender,@kit_staff.staff.rank.rate,@kit_staff.staff.rank.shortname) if @kit_staff.staff
+        
+     
+
 
 .form-actions
   = link_to content_tag(:i, "", :class => "fa fa-arrow-left ") + " " + t('.back', :default => t("helpers.links.back")), kit_staffs_path, :class => 'btn'

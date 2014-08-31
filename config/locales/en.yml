@@ -272,6 +272,8 @@ en:
     unit_type: Unit Type
   kit_staffs:
     title: Provision
+    new: New Provision
+    edit: Edit Provision
     add_details: Add Kit
     kit: Kit
     kit_id: Kit
@@ -280,6 +282,9 @@ en:
     new: New Provision
     provided: Provided
     outstanding: Outstanding
+    no_items_and_parent_are: "has no Uniform items. ( Below items are inherited from Parent Kit(s) : "
+    kitname_contains: "Kit Name contains "
+    staffname_contains: "Staff Name contains "
   positions:
     title: Positions
     name: Name
@@ -372,6 +377,17 @@ en:
         short_name: Short Name
         name: Name
         parent_id: Parent Unit
+      contract:
+        contract_no: Contract No
+        name: Contract Name
+        description: Description
+        company_id: Contractor
+        value: Value
+        starts_on: Starts On
+        issued_by: Issued by
+        contract_type: Contract Type
+        contract_dates: Contract Dates
+        to: to
       company:
         name: Name
         address: Address
@@ -385,6 +401,9 @@ en:
         unit_type_id: Unit Type
         company_id: Supplier
         remark: Remark
+      kit_staff:
+        staff_id: Staff
+        kit_id: Kit
     prompt:
       select_rank: Select Rank
       select_uniform: Select Uniform Item
@@ -403,7 +422,7 @@ en:
       select_gender: Select Gender
       select_religion: Select Religion
       select_supplier: Select Supplier
-      select_company: Select Contractor
+      select_company: "Select Contractor / Supplier"
       select_issuer: Select Issuer
       select_authoriser: Select Authoriser
       select_size_for: Search Sizing For

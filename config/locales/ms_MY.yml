@@ -265,6 +265,8 @@ ms_MY:
     unit_type: Unit Ukuran
   kit_staffs:
     title: Hak
+    new: Hak Baru
+    edit: Sunting Hak
     add_details: Tambah Kit
     kit: Kit
     kit_id: Kit
@@ -272,6 +274,9 @@ ms_MY:
     staff_group_id: Kumpulan Anggota
     provided: Peruntukan
     outstanding: Tertunggak
+    no_items_and_parent_are: "tiada sebarang item Uniform. ( Item di bawah diwarisi daripada Kit INDUK : "
+    kitname_contains: "Nama Kit mengandungi "
+    staffname_contains: "Nama Anggota mengandungi "
   positions:
     title: Jawatan
     name: Nama
@@ -390,6 +395,9 @@ ms_MY:
         unit_type_id: Jenis Ukuran
         company_id: Pembekal
         remark: Nota
+      kit_staff:
+        staff_id: Anggota
+        kit_id: Kit
     prompt:
       select_rank: Pilih Pangkat
       select_uniform: Pilih Item Uniform
@@ -408,7 +416,7 @@ ms_MY:
       select_gender: Pilih Jantina
       select_religion: Pilih Agama
       select_supplier: Pilih Pembekal
-      select_company: Pilih Kontraktor
+      select_company: "Pilih Kontraktor / Pembekal"
       select_issuer: Pilih Pengeluar
       select_contract_type: Pilih Jenis Kontrak
       select_size_for: Carian Saiz Bagi
