@@ -9,7 +9,7 @@ namespace :load do
     set :unicorn_workers, 5
     set :unicorn_timeout, 30
     set :listen_ip, '0.0.0.0'
-    set :listen_port, 3101
+    set :listen_port, 3102
   end
 end
 
