@@ -45,7 +45,7 @@ set :keep_releases, 5
 set :stages, ["staging", "production"]
 
 set :rvm_type, :user                     # Defaults to: :auto
-set :rvm_ruby_version, '2.0.0-p451'      # Defaults to: 'default'
+set :rvm_ruby_version, '2.0.0-p451@tldm'      # Defaults to: 'default'
 set :rvm_custom_path, '/home/nurhashimah/.rvm/'  # only needed if not detected
 
 # set path to application
