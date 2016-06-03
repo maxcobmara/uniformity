@@ -178,6 +178,9 @@ input[type=checkbox] {width:13px; height:13px; *overflow: hidden; }
   }
 }
 
+/* forms */
+.control-group {z-index:9999;}
+
 .field_with_errors {
   @extend .control-group;
   @extend .error;
