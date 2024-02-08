@@ -1,19 +1,20 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.4.9'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.1'
-gem 'pg', '~> 0.17.0'
-gem "thin", "~> 1.6.0"
-gem "devise", "~> 3.1.1"
+gem 'rails', '4.2.11.3'
+#gem 'pg', '~> 0.17.0'
+gem 'sqlite3',         '~> 1.3.13'
+gem 'thin',  '~> 1.8.0'
+gem "devise", "~> 3.4.1"
 gem "ancestry", "~> 2.0.0"
-gem "ransack", "~> 1.1.0"
+gem "ransack", "~> 1.4.1"
 
 
 gem 'uglifier', '~> 2.1.1'  # Use Uglifier as compressor for JavaScript assets
 gem 'coffee-rails', '~> 4.0.0'  # Use CoffeeScript for .js.coffee assets and views
 gem "jquery-rails", "~> 3.0.4"  # Use jquery as the JavaScript library
-gem 'turbolinks', '~> 1.1.1'  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks', '~> 2.2.0'  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'jbuilder', '~> 1.2'  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "haml", "~> 4.0.3"
 gem 'bootstrap-sass', '~> 2.3.2.2'
@@ -24,7 +25,8 @@ gem "bootstrap-datepicker-rails", "~> 1.1.1.9"
 gem "bootstrap-select-rails", "~> 1.3.0.1"
 gem "bootstrap-datetimepicker-rails", "~> 0.0.11"
 
-gem 'datashift', git: 'https://github.com/20jeans/datashift.git'
+gem 'datashift', '~> 0.40.1'
+#gem 'datashift', git: 'https://github.com/20jeans/datashift.git'
 
 gem "nokogiri"
 gem "builder"
@@ -32,6 +34,10 @@ gem "rubyzip"
 #gem "google-spreadsheet-ruby"
 gem "spreadsheet"
 gem "roo"
+
+#compatability
+gem 'bigdecimal', '1.3.0'
+gem 'loofah', '~>2.19.1'
 
 group :assets do
 end
@@ -43,8 +49,8 @@ group :development do
 end
 
 group :development, :test do
-  gem "rspec-rails", "~> 2.14.0"
-  gem 'guard-rspec', "~> 2.5.0"
+  gem 'rspec-rails', '~> 3.2.1'
+  gem 'guard-rspec', '~> 4.5.0'
 end
 
 group :test do
