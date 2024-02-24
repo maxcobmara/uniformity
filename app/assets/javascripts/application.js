@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
-//= require bootstrap-transition
+// require bootstrap-transition
 //= require bootstrap-datepicker
 //= require bootstrap-select
 //= require bootstrap-datetimepicker
@@ -24,20 +24,20 @@
 
 
 $(document).ready(function(){
-  
+
     $('[data-behaviour=datepicker_before]').datepicker({
       format: "yyyy/mm/dd",
       endDate: "today",
       todayBtn: true
     });
-  
+
     $('[data-behaviour=datepicker_after]').datepicker({
       format: "yyyy/mm/dd",
       startDate: "today",
       autoclose: true,
       todayBtn: true
     });
-  
+
     $('[data-behaviour=datepicker_year]').datepicker({
         format: "yyyy",
         endDate: "today",
@@ -45,31 +45,31 @@ $(document).ready(function(){
         minViewMode: 2,
         daysOfWeekDisabled: "6"
     });
-  
+
     $('#datetimepicker1').datetimepicker({});
-  
+
     $('.input-daterange').datepicker({
        format: "yyyy-mm-dd",
        autoclose: true
      });
-  
+
     $('.selectpicker').selectpicker();
-    
+
     $('.select_wide').selectpicker({
       style: 'btn-info',
       size: 6
     });
-    
-  
+
+
     $('#myTab a').click(function (e) {
       e.preventDefault()
       $(this).tab('show')
     });
-    
-    $('.toga').click(function() {
-      $('.searchit').toggle(); 
-    });
-  
 
-  
+    $('.toga').click(function() {
+      $('.searchit').toggle();
+    });
+
+
+
 })
