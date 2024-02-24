@@ -27,6 +27,7 @@ Uniformity::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   config.assets.check_precompiled_asset = false
+  config.assets.quiet = true
 
   #devise config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
