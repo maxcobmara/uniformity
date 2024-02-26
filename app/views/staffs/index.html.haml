@@ -46,7 +46,7 @@
       %th= t('staffs.jbiru')
       %th
   %tbody
-    - @staffs.each do |staff|
+    - @staffs.includes([:rank]).each do |staff|
       %tr
         %td= link_to staff.id_no, staff
         %td= check_kin {staff.rank.name}

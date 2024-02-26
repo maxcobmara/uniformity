@@ -2,13 +2,13 @@ source 'https://rubygems.org'
 ruby '2.4.9'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.7'
+gem 'rails', '5.2.3'
 #gem 'pg', '~> 0.17.0'
 gem 'sqlite3', '~> 1.3.13'
 gem 'thin',  '~> 1.8.0'
-gem "devise", "~> 4.3.0"
+gem "devise", "~> 4.4.0"
 gem "ancestry", "~> 3.2.1"
-gem "ransack", "~> 2.0.0"
+gem "ransack", "~> 2.1.0"
 
 
 gem 'uglifier', '~> 2.1.1'  # Use Uglifier as compressor for JavaScript assets
@@ -25,7 +25,7 @@ gem "bootstrap-datepicker-rails", "~> 1.3.0"
 gem "bootstrap-select-rails", "~> 1.3.0"
 gem "bootstrap-datetimepicker-rails", "~> 0.0.11"
 
-gem 'datashift', '~> 0.40.4'
+#gem 'datashift', '~> 0.40.4'  <-- deprecated rails 5.2
 #gem 'datashift', git: 'https://github.com/20jeans/datashift.git'
 
 gem "nokogiri", '~> 1.10.0'
@@ -46,6 +46,8 @@ end
 # gem 'therubyracer', platforms: :ruby
 group :development do
   #gem "quiet_assets", "~> 1.0.2"
+  gem 'bullet', '~> 6.0'
+  
 end
 
 group :development, :test do
