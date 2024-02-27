@@ -379,7 +379,7 @@ DEPENDENCIES
   unicorn
 
 RUBY VERSION
-   ruby 2.5.3p105
+   ruby 2.6.9p207
 
 BUNDLED WITH
-   2.1.0
+   2.2.22
