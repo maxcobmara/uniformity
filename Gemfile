@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.5.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.3'
+gem 'rails', '5.2.8'
 #gem 'pg', '~> 0.17.0'
 gem 'sqlite3', '~> 1.3.13'
 gem 'thin',  '~> 1.8.0'
@@ -38,6 +38,7 @@ gem "roo", "~> 2.5.0"
 #compatability
 gem 'bigdecimal', '1.3.0'
 gem 'loofah', '~>2.9.0'
+gem 'psych', '~> 3.3.0' 
 
 group :assets do
 end
